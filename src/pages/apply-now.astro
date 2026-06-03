@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Apply Now | Start Your Mortgage Application | American Mortgage Services"
+  description="Start your mortgage application with American Mortgage Services. A loan officer will review your information and contact you to discuss your options."
+>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Start Your Application</h1>
+      <p>Fill out the form below and a loan officer will contact you within one business day to discuss your mortgage options.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container apply-layout">
+      <div class="apply-form-wrap">
+        <div class="apply-notice">
+          <strong>Before you begin:</strong> Submitting this form is the first step in exploring your options, not a final application. All loans are subject to credit review, income verification, property appraisal, and lender guidelines. Loan approval is not guaranteed.
+        </div>
+
+        <form class="apply-form" action="#" method="POST" novalidate>
+          <fieldset>
+            <legend>Your Information</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="first-name">First Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="first-name" name="first-name" required autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="last-name">Last Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="last-name" name="last-name" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="phone">Phone <span aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Loan Details</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="loan-purpose">Loan Purpose <span aria-hidden="true">*</span></label>
+                <select id="loan-purpose" name="loan-purpose" required>
+                  <option value="">Select...</option>
+                  <option value="purchase">Purchase a Home</option>
+                  <option value="refinance">Refinance</option>
+                  <option value="cash-out">Cash-Out Refinance</option>
+                  <option value="investment">Investment Property</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="state">State</label>
+                <select id="state" name="state">
+                  <option value="">Select a state</option>
+                  <option value="AL">Alabama</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="MI">Michigan</option>
+                  <option value="TN">Tennessee</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="loan-type">Loan Program (if known)</label>
+                <select id="loan-type" name="loan-type">
+                  <option value="">Not sure yet</option>
+                  <option value="fha">FHA</option>
+                  <option value="va">VA</option>
+                  <option value="usda">USDA</option>
+                  <option value="conventional">Conventional</option>
+                  <option value="jumbo">Jumbo</option>
+                  <option value="bank-statement">Bank Statement</option>
+                  <option value="dscr">DSCR / Investor</option>
+                  <option value="reverse">Reverse Mortgage</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="est-purchase-price">Estimated Purchase Price / Loan Amount</label>
+                <input type="text" id="est-purchase-price" name="est-purchase-price" placeholder="e.g. $350,000" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" rows="3" placeholder="Any details about your situation that would help us prepare..."></textarea>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-primary submit-btn">Submit Application Request</button>
+
+          <p class="compliance-note">
+            By submitting this form, you consent to be contacted by American Mortgage Services regarding your mortgage inquiry. This is not a complete loan application. All programs subject to credit approval. Not a commitment to lend.
+          </p>
+        </form>
+      </div>
+
+      <aside class="apply-sidebar">
+        <div class="sidebar-info">
+          <h3>What Happens Next?</h3>
+          <ol>
+            <li><strong>A loan officer will contact you</strong> within one business day to review your scenario.</li>
+            <li><strong>We'll discuss your options</strong> across the programs that may fit your credit, income, and goals.</li>
+            <li><strong>If you choose to proceed</strong>, we'll guide you through the full application and documentation process.</li>
+          </ol>
+        </div>
+        <div class="sidebar-phone-card">
+          <p>Prefer to call?</p>
+          <a href="tel:8888389330" class="phone-link">(888) 838-9330</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 { color: var(--color-white); font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin-bottom: var(--space-4); }
+.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 55ch; }
+
+.apply-layout {
+  display: grid; grid-template-columns: 1fr 300px; gap: var(--space-12); align-items: start;
+}
+@media (max-width: 900px) { .apply-layout { grid-template-columns: 1fr; } }
+
+.apply-notice {
+  background: oklch(95% 0.02 260); border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5); font-size: var(--text-sm);
+  color: var(--color-gray-body); margin-bottom: var(--space-6);
+  border: 1px solid var(--color-gray-subtle);
+}
+
+.apply-form { display: flex; flex-direction: column; gap: var(--space-8); }
+fieldset {
+  border: 1px solid var(--color-gray-subtle); border-radius: var(--radius-lg);
+  padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4);
+}
+legend {
+  font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg);
+  color: var(--color-navy); padding: 0 var(--space-2);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: var(--space-1); }
+label { font-size: var(--text-sm); font-weight: 600; color: var(--color-navy); }
+label span { color: var(--color-red); }
+input, select, textarea {
+  font-family: var(--font-body); font-size: var(--text-base);
+  border: 1.5px solid var(--color-gray-subtle); border-radius: var(--radius-md);
+  padding: 10px 14px; background: var(--color-white); color: var(--color-gray-body);
+  width: 100%; transition: border-color 150ms ease-out;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px oklch(22% 0.06 260 / 0.12);
+}
+textarea { resize: vertical; }
+.submit-btn { align-self: flex-start; }
+.compliance-note { font-size: var(--text-xs); color: var(--color-gray-mid); max-width: none; }
+
+.sidebar-info {
+  background: var(--color-off-white); border-radius: var(--radius-lg);
+  padding: var(--space-6); margin-bottom: var(--space-4);
+}
+.sidebar-info h3 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+.sidebar-info ol { padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+.sidebar-info li { font-size: var(--text-sm); color: var(--color-gray-body); }
+.sidebar-info strong { color: var(--color-navy); }
+
+.sidebar-phone-card {
+  background: var(--color-navy); border-radius: var(--radius-lg);
+  padding: var(--space-6); text-align: center;
+}
+.sidebar-phone-card p { color: oklch(75% 0.02 260); font-size: var(--text-sm); max-width: none; margin-bottom: var(--space-2); }
+.phone-link {
+  font-size: var(--text-2xl); font-weight: 700; color: var(--color-white);
+  text-decoration: none; font-family: var(--font-display);
+}
+.phone-link:hover { color: var(--color-gold); }
+</style>

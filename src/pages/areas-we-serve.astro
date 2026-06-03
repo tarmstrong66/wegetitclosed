@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StateCard from '../components/StateCard.astro';
+import CTASection from '../components/CTASection.astro';
+import TrustBar from '../components/TrustBar.astro';
+
+const states = [
+  { state: 'Alabama', abbr: 'AL', description: 'FHA, VA, USDA, and conventional loan options across Alabama. Rural USDA-eligible areas and military-friendly VA programs are a strong fit for many Alabama borrowers.', href: '/alabama-mortgage/' },
+  { state: 'Florida', abbr: 'FL', description: 'Mortgage programs for Florida homebuyers, investors, and refinancers. Condo financing, DSCR investor loans, and jumbo programs are available depending on your scenario.', href: '/florida-mortgage/' },
+  { state: 'Georgia', abbr: 'GA', description: 'Home loans across Georgia from Atlanta and Savannah to rural communities statewide. Conventional, FHA, USDA, and specialty programs available.', href: '/georgia-mortgage/' },
+  { state: 'Louisiana', abbr: 'LA', description: 'Mortgage options for Louisiana borrowers including programs for unique property types, flood zone properties, and post-storm renovation financing.', href: '/louisiana-mortgage/' },
+  { state: 'Michigan', abbr: 'MI', description: 'Home loans across Michigan from Metro Detroit to the Upper Peninsula. USDA rural financing, conventional, and VA programs available statewide.', href: '/michigan-mortgage/' },
+  { state: 'Tennessee', abbr: 'TN', description: 'Mortgage programs for Tennessee buyers across Nashville, Knoxville, Chattanooga, and rural East Tennessee. FHA, VA, USDA, and conventional options available.', href: '/tennessee-mortgage/' },
+];
+---
+<BaseLayout
+  title="Mortgage Loans in AL, FL, GA, LA, MI & TN | Areas We Serve | American Mortgage Services"
+  description="American Mortgage Services originates mortgage loans in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. Compare FHA, VA, USDA, conventional, and specialty programs in your state."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Areas We Serve</span>
+      </nav>
+      <h1>Mortgage Loans in Alabama, Florida, Georgia, Louisiana, Michigan & Tennessee</h1>
+      <p>American Mortgage Services is licensed to originate mortgage loans in six states. Select your state below to explore loan programs and connect with a loan officer who can compare your options.</p>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <div class="states-grid">
+        {states.map(s => <StateCard {...s} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <h2>Why Work with a Wholesale Mortgage Broker?</h2>
+      <p>American Mortgage Services is a wholesale mortgage broker, which means we're not limited to one lender's products. We can shop your loan across multiple wholesale lenders to find programs that may fit your credit, income, property, and down payment situation.</p>
+      <p>That flexibility can matter when your scenario is complex: self-employment income, lower credit scores, investment properties, or loan amounts above conforming limits. A bank can only offer what's on its menu. We can access a much broader set of options.</p>
+      <p>Every loan approval is subject to credit review, income verification, property appraisal, and lender guidelines. We'll help you understand your options and determine which programs you may qualify for based on your full picture.</p>
+      <div style="margin-top: var(--space-8);">
+        <a href="/about/" class="btn-secondary">Learn More About Us</a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Compare Your Mortgage Options?"
+    subtext="Talk with a loan officer about which programs may fit your scenario in your state."
+    ctaText="Apply Now"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Contact Us"
+    secondaryCtaUrl="/contact/"
+  />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 60ch; }
+.breadcrumb-nav {
+  font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4);
+}
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav a:hover { color: var(--color-white); }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+.states-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
+}
+@media (max-width: 768px) { .states-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .states-grid { grid-template-columns: 1fr; } }
+.section-alt h2 { margin-bottom: var(--space-4); font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl)); }
+.section-alt p { margin-bottom: var(--space-4); color: var(--color-gray-body); }
+</style>

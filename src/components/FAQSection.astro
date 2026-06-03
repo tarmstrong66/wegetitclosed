@@ -1,0 +1,49 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+interface Props {
+  faqs: FAQ[];
+  heading?: string;
+}
+const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
+---
+<section class="faq-section section">
+  <div class="container-narrow">
+    <h2>{heading}</h2>
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <div class="faq-item">
+          <p class="faq-question">{faq.question}</p>
+          <div class="faq-answer">
+            <p set:html={faq.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-section h2 {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  margin-bottom: var(--space-8);
+}
+.faq-list { display: flex; flex-direction: column; }
+.faq-item {
+  border-bottom: 1px solid var(--color-gray-subtle);
+  padding: var(--space-5) 0;
+}
+.faq-item:first-child { border-top: 1px solid var(--color-gray-subtle); }
+
+.faq-question {
+  font-family: var(--font-body); font-size: var(--text-base); font-weight: 600;
+  color: var(--color-navy); margin: 0 0 var(--space-3) 0;
+}
+
+.faq-answer p {
+  color: var(--color-gray-body); font-size: var(--text-base);
+  line-height: 1.7; max-width: none; margin: 0;
+}
+</style>

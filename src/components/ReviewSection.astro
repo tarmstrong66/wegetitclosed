@@ -1,0 +1,85 @@
+---
+const reviews = [
+  {
+    text: "Clay and the team at American Mortgage Services made our home purchase as smooth as possible. We had a complicated situation with multiple income sources, and they found a loan program that worked for us. Closed in about 25 days.",
+    reviewer: "Sarah M.",
+    stars: 5,
+    label: "Verified Google Review",
+  },
+  {
+    text: "Joanne was incredibly knowledgeable and walked us through every step. We were first-time buyers with a lot of questions and she never made us feel rushed. We couldn't have asked for a better experience.",
+    reviewer: "Marcus T.",
+    stars: 5,
+    label: "Verified Google Review",
+  },
+  {
+    text: "We had been turned down by our bank before finding American Mortgage Services. Michael looked at our situation and found an FHA program that fit. Our rate was better than we expected. Highly recommend.",
+    reviewer: "Linda R.",
+    stars: 5,
+    label: "Verified Google Review",
+  },
+];
+---
+<section class="reviews-section section section-alt">
+  <div class="container">
+    <div class="reviews-header">
+      <h2>What Our Borrowers Say</h2>
+      <div class="google-rating">
+        <span class="stars" aria-label="4.8 out of 5 stars">★★★★★</span>
+        <span>4.8 on Google &mdash; 135 Reviews</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map(r => (
+        <div class="review-card">
+          <div class="review-stars" aria-label={`${r.stars} out of 5 stars`}>
+            {'★'.repeat(r.stars)}
+          </div>
+          <p class="review-text">{r.text}</p>
+          <div class="review-meta">
+            <span class="reviewer">{r.reviewer}</span>
+            <span class="review-label">{r.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.reviews-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+.reviews-header h2 { font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl)); margin: 0; }
+.google-rating {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: var(--color-gray-mid); font-weight: 500;
+}
+.stars { color: var(--color-gold); font-size: var(--text-lg); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+@media (max-width: 768px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+.review-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-gray-subtle);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.review-stars { color: var(--color-gold); font-size: var(--text-lg); }
+.review-text {
+  color: var(--color-gray-body); font-size: var(--text-sm);
+  line-height: 1.7; flex: 1; max-width: none;
+}
+.review-meta { display: flex; flex-direction: column; gap: 2px; }
+.reviewer { font-weight: 600; font-size: var(--text-sm); color: var(--color-navy); }
+.review-label { font-size: var(--text-xs); color: var(--color-gray-mid); }
+</style>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  state: string;
+  description: string;
+  href: string;
+  abbr: string;
+}
+const { state, description, href, abbr } = Astro.props;
+---
+<div class="state-card">
+  <div class="state-abbr" aria-hidden="true">{abbr}</div>
+  <h3>{state}</h3>
+  <p>{description}</p>
+  <a href={href} class="btn-secondary state-btn">View Mortgage Options</a>
+</div>
+
+<style>
+.state-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--color-gray-subtle);
+  display: flex; flex-direction: column; gap: var(--space-3);
+  text-align: center;
+}
+.state-abbr {
+  font-family: var(--font-display); font-size: var(--text-4xl);
+  font-weight: 700; color: var(--color-navy-light);
+}
+.state-card h3 {
+  font-size: var(--text-2xl); margin: 0;
+}
+.state-card p {
+  color: var(--color-gray-mid); font-size: var(--text-sm);
+  line-height: 1.5; max-width: none; flex: 1;
+}
+.state-btn { margin-top: auto; justify-content: center; }
+</style>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ReviewCarousel from '../components/ReviewCarousel.astro';
+import HomepageContent from '../components/HomepageContentGeneric.astro';
+---
+<BaseLayout
+  title="Mortgage Loans in AL, FL, GA, LA, MI & TN | We Get It Closed"
+  description="We Get It Closed, wholesale mortgage broker serving Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. FHA, VA, USDA, conventional, jumbo, and specialty loan programs with no lender fees."
+>
+  <Hero
+    headline="Your Trusted Mortgage Lender"
+    subheadline="Helping homebuyers, homeowners, veterans, and investors compare mortgage options in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee."
+    ctaText="Start Your Application"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Talk To A Loan Officer"
+    secondaryCtaUrl="/contact/"
+  />
+
+  <TrustBar />
+
+  <HomepageContent />
+
+  <ReviewCarousel />
+</BaseLayout>

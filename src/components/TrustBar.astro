@@ -1,0 +1,64 @@
+---
+---
+<div class="trust-bar">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-item">
+        <span class="proof-value">40+ Lenders</span>
+        <label class="proof-label">Top Wholesale Rates</label>
+      </div>
+      <div class="proof-item">
+        <span class="proof-value">40+ Years</span>
+        <label class="proof-label">Combined Experience</label>
+      </div>
+      <div class="proof-item">
+        <span class="proof-value">4.8 Stars</span>
+        <label class="proof-label">135 Google Reviews</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.trust-bar {
+  background: var(--color-white);
+  padding: var(--space-8) 0 var(--space-10);
+}
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  background: var(--color-gray-subtle);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: var(--space-8) var(--space-6);
+}
+@media (max-width: 768px) {
+  .proof-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+}
+.proof-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  color: var(--color-red);
+  line-height: 1;
+}
+.proof-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+</style>

@@ -1,0 +1,61 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Page Not Found | American Mortgage Services"
+  description="The page you're looking for isn't here. Find mortgage programs, state information, and contact details at American Mortgage Services."
+>
+  <section class="not-found">
+    <div class="container">
+      <div class="not-found-inner">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for may have moved or no longer exists. Here are some helpful links to get you where you're going.</p>
+        <div class="not-found-links">
+          <a href="/" class="btn-primary">Go to Homepage</a>
+          <a href="/programs/" class="btn-ghost">Loan Programs</a>
+          <a href="/contact-us/" class="btn-ghost">Contact Us</a>
+        </div>
+        <div class="not-found-state-links">
+          <p>Looking for a specific state?</p>
+          <div class="state-row">
+            <a href="/alabama-mortgage/">Alabama</a>
+            <a href="/florida-mortgage/">Florida</a>
+            <a href="/georgia-mortgage/">Georgia</a>
+            <a href="/louisiana-mortgage/">Louisiana</a>
+            <a href="/michigan-mortgage/">Michigan</a>
+            <a href="/tennessee-mortgage/">Tennessee</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.not-found {
+  background: var(--color-navy); min-height: 70vh;
+  display: flex; align-items: center; padding: var(--space-20) 0;
+}
+.not-found-inner { text-align: center; }
+.error-code {
+  font-family: var(--font-display); font-size: 8rem; font-weight: 700;
+  color: oklch(30% 0.07 258); line-height: 1; margin-bottom: var(--space-4); max-width: none;
+}
+.not-found-inner h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin-bottom: var(--space-4);
+}
+.not-found-inner > p {
+  color: oklch(75% 0.02 260); font-size: var(--text-lg); max-width: 50ch; margin: 0 auto var(--space-8);
+}
+.not-found-links { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-10); }
+.not-found-state-links > p { color: oklch(65% 0.01 260); font-size: var(--text-sm); margin-bottom: var(--space-3); max-width: none; }
+.state-row { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; }
+.state-row a {
+  color: oklch(75% 0.02 260); font-size: var(--text-sm); font-weight: 500;
+  text-decoration: none; transition: color 150ms ease-out;
+}
+.state-row a:hover { color: var(--color-white); }
+</style>

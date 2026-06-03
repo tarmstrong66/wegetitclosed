@@ -1,0 +1,82 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LoanProgramCard from '../../components/LoanProgramCard.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const programs = [
+  { icon: 'landmark',      title: 'FHA Loans',                  description: 'Low down payment and flexible credit options backed by the Federal Housing Administration.', href: '/programs/fha-loans/' },
+  { icon: 'award',         title: 'VA Loans',                   description: 'Zero down payment home loans for eligible veterans, active military, and surviving spouses.', href: '/programs/va-loans/' },
+  { icon: 'home',          title: 'Conventional Loans',         description: 'No government backing, competitive rates, and no upfront mortgage insurance for qualified borrowers.', href: '/programs/conventional-loans/' },
+  { icon: 'leaf',          title: 'USDA Loans',                 description: 'Zero down payment financing for eligible rural and suburban properties.', href: '/programs/usda-loans/' },
+  { icon: 'grid-plus',     title: 'Jumbo Loans',                description: 'Financing above conventional conforming loan limits for higher-priced properties.', href: '/programs/jumbo-loans/' },
+  { icon: 'battery',       title: 'Reverse Mortgages',          description: 'For homeowners 62 and older who want to access home equity without monthly payments.', href: '/programs/reverse-mortgages/' },
+  { icon: 'wrench',        title: 'Renovation Loans',           description: 'Finance a home purchase and renovation in a single loan with FHA 203K or HomeStyle programs.', href: '/programs/renovation-loans/' },
+  { icon: 'building',      title: 'Investor Loans',             description: 'DSCR and investment property financing for rental, multi-family, and fix-and-flip scenarios.', href: '/programs/investor-loans/' },
+  { icon: 'document',      title: 'Bank Statement Loans',       description: 'Alternative income documentation for self-employed borrowers who cannot use traditional tax returns.', href: '/programs/bank-statement-loans/' },
+  { icon: 'bolt',          title: 'Low Credit Score Options',   description: 'Programs that may be available for borrowers with scores as low as 580, depending on the scenario.', href: '/programs/low-credit-score-mortgage-options/' },
+  { icon: 'circle-down',   title: 'First-Time Homebuyer Loans', description: 'Low down payment programs and guidance for borrowers purchasing their first home.', href: '/programs/first-time-homebuyer-loans/' },
+  { icon: 'refresh',       title: 'Refinance Loans',            description: 'Lower your rate, reduce your term, or change your loan structure based on your current goals.', href: '/programs/refinance-loans/' },
+  { icon: 'trending-up',   title: 'Cash-Out Refinance',         description: 'Access your home equity for improvements, debt consolidation, or other financial goals.', href: '/programs/cash-out-refinance/' },
+];
+---
+<BaseLayout
+  title="Mortgage Loan Programs | American Mortgage Services"
+  description="Compare FHA, VA, USDA, conventional, jumbo, refinance, and specialty mortgage programs available through American Mortgage Services in AL, FL, GA, LA, MI, and TN."
+>
+  <section class="programs-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+        <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Loan Programs</span>
+      </nav>
+      <h1>Mortgage Loan Programs</h1>
+      <p>Compare 13 mortgage programs across purchase, refinance, and specialty categories. As a wholesale mortgage broker, American Mortgage Services can access programs with more flexibility than many banks.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="programs-grid">
+        {programs.map(p => <LoanProgramCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Not sure which program fits your scenario?"
+    subtext="Talk with a loan officer. We'll help you compare your options based on your credit, income, property, and goals."
+    ctaText="Contact Us"
+    ctaUrl="/contact/"
+    secondaryCtaText="Apply Now"
+    secondaryCtaUrl="/loan-officers/"
+  />
+</BaseLayout>
+
+<style>
+.programs-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.programs-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.programs-hero p {
+  color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 60ch;
+}
+.breadcrumb-nav {
+  font-size: var(--text-sm); color: oklch(65% 0.02 260);
+  margin-bottom: var(--space-4);
+}
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav a:hover { color: var(--color-white); }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 1024px) { .programs-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 440px) { .programs-grid { grid-template-columns: 1fr; } }
+</style>

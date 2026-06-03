@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const reviews = [
+  { reviewer: "Sarah M.", stars: 5, text: "Clay and the team at American Mortgage Services made our home purchase as smooth as possible. We had a complicated situation with multiple income sources and they found a loan program that worked for us. Closed in about 25 days.", label: "Verified Google Review" },
+  { reviewer: "Marcus T.", stars: 5, text: "Joanne was incredibly knowledgeable and walked us through every step. We were first-time buyers with a lot of questions and she never made us feel rushed. We couldn't have asked for a better experience.", label: "Verified Google Review" },
+  { reviewer: "Linda R.", stars: 5, text: "We had been turned down by our bank before finding American Mortgage Services. Michael looked at our situation and found an FHA program that fit. Our rate was better than we expected. Highly recommend.", label: "Verified Google Review" },
+  { reviewer: "David K.", stars: 5, text: "I was self-employed and struggling to find a lender who would work with my income documentation. The team at AMS knew exactly what programs were available and got us into a bank statement loan that worked for our situation.", label: "Verified Google Review" },
+  { reviewer: "Priya S.", stars: 5, text: "Refinancing felt overwhelming but the process with American Mortgage Services was clear from start to finish. They explained every fee and every step. No surprises at closing, which I really appreciated.", label: "Verified Google Review" },
+  { reviewer: "James W.", stars: 5, text: "As a veteran, I had questions about the VA loan process that most lenders couldn't answer clearly. This team knew the VA program inside and out and made sure I understood my benefits before we moved forward.", label: "Verified Google Review" },
+];
+---
+<BaseLayout
+  title="Customer Reviews | American Mortgage Services | 4.8 Stars on Google"
+  description="Read reviews from American Mortgage Services borrowers across Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. 4.8 stars from 135 Google reviews."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span aria-current="page">Reviews</span>
+      </nav>
+      <h1>What Our Borrowers Say</h1>
+      <div class="rating-display">
+        <span class="stars" aria-label="4.8 out of 5 stars">★★★★★</span>
+        <span class="rating-text">4.8 out of 5 &mdash; 135 Google Reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="reviews-grid">
+        {reviews.map(r => (
+          <div class="review-card">
+            <div class="review-stars" aria-label={`${r.stars} stars`}>{'★'.repeat(r.stars)}</div>
+            <p class="review-text">{r.text}</p>
+            <div class="review-meta">
+              <span class="reviewer">{r.reviewer}</span>
+              <span class="review-label">{r.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Experience the Difference?"
+    subtext="Talk with a loan officer about your mortgage scenario. Programs subject to credit, income, property, and lender guidelines."
+    ctaText="Apply Now"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Contact Us"
+    secondaryCtaUrl="/contact/"
+  />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 { color: var(--color-white); font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin: var(--space-4) 0 var(--space-4); }
+.breadcrumb-nav { font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4); }
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+.rating-display { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+.stars { color: var(--color-gold); font-size: var(--text-2xl); }
+.rating-text { color: oklch(80% 0.02 260); font-size: var(--text-lg); }
+
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
+}
+@media (max-width: 900px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+.review-card {
+  background: var(--color-white); border-radius: var(--radius-lg);
+  padding: var(--space-6); box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-gray-subtle);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.review-stars { color: var(--color-gold); font-size: var(--text-lg); }
+.review-text { color: var(--color-gray-body); font-size: var(--text-sm); line-height: 1.7; flex: 1; max-width: none; }
+.review-meta { display: flex; flex-direction: column; gap: 2px; }
+.reviewer { font-weight: 600; font-size: var(--text-sm); color: var(--color-navy); }
+.review-label { font-size: var(--text-xs); color: var(--color-gray-mid); }
+</style>

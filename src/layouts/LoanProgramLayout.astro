@@ -1,0 +1,155 @@
+﻿---
+import BaseLayout from './BaseLayout.astro';
+import BreadcrumbList from '../components/BreadcrumbList.astro';
+import CTASection from '../components/CTASection.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  schema?: object;
+  heroTitle: string;
+  heroSubtitle: string;
+  loanType: string;
+}
+
+const { title, description, canonicalUrl, schema, heroTitle, heroSubtitle, loanType } = Astro.props;
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Loan Programs', href: '/programs/' },
+  { label: loanType, href: '' },
+];
+---
+<BaseLayout {title} {description} {canonicalUrl} {schema}>
+  <section class="loan-hero">
+    <div class="container">
+      <BreadcrumbList items={breadcrumbs} />
+      <h1>{heroTitle}</h1>
+      <p class="hero-sub">{heroSubtitle}</p>
+      <div class="hero-ctas">
+        <a href="/loan-officers/" class="btn-primary">Start Your Application</a>
+        <a href="/contact-us/" class="btn-ghost">Talk to a Loan Officer</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="loan-body">
+    <div class="container">
+      <div class="loan-layout">
+        <article class="prose loan-content">
+          <slot />
+        </article>
+        <aside class="loan-sidebar">
+          <div class="sidebar-card">
+            <h3>Ready to Get Started?</h3>
+            <p>Talk with a loan officer about whether this program may fit your scenario.</p>
+            <a href="/loan-officers/" class="btn-primary">Apply Now</a>
+            <a href="tel:8888389330" class="sidebar-phone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (888) 838-9330
+            </a>
+          </div>
+
+          <div class="sidebar-card sidebar-card-programs">
+            <h3>Other Loan Programs</h3>
+            <ul>
+              <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+              <li><a href="/programs/va-loans/">VA Loans</a></li>
+              <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+              <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+              <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+              <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+              <li><a href="/programs/cash-out-refinance/">Cash-Out Refinance</a></li>
+              <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer</a></li>
+              <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+              <li><a href="/programs/investor-loans/">Investor Loans</a></li>
+              <li><a href="/programs/reverse-mortgages/">Reverse Mortgages</a></li>
+              <li><a href="/programs/renovation-loans/">Renovation Loans</a></li>
+              <li><a href="/programs/low-credit-score-mortgage-options/">Low Credit Score Options</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <CTASection
+    heading="Compare Your Mortgage Options"
+    subtext="Subject to credit, income, property, program, and lender guidelines. Talk with a loan officer about your specific scenario."
+    ctaText="Apply Now"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Contact Us"
+    secondaryCtaUrl="/contact/"
+  />
+</BaseLayout>
+
+<style>
+.loan-hero {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.loan-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.hero-sub {
+  color: oklch(80% 0.02 260);
+  font-size: var(--text-lg);
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+.hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+.loan-body { padding: var(--space-16) 0; }
+.loan-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-12);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .loan-layout { grid-template-columns: 1fr; }
+  .loan-sidebar { order: -1; }
+}
+
+.loan-content { max-width: none; }
+
+.sidebar-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.sidebar-card h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-3);
+}
+.sidebar-card p {
+  color: var(--color-gray-mid);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+  max-width: none;
+}
+.sidebar-card .btn-primary { width: 100%; justify-content: center; margin-bottom: var(--space-3); }
+.sidebar-phone {
+  display: flex; align-items: center; gap: var(--space-2);
+  color: var(--color-navy); font-weight: 500; text-decoration: none;
+  font-size: var(--text-sm);
+}
+.sidebar-phone:hover { color: var(--color-red); }
+
+.sidebar-card-programs ul { list-style: none; }
+.sidebar-card-programs li { border-bottom: 1px solid var(--color-gray-subtle); }
+.sidebar-card-programs li:last-child { border-bottom: none; }
+.sidebar-card-programs a {
+  display: block; padding: var(--space-2) 0;
+  color: var(--color-navy); text-decoration: none;
+  font-size: var(--text-sm); font-weight: 500;
+  transition: color 150ms ease-out;
+}
+.sidebar-card-programs a:hover { color: var(--color-red); }
+</style>

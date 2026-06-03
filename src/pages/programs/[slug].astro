@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import LoanProgramLayout from '../../layouts/LoanProgramLayout.astro';
+
+export async function getStaticPaths() {
+  const programs = await getCollection('loan-programs');
+  return programs.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const faqSchema = entry.data.faqs ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": (entry.data.faqs as any[]).map((faq: { question: string; answer: string }) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+} : undefined;
+---
+<LoanProgramLayout
+  title={entry.data.seoTitle}
+  description={entry.data.metaDescription}
+  heroTitle={entry.data.h1}
+  heroSubtitle={entry.data.description}
+  loanType={entry.data.title}
+  schema={faqSchema}
+>
+  <Content />
+</LoanProgramLayout>

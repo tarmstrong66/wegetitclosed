@@ -1,0 +1,699 @@
+﻿---
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["FinancialService", "LocalBusiness"],
+  "name": "American Mortgage Services",
+  "url": "https://wegetitclosed.com/",
+  "telephone": "+18888389330",
+  "description": "Licensed mortgage lender serving Florida and the Southeast since our founding. NMLS #259805. VA, FHA, USDA, conventional, jumbo, DSCR, construction, and bank statement loans across Tampa, Orlando, Jacksonville, Miami, Pensacola, and Fort Lauderdale.",
+  "identifier": "NMLS #259805",
+  "areaServed": [
+    { "@type": "State", "name": "Florida" },
+    { "@type": "State", "name": "Alabama" },
+    { "@type": "State", "name": "Georgia" },
+    { "@type": "State", "name": "Louisiana" },
+    { "@type": "State", "name": "Michigan" },
+    { "@type": "State", "name": "Tennessee" },
+    { "@type": "City", "name": "Tampa" },
+    { "@type": "City", "name": "Orlando" },
+    { "@type": "City", "name": "Jacksonville" },
+    { "@type": "City", "name": "Miami" },
+    { "@type": "City", "name": "Pensacola" },
+    { "@type": "City", "name": "Fort Lauderdale" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "1"
+  }
+}
+</script>
+
+<style>
+.ams-hub-wrapper {
+  --ams-navy: #1a2b5e;
+  --ams-blue: #1a2b5e;
+  --ams-sky:  #c8102e;
+  --ams-sand: #f1f5f9;
+  --ams-white: #ffffff;
+  --ams-gray: #f8fafc;
+
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ams-navy);
+  line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden;
+  margin-bottom: 80px;
+}
+.ams-hub-wrapper * { box-sizing: border-box; }
+
+.ams-section { padding: 40px 20px; width: 100%; }
+.ams-inner { max-width: 1200px; margin: 0 auto; }
+
+.ams-spacer { height: 60px; width: 100%; }
+@media (max-width: 768px) { .ams-spacer { height: 40px; } }
+
+.ams-hub-wrapper h1,
+.ams-hub-wrapper h2.ams-main-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-align: left;
+  color: var(--ams-navy);
+  margin-bottom: 15px;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  border-left: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.ams-hub-wrapper h2 {
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-top: 35px;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  color: var(--ams-navy);
+  text-align: left;
+  line-height: 1.3;
+  border-left: 5px solid var(--ams-sky);
+  padding-left: 15px;
+}
+
+.ams-hub-wrapper h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--ams-navy);
+  margin-top: 20px;
+  border-left: 5px solid var(--ams-sky);
+  padding-left: 15px;
+  line-height: 1.3;
+}
+
+.ams-card-title {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 12px 0 !important;
+  border-left: none !important;
+  padding-left: 0 !important;
+  color: var(--ams-navy);
+  display: block;
+  line-height: 1.2;
+}
+
+.ams-hub-wrapper p {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.ams-subhead {
+  font-size: 1.15rem;
+  color: #475569;
+  margin-bottom: 35px;
+  max-width: 900px;
+  text-align: left;
+}
+
+/* --- Proof Bar --- */
+.ams-proof-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0 50px 0;
+  padding: 30px 25px;
+  background: var(--ams-gray);
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.ams-proof-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.ams-proof-item span {
+  font-weight: 800;
+  color: var(--ams-sky);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.ams-proof-item label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ams-navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .ams-proof-bar {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    gap: 30px;
+  }
+  .ams-proof-item span { font-size: 1.8rem; }
+}
+
+/* --- Options Grid --- */
+.ams-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 650px) and (max-width: 1023px) {
+  .ams-options-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .ams-options-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ams-option-card {
+  background: white;
+  padding: 40px 30px;
+  border: 1px solid #e2e8f0;
+  border-bottom: 4px solid var(--ams-sky);
+  border-radius: 12px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.ams-option-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(26, 43, 94, 0.08);
+}
+
+/* --- Icons --- */
+.ams-icon-box {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 25px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  box-shadow: 4px 4px 10px #e2e8f0, -4px -4px 10px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ams-lux-svg {
+  width: 32px;
+  height: 32px;
+  fill: url(#amsGradient);
+}
+
+/* --- Buttons --- */
+.ams-btn-text {
+  color: var(--ams-navy);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--ams-sky);
+  padding-bottom: 4px;
+  align-self: flex-start;
+  margin-top: 20px;
+  transition: color 0.2s;
+}
+.ams-btn-text:hover { color: var(--ams-sky); }
+
+.ams-btn-primary, .ams-btn-outline {
+  padding: 18px 28px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  width: 100%;
+  letter-spacing: 0.8px;
+}
+
+@media (min-width: 768px) {
+  .ams-btn-primary, .ams-btn-outline { width: auto; min-width: 300px; }
+}
+
+/* --- Discreet App CTA --- */
+.ams-auth-btn.primary {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: var(--ams-gray);
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+.ams-auth-btn.primary:hover {
+  background-color: var(--ams-blue);
+  color: var(--ams-white);
+  border-color: var(--ams-blue);
+}
+
+/* --- Limit Box --- */
+.ams-limit-box {
+  background: var(--ams-navy);
+  padding: 50px 40px;
+  border-radius: 16px;
+  margin: 80px 0;
+  text-align: center;
+  border-top: 5px solid var(--ams-sky);
+}
+.ams-limit-box h4 {
+  color: var(--ams-sky);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+.ams-limit-box p { color: #fff !important; margin: 0; font-size: 1.2rem; }
+
+/* --- Final CTA --- */
+.ams-cta-wrapper {
+  background-image: linear-gradient(rgba(10, 15, 28, 0.97), rgba(10, 15, 28, 0.94)), url('/images/florida-mortgage-background.webp');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ams-navy);
+  text-align: center;
+  padding: 100px 30px;
+  margin-top: 40px;
+  border-radius: 16px;
+  color: var(--ams-white);
+}
+
+.ams-cta-inner h2 {
+  color: var(--ams-white) !important;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 20px;
+  border-left: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.ams-cta-inner p {
+  color: #cbd5e1 !important;
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+}
+
+.ams-btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+@media (min-width: 768px) { .ams-btn-container { flex-direction: row; } }
+
+.ams-btn-primary {
+  background: var(--ams-sky);
+  color: var(--ams-white) !important;
+  border: 2px solid var(--ams-sky);
+}
+.ams-btn-primary:hover {
+  background: #a50d26;
+  border-color: #a50d26;
+  transform: translateY(-2px);
+}
+
+.ams-btn-outline {
+  background: transparent;
+  color: var(--ams-white) !important;
+  border: 2px solid var(--ams-white);
+}
+.ams-btn-outline:hover {
+  background: var(--ams-white);
+  color: var(--ams-navy) !important;
+  transform: translateY(-2px);
+}
+
+/* --- City Chips --- */
+.ams-chip-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 50px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.ams-chip-scroll::-webkit-scrollbar { display: none; }
+
+.ams-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: var(--ams-white);
+  border: 1px solid #e2e8f0;
+  border-bottom: 3px solid var(--ams-sky);
+  border-radius: 50px;
+  text-decoration: none !important;
+  color: var(--ams-navy);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.ams-chip:hover {
+  background: var(--ams-sky);
+  color: var(--ams-white) !important;
+  border-color: var(--ams-sky);
+}
+.ams-chip svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+/* --- NMLS Disclosure --- */
+.ams-nmls { font-size: 0.78rem; color: #94a3b8; margin-top: 30px; line-height: 1.6; }
+</style>
+
+<div class="ams-hub-wrapper">
+
+  <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+    <defs>
+      <linearGradient id="amsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#1a2b5e;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#c8102e;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="ams-section">
+    <div class="ams-inner">
+
+      <!-- PROOF BAR -->
+      <div class="ams-proof-bar">
+        <div class="ams-proof-item">
+          <span>NMLS #259805</span>
+          <label>Licensed Mortgage Lender</label>
+        </div>
+        <div class="ams-proof-item">
+          <span>6 States</span>
+          <label>AL, FL, GA, LA, MI &amp; TN</label>
+        </div>
+        <div class="ams-proof-item">
+          <span>5-Star Rated</span>
+          <label>Verified Client Reviews</label>
+        </div>
+      </div>
+
+      <!-- CITY CHIPS -->
+      <div class="ams-chip-scroll" aria-label="Florida markets we serve">
+        <a href="/florida/tampa/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Tampa
+        </a>
+        <a href="/florida/orlando/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Orlando
+        </a>
+        <a href="/florida/jacksonville/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Jacksonville
+        </a>
+        <a href="/florida/miami/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Miami
+        </a>
+        <a href="/florida/pensacola/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Pensacola
+        </a>
+        <a href="/florida/fort-lauderdale/" class="ams-chip">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7-7.75 7-13C19,5.13 15.87,2 12,2z"/></svg>
+          Fort Lauderdale
+        </a>
+      </div>
+
+      <!-- SECTION 1: Home Purchase -->
+      <h2>Home Purchase Programs in Florida</h2>
+      <p class="ams-subhead">Most buyers start here. These programs offer flexible terms and competitive rates for Florida homebuyers at every stage, whether you're buying your first home or your fifth. Depending on your scenario, you may qualify for more than one option.</p>
+
+      <a href="/loan-officers/" class="ams-auth-btn primary">Start Your Application</a>
+
+      <div class="ams-options-grid">
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Buy With Low Money Down</span>
+            <p>Conventional financing starting at 3% down for qualified Florida buyers. Ideal if you have solid credit and want to keep more cash in your pocket after closing.</p>
+          </div>
+          <a href="/programs/conventional-loans" class="ams-btn-text">Explore This Option â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4,10H8V21H4V10M10,10H14V21H10V10M16,10H20V21H16V10M12,1L2,6V8H22V6L12,1Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Credit Challenges: You May Still Qualify</span>
+            <p>Government-backed financing with flexible credit guidelines and low down payment requirements. Many Florida buyers with less-than-perfect credit may qualify. Talk with a loan officer about your situation.</p>
+          </div>
+          <a href="/programs/fha-loans" class="ams-btn-text">Explore This Option â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">First-Time Buyer Programs in Florida</span>
+            <p>State and local down payment assistance programs may be available to first-time buyers in Florida. Subject to program availability, income limits, and lender guidelines.</p>
+          </div>
+          <a href="/programs/first-time-homebuyer-loans" class="ams-btn-text">Explore This Option â†’</a>
+        </div>
+      </div>
+
+      <div class="ams-spacer"></div>
+
+      <!-- SECTION 2: Military and VA -->
+      <h2>Military and VA Loans in Florida</h2>
+      <p class="ams-subhead">Florida is home to a large active-duty and veteran community. We specialize in zero-down options for those who have served, along with rural financing and jumbo programs for larger purchases.</p>
+
+      <a href="/loan-officers/" class="ams-auth-btn primary">Start Your Application</a>
+
+      <div class="ams-options-grid">
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66L12,15.39M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Veterans: Zero Down in Florida</span>
+            <p>Eligible Florida veterans and active-duty service members may qualify for zero-down home financing with no private mortgage insurance. Talk with a loan officer about your VA benefit entitlement.</p>
+          </div>
+          <a href="/programs/va-loans" class="ams-btn-text">Explore VA Benefits â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12,21L15.6,11L12,2L8.4,11L12,21M13,22H11V23H13V22M15,13L21.5,10.5L18.5,4L12.5,10L15,13M11.5,10L5.5,4L2.5,10.5L9,13L11.5,10Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Zero Down in Rural Florida</span>
+            <p>USDA rural housing programs offer zero-down financing in eligible Florida areas outside major metro zones. Property and income eligibility requirements apply. Ask us if your target area qualifies.</p>
+          </div>
+          <a href="/programs/usda-loans" class="ams-btn-text">Check Eligibility â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15,14V11H18V9H15V6H13V9H10V7H8V9H5V11H8V14H5V16H8V19H10V16H13V19H15V16H18V14H15M13,14H10V11H13V14Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Buying Above the Conforming Limit</span>
+            <p>Financing for high-value Florida properties that exceed conventional loan limits. Ideal for buyers in Miami, Fort Lauderdale, and other premium markets. Subject to credit, income, and reserve requirements.</p>
+          </div>
+          <a href="/programs/jumbo-loans" class="ams-btn-text">Explore Jumbo Options â†’</a>
+        </div>
+      </div>
+
+      <div class="ams-spacer"></div>
+
+      <!-- SECTION 3: Investment and Self-Employed -->
+      <h2>Investment and Self-Employed Mortgages</h2>
+      <p class="ams-subhead">Non-traditional income shouldn't stop you from buying in Florida. We work with investors, entrepreneurs, and self-employed borrowers who need flexible qualification paths.</p>
+
+      <a href="/loan-officers/" class="ams-auth-btn primary">Start Your Application</a>
+
+      <div class="ams-options-grid">
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15,11V5L12,2L9,5V7H3V21H21V11H15M7,19H5V17H7V19M7,15H5V13H7V15M7,11H5V9H7V11M13,19H11V17H13V19M13,15H11V13H13V15M13,11H11V9H13V11M13,7H11V5H13V7M19,19H17V17H19V19M19,15H17V13H19V15" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Build Your Florida Rental Portfolio</span>
+            <p>Financing strategies for Florida investors acquiring single-family rentals, duplexes, and small multifamily properties. Talk with a loan officer about leverage options based on your portfolio and goals.</p>
+          </div>
+          <a href="/programs/investor-loans" class="ams-btn-text">Explore Investor Options â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Qualify on Cash Flow, Not Income</span>
+            <p>Investor loan programs that use the property's rental income to qualify, not your personal tax returns. Subject to DSCR minimums, property type, and lender program guidelines.</p>
+          </div>
+          <a href="/programs/investor-loans" class="ams-btn-text">Explore Cash Flow Loans â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20C4,21.11 4.89,22 6,22H18C19.11,22 20,21.11 20,20V8L14,2H6M11,15V12H12V15H13V16H12V19H11V16H10V15H11Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Self-Employed? Use Your Deposits</span>
+            <p>Bank statement programs let self-employed Florida borrowers qualify using 12â€“24 months of business or personal deposits instead of tax returns. Subject to credit and lender program guidelines.</p>
+          </div>
+          <a href="/programs/bank-statement-loans" class="ams-btn-text">Explore Bank Statement Loans â†’</a>
+        </div>
+      </div>
+
+      <!-- LIMIT BOX -->
+      <div class="ams-limit-box">
+        <h4>The American Mortgage Services Difference</h4>
+        <p>
+          Licensed across Florida and the Southeast since our founding. NMLS #259805. We deliver wholesale mortgage rates with the personal service of a local team: faster closings, lower costs, and a loan officer who answers the phone.
+        </p>
+      </div>
+
+      <!-- SECTION 4: Construction and Renovation -->
+      <h2>Construction and Renovation Loans</h2>
+      <p class="ams-subhead">Building new or buying a fixer-upper in Florida? We have programs that finance the construction or renovation alongside the purchase, depending on your scenario and the property type.</p>
+
+      <a href="/loan-officers/" class="ams-auth-btn primary">Start Your Application</a>
+
+      <div class="ams-options-grid">
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17,11V13H15V11H13V13H11V11H9V13H7V11H5V13H3V11H1V13V21H23V13V11H21V13H19V11H17M1,9V7H3V9H5V7H7V9H9V7H11V9H13V7H15V9H17V7H19V9H21V7H23V9H1V9Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Finance Your Custom Florida Build</span>
+            <p>Construction loan programs that fund your Florida custom build in stages as the work progresses. Talk with a loan officer about lot ownership, builder approval, and draw schedules that fit your project.</p>
+          </div>
+          <a href="/programs/conventional-loans" class="ams-btn-text">Talk to a Loan Officer â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Buy a Fixer-Upper, Finance the Repairs</span>
+            <p>Renovation loan programs combine the home purchase price and estimated repair costs into a single loan. Depending on your scenario, this may allow you to buy and improve a Florida property with one closing.</p>
+          </div>
+          <a href="/programs/renovation-loans" class="ams-btn-text">Explore Renovation Loans â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Build New With Zero Down</span>
+            <p>Eligible Florida veterans may be able to combine VA benefits with new construction financing. Subject to builder approval, VA entitlement, and lender program availability. Speak with a loan officer about your options.</p>
+          </div>
+          <a href="/programs/va-loans" class="ams-btn-text">Explore VA Construction â†’</a>
+        </div>
+      </div>
+
+      <div class="ams-spacer"></div>
+
+      <!-- SECTION 5: Refinance and Equity -->
+      <h2>Florida Refinance and Equity</h2>
+      <p class="ams-subhead">Already own a Florida home? You may be able to lower your payment, change your term, or access your equity depending on your current loan balance, rate, and property value.</p>
+
+      <a href="/loan-officers/" class="ams-auth-btn primary">Start Your Application</a>
+
+      <div class="ams-options-grid">
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19,8L15,12H18A6,6 0 0,1 12,18C9.5,18 7.29,16.5 6.37,14.23L4.91,15.69C6.38,18.79 9.5,21 13,21A8,8 0 0,0 21,13H24L20,9L19,8M5,9C5.83,6.8 8.1,5.2 11,5.04V8L15,4L11,0V3C6.58,3.2 3,6.9 3,11.5C3,12.19 3.09,12.86 3.25,13.5L5.27,11.5C5.09,10.87 5,10.2 5,9.5C5,9.33 5,9.16 5,9Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Lower Your Monthly Payment</span>
+            <p>Rate-and-term refinancing may reduce your monthly payment or change your loan structure. Savings depend on your current rate, remaining balance, and closing costs. Compare scenarios with a loan officer.</p>
+          </div>
+          <a href="/programs/refinance-loans" class="ams-btn-text">Explore Refinance Options â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14,6H10V4H14M14,14H10V12H14M14,2H10A2,2 0 0,0 8,4V20A2,2 0 0,0 10,22H14A2,2 0 0,0 16,20V4A2,2 0 0,0 14,2Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Tap the Equity in Your Florida Home</span>
+            <p>Cash-out refinancing and home equity programs may allow you to access accumulated equity in your Florida property. Subject to available equity, credit, income, and lender guidelines.</p>
+          </div>
+          <a href="/programs/cash-out-refinance" class="ams-btn-text">Explore Equity Options â†’</a>
+        </div>
+
+        <div class="ams-option-card">
+          <div class="ams-icon-box">
+            <svg class="ams-lux-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11,15H6L13,1V9H18L11,23V15Z" /></svg>
+          </div>
+          <div>
+            <span class="ams-card-title">Lower Your VA Rate Fast</span>
+            <p>The VA streamline refinance (IRRRL) is a simplified path for eligible Florida veterans to reduce their existing VA loan rate with minimal documentation. Subject to VA program eligibility and lender guidelines.</p>
+          </div>
+          <a href="/programs/va-loans" class="ams-btn-text">Explore VA Streamline â†’</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FINAL CTA BLOCK -->
+  <div class="ams-cta-wrapper" role="region" aria-label="Get a Florida Rate Quote">
+    <div class="ams-cta-inner">
+      <h2>Get a Fast Florida Rate Quote</h2>
+      <p>
+        Ready to work with a licensed Florida mortgage expert? Get an instant rate quote or speak directly with our team.
+      </p>
+      <div class="ams-btn-container">
+        <a href="/loan-officers/" class="ams-btn-primary">Instant Web Quote</a>
+        <a href="tel:8888389330" class="ams-btn-outline">Call (888) 838-9330</a>
+        <a href="/contact-us/" class="ams-btn-outline">Speak with a Loan Officer</a>
+      </div>
+      <p class="ams-nmls">American Mortgage Services, Inc. NMLS #259805 | Licensed in AL, FL, GA, LA, MI, TN | Equal Housing Lender</p>
+    </div>
+  </div>
+
+</div>

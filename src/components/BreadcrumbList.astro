@@ -1,0 +1,47 @@
+---
+interface Crumb { label: string; href: string; }
+interface Props { items: Crumb[]; }
+const { items } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": item.label,
+    ...(item.href ? { "item": `https://wegetitclosed.com${item.href}` } : {}),
+  })),
+};
+---
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <ol>
+    {items.map((item, i) => (
+      <li>
+        {i > 0 && <span class="sep" aria-hidden="true">/</span>}
+        {item.href ? (
+          <a href={item.href}>{item.label}</a>
+        ) : (
+          <span aria-current="page">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<style>
+.breadcrumb { margin-bottom: var(--space-4); }
+.breadcrumb ol {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
+  list-style: none; padding: 0;
+}
+.breadcrumb li { display: flex; align-items: center; gap: 4px; }
+.breadcrumb a {
+  color: oklch(70% 0.02 260); font-size: var(--text-sm);
+  text-decoration: none; transition: color 150ms ease-out;
+}
+.breadcrumb a:hover { color: var(--color-white); }
+.breadcrumb span[aria-current] { color: oklch(60% 0.015 260); font-size: var(--text-sm); }
+.sep { color: oklch(50% 0.01 260); font-size: var(--text-sm); }
+</style>

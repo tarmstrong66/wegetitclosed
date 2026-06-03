@@ -1,0 +1,68 @@
+---
+---
+<nav class="chip-nav" aria-label="Mortgage program categories">
+  <div class="container">
+    <div class="chip-scroll">
+      <a href="#purchase" class="chip">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg>
+        Purchase
+      </a>
+      <a href="#zero-down" class="chip">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66L12,15.39M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z"/></svg>
+        Zero Down
+      </a>
+      <a href="#investment" class="chip">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/></svg>
+        Investment
+      </a>
+      <a href="#refinance" class="chip">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19,8L15,12H18A6,6 0 0,1 12,18C9.5,18 7.29,16.5 6.37,14.23L4.91,15.69C6.38,18.79 9.5,21 13,21A8,8 0 0,0 21,13H24L20,9L19,8M5,9C5.83,6.8 8.1,5.2 11,5.04V8L15,4L11,0V3C6.58,3.2 3,6.9 3,11.5C3,12.19 3.09,12.86 3.25,13.5L5.27,11.5C5.09,10.87 5,10.2 5,9.5C5,9.33 5,9.16 5,9Z"/></svg>
+        Refinance
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+.chip-nav {
+  background: var(--color-white);
+  padding: 0 0 var(--space-6);
+}
+.chip-scroll {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.chip-scroll::-webkit-scrollbar { display: none; }
+.chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 22px;
+  background: var(--color-white);
+  border: 1px solid #e2e8f0;
+  border-bottom: 3px solid var(--color-red);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  color: var(--color-navy);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.chip:hover {
+  background: var(--color-red);
+  color: var(--color-white);
+  border-color: var(--color-red);
+}
+.chip svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+</style>

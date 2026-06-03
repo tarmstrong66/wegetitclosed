@@ -1,0 +1,73 @@
+﻿---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Tennessee?", answer: "Tennessee borrowers may qualify for FHA, VA, USDA, conventional, jumbo, bank statement, renovation, and investor loan programs depending on their scenario. Nashville-area buyers often pursue conventional and jumbo programs, while buyers in East Tennessee and rural areas may benefit from USDA and FHA options." },
+  { question: "Are there USDA-eligible areas in Tennessee?", answer: "Yes. Much of rural Tennessee is USDA-eligible, particularly in East Tennessee and smaller communities throughout the state. Even some areas within commuting distance of Knoxville and Chattanooga may qualify. USDA eligibility is based on property location and borrower income limits. Talk with a loan officer to check a specific address." },
+  { question: "What is the THDA program in Tennessee?", answer: "The Tennessee Housing Development Agency (THDA) offers programs that may include down payment assistance and below-market rate loans for eligible first-time homebuyers who meet income and purchase price limits. Program availability and funding can change. Ask a loan officer about current THDA offerings and whether you may qualify." },
+  { question: "Do I need a jumbo loan to buy a home in Nashville?", answer: "Nashville home prices have risen significantly, and buyers in certain Nashville neighborhoods and suburbs may need financing above conforming loan limits, which would require a jumbo loan. Other Nashville-area markets remain within conforming limits. A loan officer can help you determine which loan size applies to the property you're considering." },
+  { question: "Can I use a VA loan in Tennessee?", answer: "Yes. Eligible veterans, active-duty service members, and surviving spouses can use VA loan benefits statewide in Tennessee. Tennessee has a sizeable veteran population, and VA loans are available for home purchases and refinances with no down payment required in most cases." },
+  { question: "What credit score do I need for a Tennessee mortgage?", answer: "Minimum requirements depend on the loan program. FHA may allow 580+ with 3.5% down. Conventional typically requires 620+. Jumbo programs often require 720+. Talk with a loan officer to review your credit profile and understand which programs may be available based on your full financial picture." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Tennessee Mortgage Loans | FHA, VA, USDA & More | American Mortgage Services"
+  description="Compare mortgage options in Tennessee, including FHA, VA, USDA, conventional, and jumbo loans. American Mortgage Services helps TN borrowers from Nashville to Knoxville, Chattanooga, and rural communities."
+  stateName="Tennessee"
+  heroTitle="Tennessee Mortgage Loans"
+  heroSubtitle="Compare home loan programs across Tennessee, from Nashville and Knoxville to Chattanooga, Memphis, and rural East Tennessee communities."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Tennessee</h2>
+    <p>Tennessee has become one of the most in-demand states in the Southeast, driven by rapid population growth, no state income tax, a diversified economy, and relatively affordable cost of living compared to coastal markets. That growth has pushed Nashville home prices significantly higher in recent years, while markets like Knoxville, Chattanooga, and Murfreesboro still offer more accessible entry points. Rural East Tennessee remains largely affordable and USDA-eligible.</p>
+
+    <p>American Mortgage Services works with Tennessee borrowers across this range, accessing programs from multiple wholesale lenders to offer more flexibility than a single bank can provide.</p>
+
+    <h2>Key Mortgage Programs for Tennessee Borrowers</h2>
+
+    <h3>Conventional Loans in Nashville and Surrounding Suburbs</h3>
+    <p>Nashville's strong job market, driven by healthcare, technology, music, and logistics industries, attracts buyers with solid income profiles who often qualify for conventional financing. Suburbs like Brentwood, Franklin, Murfreesboro, and Hendersonville have competitive markets where conventional loans with 10-20% down are common. As prices have risen, some buyers in Davidson County and high-demand suburbs may need jumbo financing.</p>
+
+    <h3>USDA Loans in East Tennessee and Rural Areas</h3>
+    <p>East Tennessee and much of rural Tennessee outside the major metros qualify for USDA Rural Development financing. Communities near Knoxville, in the Tri-Cities region, and across the Cumberland Plateau may qualify for zero down payment loans, subject to income limits and property eligibility. This is an underutilized program for many Tennessee buyers.</p>
+
+    <h3>FHA Loans Statewide</h3>
+    <p>FHA loans work across Tennessee's primary and secondary markets, from Memphis and Chattanooga to smaller communities statewide. The low 3.5% down payment and credit flexibility make FHA a strong option for first-time buyers and those with credit profiles below conventional thresholds. Tennessee's still-affordable median prices in many markets keep buyers within FHA loan limits.</p>
+
+    <h3>Jumbo Loans in Premium Nashville-Area Markets</h3>
+    <p>Certain Nashville neighborhoods and affluent suburbs like Brentwood, Belle Meade, and parts of Franklin have median home prices that exceed conforming loan limits. Jumbo loans are available for eligible borrowers with stronger credit (720+), larger down payments, and sufficient reserves. We can help you compare jumbo options across our wholesale lender network.</p>
+
+    <h2>Tennessee Housing Market Context</h2>
+    <p>Tennessee's no-state-income-tax policy has attracted significant in-migration from higher-tax states, particularly California, Illinois, and the Northeast. This demand has pressured inventory in Nashville and Knoxville. The Chattanooga market, with its outdoor recreation amenities and lower price points, has also grown in appeal. Memphis has its own market dynamics with more affordable pricing and higher investor activity.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Tennessee Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Tennessee</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+      <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer Programs</a></li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+      <li><a href="/programs/cash-out-refinance/">Cash-Out Refinance</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} />
+</StateLandingLayout>

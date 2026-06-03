@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Important Disclaimers | American Mortgage Services"
+  description="Important mortgage advertising and regulatory disclaimers from American Mortgage Services, Inc. Subject to credit approval and lender guidelines."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span aria-current="page">Important Disclaimers</span>
+      </nav>
+      <h1>Important Disclaimers</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow disclaimer-content">
+
+      <ul class="disclaimer-list">
+        <li>Not all borrowers will meet the requirements necessary to qualify.</li>
+        <li>As a result of refinancing, your total finance charges may be higher over the life of the loan.</li>
+        <li>The stated rate may change or not be available at the time of loan commitment. Lock-in is needed.</li>
+        <li>If including a monthly payment: Payments do not include taxes and insurance. Your payment obligation will be higher.</li>
+        <li>Mentioning savings by refinancing: As a result of refinancing, your total finance charges may be higher over the life of the loan.</li>
+        <li>Including closing costs or financing fees: Your total finance charges may be higher over the life of the loan.</li>
+        <li>Mentioning lower payment: Reduction in payments may reflect longer loan terms and higher interest charges over the life of the loan.</li>
+        <li>Mentioning consolidation: Applicant should not assume that any debt will be eliminated by refinancing since the debts are consolidated into a new loan.</li>
+        <li>Reference to "low doc/no doc", "no income/no asset", "stated income", "stated asset", "no ratio" or similar loan products: These products may have a higher interest rate, more points or more fees than other products requiring documentation.</li>
+        <li>If the loan is an FHA, VA, or RD loan or with MI any term insurance or guarantee used in the ad should clearly indicate the insurance or guarantee is for the lender and does not assist or insure the customer.</li>
+        <li>Do not imply or reference any offering, authority, collaboration or approval by Fannie Mae, Freddie Mac, FHA, VA, RD, Ginnie Mae, HUD or any other government agency to offer the program. If advertising such products: Broker Company name is not affiliated or endorsed by the government or the Dept. of Veterans Affairs.</li>
+      </ul>
+
+      <h2>Government Disclaimers</h2>
+      <p>American Mortgage Services, Inc. is not affiliated or endorsed by the government or the Federal Housing Administration (FHA), the U.S. Department of Veterans Affairs (VA), the U.S. Department of Agriculture (USDA), or by Fannie Mae or Freddie Mac.</p>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 0;
+}
+.breadcrumb-nav {
+  font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4);
+}
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav a:hover { color: var(--color-white); }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+
+.disclaimer-content h2 {
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-2xl));
+  margin: var(--space-10) 0 var(--space-4);
+  color: var(--color-navy);
+}
+.disclaimer-content p {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-gray-mid);
+  margin-bottom: var(--space-4);
+}
+
+.disclaimer-list {
+  list-style: disc;
+  padding-left: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.disclaimer-list li {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-gray-mid);
+}
+</style>

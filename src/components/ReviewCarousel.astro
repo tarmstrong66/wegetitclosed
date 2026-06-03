@@ -1,0 +1,214 @@
+---
+const reviews = [
+  { src: '/images/reviews/review1.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review3.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review4.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review5.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review6.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review7.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review8.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/review9.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+  { src: '/images/reviews/reviews.png', alt: 'Google review from a satisfied American Mortgage Services borrower' },
+];
+---
+
+<section class="review-carousel-section section section-alt">
+  <div class="container">
+    <div class="carousel-header">
+      <h2>What Our Borrowers Are Saying</h2>
+      <div class="google-rating">
+        <span class="stars" aria-label="4.8 out of 5 stars">★★★★★</span>
+        <span>4.8 on Google &mdash; 135 Reviews</span>
+      </div>
+    </div>
+
+    <div class="carousel-wrap" id="reviewCarousel">
+      <button class="carousel-btn carousel-prev" aria-label="Previous review">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          {reviews.map((r, i) => (
+            <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : 'false'}>
+              <img src={r.src} alt={r.alt} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-next" aria-label="Next review">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Review slides">
+      {reviews.map((_, i) => (
+        <button
+          class={`dot${i === 0 ? ' dot--active' : ''}`}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-label={`Review ${i + 1}`}
+          data-dot={i}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const carousel = document.getElementById('reviewCarousel');
+  if (!carousel) return;
+
+  const track = document.getElementById('carouselTrack') as HTMLElement;
+  const dots = document.querySelectorAll<HTMLButtonElement>('#carouselDots .dot');
+  const slides = track.querySelectorAll<HTMLElement>('.carousel-slide');
+  const total = slides.length;
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(index: number) {
+    slides[current].setAttribute('aria-hidden', 'true');
+    dots[current].classList.remove('dot--active');
+    dots[current].setAttribute('aria-selected', 'false');
+
+    current = (index + total) % total;
+
+    slides[current].setAttribute('aria-hidden', 'false');
+    dots[current].classList.add('dot--active');
+    dots[current].setAttribute('aria-selected', 'true');
+
+    track.style.transform = `translateX(-${current * 100}%)`;
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  function stopAuto() {
+    clearInterval(timer);
+  }
+
+  carousel.querySelector('.carousel-prev')!.addEventListener('click', () => {
+    stopAuto();
+    goTo(current - 1);
+    startAuto();
+  });
+
+  carousel.querySelector('.carousel-next')!.addEventListener('click', () => {
+    stopAuto();
+    goTo(current + 1);
+    startAuto();
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopAuto();
+      goTo(Number(dot.dataset.dot));
+      startAuto();
+    });
+  });
+
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+
+  startAuto();
+})();
+</script>
+
+<style>
+.review-carousel-section .container {
+  max-width: 860px;
+}
+
+.carousel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+.carousel-header h2 {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl)); margin: 0;
+}
+.google-rating {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); color: var(--color-gray-mid); font-weight: 500;
+}
+.stars { color: var(--color-gold); font-size: var(--text-lg); }
+
+.carousel-wrap {
+  display: flex; align-items: center; gap: var(--space-3);
+}
+
+.carousel-viewport {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.carousel-btn {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-subtle);
+  background: var(--color-white);
+  color: var(--color-navy);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.carousel-btn:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-color: var(--color-navy);
+}
+
+.carousel-dots {
+  display: flex; justify-content: center; gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-gray-subtle);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dot--active {
+  background: var(--color-navy);
+  transform: scale(1.3);
+}
+
+@media (max-width: 540px) {
+  .carousel-btn { display: none; }
+  .carousel-wrap { gap: 0; }
+}
+</style>

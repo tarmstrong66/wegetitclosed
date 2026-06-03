@@ -1,0 +1,72 @@
+---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Michigan?", answer: "Michigan borrowers may qualify for FHA, VA, USDA, conventional, jumbo, bank statement, renovation, and investor loan programs depending on their credit, income, property, and down payment. Metro Detroit markets typically lean toward conventional and FHA, while the Upper Peninsula and rural areas benefit from USDA eligibility." },
+  { question: "Are there USDA-eligible areas in Michigan?", answer: "Yes. The Upper Peninsula is largely USDA-eligible, as are many rural communities in northern Lower Michigan. Even some communities in the southern Lower Peninsula qualify. USDA eligibility is based on both property location and borrower income. Talk with a loan officer to check whether a specific address qualifies." },
+  { question: "Can I finance a lakefront property or cabin in Michigan?", answer: "Michigan lakefront and seasonal properties can present financing challenges. Lenders assess whether a property is considered a primary residence, second home, or investment property, and whether it's year-round habitable. Cabins with well and septic and non-standard construction may have limited financing options. Talk with a loan officer about the specific property you're considering." },
+  { question: "How competitive is the Detroit metro market?", answer: "Southeast Michigan, including Oakland, Macomb, and Washtenaw counties, is a competitive market with strong demand and limited inventory in popular suburbs like Royal Oak, Birmingham, Troy, and Ann Arbor. Pre-approval before house hunting is essential. Your loan officer can discuss options for positioning your offer effectively." },
+  { question: "Can veterans use a VA loan in Michigan?", answer: "Eligible veterans, active-duty service members, and surviving spouses can use VA loan benefits to purchase or refinance a home in Michigan. Michigan has a significant veteran population, and VA loans are available statewide. There's no down payment required in most cases, and no PMI, though a funding fee typically applies." },
+  { question: "What credit score is needed for a Michigan mortgage?", answer: "Minimum credit score requirements vary by loan program. FHA may allow scores as low as 580 with 3.5% down. Conventional typically requires 620 or higher. Jumbo programs often require 720+. Talk with a loan officer about your credit profile to understand which programs may be available to you." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Michigan Mortgage Loans | FHA, VA, USDA & Conventional | American Mortgage Services"
+  description="Compare mortgage options in Michigan, including FHA, VA, USDA, conventional, and specialty programs. American Mortgage Services helps MI borrowers from Metro Detroit to the Upper Peninsula."
+  stateName="Michigan"
+  heroTitle="Michigan Mortgage Loans"
+  heroSubtitle="Compare home loan programs across Michigan, from Metro Detroit and Grand Rapids to Traverse City, the Upper Peninsula, and rural communities statewide."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Michigan</h2>
+    <p>Michigan's housing market spans an enormous range, from the competitive suburban markets of Oakland and Macomb counties in Metro Detroit to the rural communities of the Upper Peninsula where USDA zero-down financing is widely available. Grand Rapids, Lansing, and Ann Arbor each have their own market dynamics and buyer demographics. Michigan also has a significant lakefront property market, which brings its own financing considerations.</p>
+
+    <p>American Mortgage Services works with Michigan borrowers across this range, accessing programs from multiple wholesale lenders to provide more options than a single retail lender can offer.</p>
+
+    <h2>Key Mortgage Programs for Michigan Borrowers</h2>
+
+    <h3>Conventional Loans in Metro Detroit</h3>
+    <p>Southeast Michigan's suburban markets, including Oakland, Macomb, Washtenaw, and Livingston counties, have strong conventional loan demand. Buyers in communities like Birmingham, Troy, Ann Arbor, and Rochester typically have strong income profiles that fit conventional programs. Down payments can range from 3% to 20%, with PMI required below 20% and cancellable at 20% equity.</p>
+
+    <h3>USDA Loans in Northern and Rural Michigan</h3>
+    <p>The Upper Peninsula is largely USDA-eligible, and many communities in northern Lower Michigan also qualify. Eligible borrowers in those areas may be able to purchase with no down payment through the USDA Rural Development program, subject to income limits and property requirements. This is often an underutilized option for buyers in these markets.</p>
+
+    <h3>FHA Loans Across Michigan</h3>
+    <p>FHA loans are a common fit for Michigan first-time buyers and those with more modest credit profiles or smaller down payments. The program works well across Detroit, Flint, Saginaw, Lansing, and smaller Michigan markets. Michigan's relatively affordable median home prices in many areas keep buyers within FHA loan limits.</p>
+
+    <h3>Seasonal and Lakefront Property Considerations</h3>
+    <p>Michigan has thousands of lakes and significant demand for lakefront and seasonal properties. Financing these properties requires careful attention to how the lender classifies the home (primary, second home, or investment), whether it's year-round accessible and habitable, and whether it meets standard property condition requirements. Not all programs allow seasonal or non-conforming property types.</p>
+
+    <h2>Michigan Housing Market Context</h2>
+    <p>Michigan's economy has diversified significantly beyond automotive manufacturing, with growth in technology, healthcare, and mobility sectors around Ann Arbor and Detroit. Grand Rapids continues to be a strong economic hub in western Michigan. The UP and northern communities see more seasonal and retirement buyers. Each region creates different borrower profiles and program needs.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Michigan Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Michigan</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+      <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer Programs</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+      <li><a href="/programs/investor-loans/">Investor / DSCR Loans</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} />
+</StateLandingLayout>

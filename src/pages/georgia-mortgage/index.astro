@@ -1,0 +1,72 @@
+﻿---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Georgia?", answer: "Georgia borrowers may qualify for FHA, VA, USDA, conventional, jumbo, bank statement, renovation, and investor loan programs, depending on their credit, income, property, and down payment situation. Metro Atlanta has high demand for conventional and jumbo programs, while rural Georgia markets benefit from USDA eligibility." },
+  { question: "Are there USDA-eligible areas in Georgia?", answer: "Yes. Much of rural Georgia is USDA-eligible, particularly outside the metro Atlanta area and larger cities. Eligible borrowers in those areas may qualify for zero down payment financing through the USDA Rural Development program, subject to income limits and property location requirements." },
+  { question: "What is the Georgia Dream program?", answer: "The Georgia Dream Homeownership Program, administered by the Georgia Department of Community Affairs (DCA), offers down payment assistance and below-market mortgage rates to eligible first-time homebuyers who meet income and purchase price limits. Ask a loan officer about current availability, as program funding and requirements can change." },
+  { question: "How competitive is the Atlanta real estate market for mortgage borrowers?", answer: "Metro Atlanta is a competitive market, particularly in suburbs like Alpharetta, Smyrna, Roswell, and Marietta. Pre-approval before you shop is important. A fully underwritten pre-approval is stronger than a standard pre-qualification. Talk with your loan officer about how to position your offer competitively." },
+  { question: "Can I use a conventional loan to buy a home in the Atlanta area?", answer: "Yes. Many Atlanta-area buyers use conventional loans with 3% to 20% down, depending on their credit and income profile. Conforming loan limits apply, and for higher-priced homes in areas like Buckhead or Alpharetta, jumbo financing may be needed." },
+  { question: "What credit score do I need to buy a home in Georgia?", answer: "Minimum credit requirements vary by program. FHA may allow scores as low as 580 with 3.5% down. Conventional typically requires 620 or higher. Jumbo programs often require 720 or higher. A loan officer can review your credit profile and help you understand your options." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Georgia Mortgage Loans | FHA, VA, Conventional & More | American Mortgage Services"
+  description="Compare mortgage options in Georgia, including FHA, VA, USDA, conventional, and jumbo loans. American Mortgage Services helps Georgia borrowers from Atlanta to rural communities find programs that fit."
+  stateName="Georgia"
+  heroTitle="Georgia Mortgage Loans"
+  heroSubtitle="Compare home loan programs across Georgia, from Metro Atlanta and Savannah to Augusta, Macon, and rural communities statewide."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Georgia</h2>
+    <p>Georgia's mortgage market spans two very different worlds. Metro Atlanta, one of the fastest-growing metros in the Southeast, has seen strong home price appreciation and competitive buyer activity, particularly in the northern and western suburbs. Outside of Atlanta, markets like Savannah, Augusta, Macon, and Columbus offer different price points and program dynamics, and much of rural Georgia qualifies for USDA zero-down financing.</p>
+
+    <p>American Mortgage Services works with Georgia borrowers across this range, accessing programs from multiple wholesale lenders to offer more options than a single bank can provide.</p>
+
+    <h2>Key Mortgage Programs for Georgia Borrowers</h2>
+
+    <h3>Conventional Loans in Metro Atlanta</h3>
+    <p>Conventional loans are a common fit for Atlanta-area buyers with strong credit and stable income. The metro's robust job market, anchored by industries from technology and finance to logistics and healthcare, supports borrower profiles that qualify well for conventional financing. Down payment options range from 3% to 20% or more, with PMI required below 20% and cancellable at 20% equity.</p>
+
+    <h3>Jumbo Loans for Higher-Priced Properties</h3>
+    <p>In neighborhoods like Buckhead, Alpharetta, Johns Creek, and Sandy Springs, home prices frequently exceed conforming loan limits. Jumbo loans are available for eligible Georgia borrowers, typically requiring stronger credit (720+), larger down payments, and additional reserves. We can help you compare jumbo options across our wholesale lender network.</p>
+
+    <h3>USDA Loans in Rural Georgia</h3>
+    <p>Much of Georgia outside the metro Atlanta footprint is USDA-eligible. This includes communities in Middle and South Georgia as well as rural areas across North Georgia. Eligible borrowers may qualify for zero down payment financing, subject to income limits and property location. Talk with a loan officer to check whether a specific address qualifies.</p>
+
+    <h3>FHA Loans Statewide</h3>
+    <p>FHA loans offer credit flexibility and low down payment options that work well for first-time buyers across Georgia, from Savannah's historic district to growing suburbs outside Augusta. The 3.5% minimum down payment and more lenient credit guidelines make FHA a common starting point for buyers working toward homeownership.</p>
+
+    <h2>Georgia Housing Market Context</h2>
+    <p>Georgia's no state income tax and relatively business-friendly environment continue to attract new residents, which supports housing demand. The Savannah market has grown substantially with logistics and port activity. Augusta benefits from the medical corridor and Fort Eisenhower (formerly Fort Gordon). Each market has different dynamics, and your loan officer can help you understand how your local market may affect your transaction.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Georgia Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Georgia</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+      <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer Programs</a></li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} />
+</StateLandingLayout>

@@ -1,0 +1,71 @@
+---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Alabama?", answer: "Borrowers in Alabama may qualify for FHA, VA, USDA, conventional, jumbo, bank statement, and renovation loan programs, depending on their credit, income, property, and down payment. Alabama has a large number of USDA-eligible rural areas, and the state's military communities have strong VA loan demand." },
+  { question: "Are there USDA-eligible areas in Alabama?", answer: "Yes. Much of rural Alabama is designated as USDA-eligible, which means qualified borrowers in those areas may be able to purchase a home with no down payment through the USDA Rural Development program. Eligibility is based on both property location and borrower income limits." },
+  { question: "Can veterans use a VA loan to buy a home in Alabama?", answer: "Eligible veterans, active-duty service members, and surviving spouses may use VA loan benefits to purchase a home in Alabama. Alabama has a significant military presence, particularly around Redstone Arsenal and Fort Novosel (formerly Fort Rucker), and VA loans are a common fit in those communities." },
+  { question: "What credit score do I need to get a mortgage in Alabama?", answer: "Minimum credit score requirements vary by loan program. FHA loans may be available for borrowers with scores as low as 580 with a 3.5% down payment. Conventional loans typically require 620 or higher. VA and USDA programs have their own overlays. Talk with a loan officer about your specific situation." },
+  { question: "How do I get pre-approved for a mortgage in Alabama?", answer: "Pre-approval typically requires recent pay stubs, W-2s or tax returns, bank statements, and authorization to pull your credit. American Mortgage Services can review your scenario and help you understand which programs you may qualify for before you start house hunting." },
+  { question: "What are typical closing costs on an Alabama home purchase?", answer: "Closing costs on an Alabama home purchase typically range from 2% to 5% of the loan amount, though this varies by loan type, lender, and transaction. American Mortgage Services charges no lender fees on FHA, VA, or USDA loans. A loan officer can give you a detailed estimate based on your scenario." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Alabama Mortgage Loans | FHA, VA, USDA & Conventional | American Mortgage Services"
+  description="Compare FHA, VA, USDA, conventional, and specialty mortgage programs in Alabama. American Mortgage Services helps AL borrowers find loan options that fit their scenario."
+  stateName="Alabama"
+  heroTitle="Alabama Mortgage Loans"
+  heroSubtitle="Compare loan programs for home purchases and refinances across Alabama, from Huntsville and Birmingham to Mobile and rural communities statewide."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Alabama</h2>
+    <p>Alabama offers a range of mortgage opportunities for buyers and refinancers across the state. Whether you're purchasing in a suburban market like Huntsville or Birmingham, financing in Mobile, or looking at rural properties in central or north Alabama, the right loan program depends on your credit profile, income, down payment, and the property itself.</p>
+
+    <p>As a wholesale mortgage broker, American Mortgage Services can access programs across multiple lenders, which means more flexibility than a single bank can offer. We help borrowers compare FHA, VA, USDA, conventional, jumbo, bank statement, and specialty loan programs based on their specific scenario.</p>
+
+    <h2>Key Mortgage Programs for Alabama Borrowers</h2>
+
+    <h3>USDA Loans in Alabama</h3>
+    <p>Much of rural Alabama is designated as USDA-eligible by the U.S. Department of Agriculture. Eligible borrowers purchasing in those areas may qualify for a zero down payment loan through the USDA Rural Development program. Income limits apply, and the property must be located in an eligible area. Talk with a loan officer to check whether a specific address qualifies.</p>
+
+    <h3>VA Loans Near Military Communities</h3>
+    <p>Alabama has a strong military presence, including Redstone Arsenal in Huntsville and Fort Novosel (formerly Fort Rucker) near Dothan. Eligible veterans, active-duty service members, and surviving spouses may use VA loan benefits to purchase a home in Alabama with no down payment and no private mortgage insurance requirement. Eligibility and loan terms are subject to VA guidelines and lender review.</p>
+
+    <h3>FHA Loans for Alabama Buyers</h3>
+    <p>FHA loans are a common fit for first-time buyers and those with lower credit scores or smaller down payments. With a minimum 3.5% down and credit flexibility, FHA can be a viable path for buyers in Birmingham, Montgomery, Tuscaloosa, and smaller Alabama markets. Mortgage insurance premiums apply.</p>
+
+    <h3>Conventional Loans Across Alabama</h3>
+    <p>Buyers with strong credit and stable income may find conventional loans offer competitive pricing and no upfront mortgage insurance. Huntsville's growing tech corridor has attracted buyers who may qualify for conventional programs, and the state's relatively affordable median home prices mean many buyers can stay within conforming loan limits.</p>
+
+    <h2>Alabama Housing Market Context</h2>
+    <p>Alabama's housing market remains more affordable than the national median in many areas, which can make homeownership accessible for first-time buyers and those with moderate incomes. Markets vary: Huntsville has seen strong appreciation and demand, while cities like Montgomery and Mobile offer more affordable entry points. Rural areas often benefit from USDA program availability.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Alabama Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Alabama</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer Programs</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} />
+</StateLandingLayout>

@@ -1,0 +1,85 @@
+﻿---
+import BaseLayout from './BaseLayout.astro';
+import BreadcrumbList from '../components/BreadcrumbList.astro';
+import TrustBar from '../components/TrustBar.astro';
+import IntentRoutingGrid from '../components/IntentRoutingGrid.astro';
+import CTASection from '../components/CTASection.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  schema?: object;
+  cityName: string;
+  stateName: string;
+  stateUrl: string;
+  heroTitle: string;
+  heroSubtitle: string;
+}
+
+const { title, description, canonicalUrl, schema, cityName, stateName, stateUrl, heroTitle, heroSubtitle } = Astro.props;
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: `${stateName} Mortgages`, href: stateUrl },
+  { label: cityName, href: '' },
+];
+---
+<BaseLayout {title} {description} {canonicalUrl} {schema}>
+  <section class="city-hero">
+    <div class="container">
+      <BreadcrumbList items={breadcrumbs} />
+      <h1>{heroTitle}</h1>
+      <p class="hero-sub">{heroSubtitle}</p>
+      <div class="hero-ctas">
+        <a href="/loan-officers/" class="btn-primary">Start Your Application</a>
+        <a href="/contact-us/" class="btn-ghost">Talk to a Loan Officer</a>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <div class="city-content section">
+    <div class="container-narrow">
+      <slot />
+    </div>
+  </div>
+
+  <slot name="areas" />
+
+  <IntentRoutingGrid />
+
+  <CTASection
+    heading={`Ready to Compare Mortgage Options in ${cityName}?`}
+    subtext="Talk with a loan officer about your scenario. Programs subject to credit, income, property, and lender guidelines."
+    ctaText="Apply Now"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Contact Us"
+    secondaryCtaUrl="/contact/"
+  />
+</BaseLayout>
+
+<style>
+.city-hero {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.city-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.hero-sub {
+  color: oklch(80% 0.02 260);
+  font-size: var(--text-lg);
+  max-width: 60ch;
+  margin-bottom: var(--space-8);
+}
+.hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+.city-content .prose p { margin-bottom: var(--space-4); }
+.city-content .prose h2 { font-size: var(--text-3xl); margin: var(--space-10) 0 var(--space-4); }
+.city-content .prose h3 { font-size: var(--text-xl); margin: var(--space-6) 0 var(--space-3); }
+</style>

@@ -1,0 +1,131 @@
+﻿---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="footer-main container">
+    <div class="footer-col footer-brand">
+      <p class="footer-logo">We Get It Closed</p>
+      <p class="footer-tagline">American Mortgage Services, Inc.</p>
+      <p class="footer-desc">A wholesale mortgage broker serving borrowers across Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee.</p>
+      <a href="tel:8888389330" class="footer-phone">(888) 838-9330</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/loan-officers/">Loan Officers</a></li>
+        <li><a href="/areas-we-serve/">Areas We Serve</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
+        <li><a href="/mortgage-calculators/">Calculators</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact-us/">Contact</a></li>
+        <li><a href="/loan-officers/">Apply Now</a></li>
+        <li><a href="/important-disclaimers/">Disclaimers</a></li>
+        <li><a href="/important-disclosures/">Disclosures</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Loan Programs</h4>
+      <ul>
+        <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+        <li><a href="/programs/va-loans/">VA Loans</a></li>
+        <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+        <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+        <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+        <li><a href="/programs/reverse-mortgages/">Reverse Mortgages</a></li>
+        <li><a href="/programs/renovation-loans/">Renovation Loans</a></li>
+        <li><a href="/programs/investor-loans/">Investor Loans</a></li>
+        <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+        <li><a href="/programs/low-credit-score-mortgage-options/">Low Credit Score Options</a></li>
+        <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer</a></li>
+        <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+        <li><a href="/programs/cash-out-refinance/">Cash-Out Refinance</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>States We Serve</h4>
+      <ul>
+        <li><a href="/alabama-mortgage/">Alabama Mortgages</a></li>
+        <li><a href="/florida-mortgage/">Florida Mortgages</a></li>
+        <li><a href="/georgia-mortgage/">Georgia Mortgages</a></li>
+        <li><a href="/louisiana-mortgage/">Louisiana Mortgages</a></li>
+        <li><a href="/michigan-mortgage/">Michigan Mortgages</a></li>
+        <li><a href="/tennessee-mortgage/">Tennessee Mortgages</a></li>
+      </ul>
+      <p class="footer-compliance">All loans subject to credit approval. Not a commitment to lend. Rates and programs subject to change without notice. Loan amounts, interest rates, and program availability vary by borrower scenario.</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; {year} American Mortgage Services, Inc. All rights reserved.</p>
+      <p class="footer-eho">
+        <span class="eho-icon" aria-hidden="true">âŒ‚</span>
+        Equal Housing Opportunity. American Mortgage Services, Inc. NMLS# 259805.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background: var(--color-navy);
+  color: oklch(80% 0.02 260);
+  margin-top: auto;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr;
+  gap: var(--space-10);
+  padding: var(--space-16) var(--space-6);
+}
+@media (max-width: 900px) {
+  .footer-main { grid-template-columns: 1fr 1fr; gap: var(--space-8); padding: var(--space-10) var(--space-6); }
+}
+@media (max-width: 540px) {
+  .footer-main { grid-template-columns: 1fr; }
+}
+
+.footer-logo {
+  font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700;
+  color: var(--color-white); margin-bottom: var(--space-1);
+}
+.footer-tagline { font-size: var(--text-sm); color: var(--color-gold); margin-bottom: var(--space-4); max-width: none; }
+.footer-desc { font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-4); max-width: none; }
+.footer-phone {
+  display: inline-block; color: var(--color-white);
+  font-size: var(--text-lg); font-weight: 600; text-decoration: none;
+}
+.footer-phone:hover { color: var(--color-gold); }
+
+.footer-col h4 {
+  font-family: var(--font-body); font-size: var(--text-xs);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--color-gold); margin-bottom: var(--space-4);
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.footer-col a {
+  color: oklch(75% 0.02 260); text-decoration: none;
+  font-size: var(--text-sm); transition: color 150ms ease-out;
+}
+.footer-col a:hover { color: var(--color-white); }
+.footer-compliance {
+  font-size: var(--text-xs); line-height: 1.5; margin-top: var(--space-6);
+  color: oklch(55% 0.01 260); max-width: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--color-navy-light);
+  padding: var(--space-4) var(--space-6);
+}
+.footer-bottom-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--space-2);
+}
+.footer-bottom p { font-size: var(--text-xs); color: oklch(55% 0.01 260); max-width: none; }
+.footer-eho { display: flex; align-items: center; gap: var(--space-2); }
+</style>

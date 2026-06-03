@@ -1,0 +1,279 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import LoanOfficerCard from '../components/LoanOfficerCard.astro';
+import CTASection from '../components/CTASection.astro';
+
+import imgClay      from '../assets/images/Clay-Heitler.jpg';
+import imgNick      from '../assets/images/Nick-Aristizabal.jpg';
+import imgVasili    from '../assets/images/Vasili-Barlamas.jpg';
+import imgMike      from '../assets/images/micheal-brindle.jpg';
+import imgAlexandra from '../assets/images/Alexandra-Capato.webp';
+import imgScott     from '../assets/images/Scott-Fitzgerald.jpg';
+import imgMarc      from '../assets/images/Marc-Gabaeff.webp';
+import imgAllison   from '../assets/images/Allison-Gurganus.jpg';
+import imgLynn      from '../assets/images/lynn-harrison.jpg';
+import imgNicholas  from '../assets/images/Nicholas-Humphrey.jpg';
+import imgSergio    from '../assets/images/Sergio-Matos.jpg';
+import imgKathy     from '../assets/images/AMS-Staff.jpg';
+import imgAlexander from '../assets/images/Alexander-Rotz.jpg';
+import imgChris     from '../assets/images/ChrisSommer.webp';
+import imgIrisley   from '../assets/images/Irisley-Tejeda.jpg';
+import imgGarrett   from '../assets/images/Garrett-Williams.jpg';
+import imgRandal    from '../assets/images/Randal-Jenkins.jpg';
+import { loanOfficers } from '../data/loanOfficers';
+
+const getUrl = (name: string) =>
+  loanOfficers.find(lo => lo.name === name)?.applyUrl ?? '/loan-officers/';
+
+const clayUrl = getUrl('Clay Heitler');
+
+const officers = [
+  { name: 'Nick Aristizabal',  image: imgNick      },
+  { name: 'Vasili Barlamas',   image: imgVasili    },
+  { name: 'Mike Brindle',      image: imgMike      },
+  { name: 'Alexandra Capato',  image: imgAlexandra },
+  { name: 'Scott Fitzgerald',  image: imgScott     },
+  { name: 'Marc Gabaeff',      image: imgMarc      },
+  { name: 'Allison Gurganus',  image: imgAllison   },
+  { name: 'Lynn Harrison',     image: imgLynn      },
+  { name: 'Nicholas Humphrey', image: imgNicholas  },
+  { name: 'Sergio Matos',      image: imgSergio    },
+  { name: 'Kathy Paulsen',     image: imgKathy     },
+  { name: 'Alexander Rotz',    image: imgAlexander },
+  { name: 'Chris Sommer',      image: imgChris     },
+  { name: 'Irisley Tejeda',    image: imgIrisley   },
+  { name: 'Garrett Williams',  image: imgGarrett   },
+  { name: 'Randal Jenkins',    image: imgRandal    },
+].map(o => ({ ...o, applyUrl: getUrl(o.name) }));
+---
+<BaseLayout
+  title="Meet Our Loan Officers | American Mortgage Services"
+  description="Choose a loan officer at American Mortgage Services and apply directly. Experienced mortgage professionals serving borrowers in AL, FL, GA, LA, MI, and TN."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Loan Officers</span>
+      </nav>
+      <h1>Meet Our Loan Officers</h1>
+      <p>Pick a loan officer and apply directly — real people, real guidance, no runaround.</p>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section class="section">
+    <div class="container-narrow">
+      <h2>We Get It Closed</h2>
+      <p>American Mortgage Services was built on one premise: borrowers deserve more options than a single bank can offer. As a wholesale mortgage broker, we connect you with multiple wholesale lenders, which means more loan programs, more competitive pricing structures, and more flexibility when your scenario doesn't fit the standard mold.</p>
+      <p>Our team brings more than 40 years of combined experience in mortgage lending. We've worked through multiple rate environments, regulatory shifts, and market cycles. That experience translates into better guidance for your specific situation.</p>
+
+      <h2>What Makes a Wholesale Broker Different</h2>
+      <p>When you work with a retail bank, you're limited to that bank's loan products. When you work with American Mortgage Services, we can shop your loan across our network of wholesale lenders. That matters when you're self-employed, have a lower credit score, need a jumbo loan, or are financing an investment property.</p>
+      <p>We charge no lender fees on FHA, VA, or USDA loans. And because we work on wholesale pricing, the total cost of your loan may compare favorably to what you'd find going directly to a retail lender. Loan costs vary by scenario, and all programs are subject to credit, income, property, and lender guidelines.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt lo-section">
+    <div class="container">
+      <div class="lo-section-header">
+        <h2>Choose Your Loan Officer</h2>
+        <p>Each Apply button connects you directly to that loan officer's personal application. Experienced professionals serving borrowers across Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee.</p>
+      </div>
+
+      <!-- Featured: Clay Heitler -->
+      <div class="clay-card">
+        <div class="clay-photo-wrap">
+          <Image
+            src={imgClay}
+            alt="Clay Heitler, President and Loan Officer at American Mortgage Services"
+            width={220}
+            height={220}
+            format="webp"
+            quality={85}
+            class="clay-photo"
+          />
+        </div>
+        <div class="clay-bio">
+          <p class="clay-name">Clay Heitler</p>
+          <p class="clay-role">President / Loan Officer</p>
+          <p class="clay-desc">Clayton Heitler is the President and Founder of American Mortgage Services, Inc. Heitler has owned and operated Tampa-based Affordable Home Mortgage (now American Mortgage Services) since 1999. He has an extensive background in financial services and is the leading producer in the office.</p>
+          <p class="clay-nmls">NMLS# 372592</p>
+          <div class="clay-actions">
+            <a href="tel:8137595650" class="clay-phone">(813) 759-5650</a>
+            <a href={clayUrl} class="btn-primary clay-btn">Apply With Clay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4×4 officer grid -->
+      <div class="lo-grid">
+        {officers.map(o => (
+          <LoanOfficerCard name={o.name} image={o.image} applyUrl={o.applyUrl} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <h2>Where We're Licensed</h2>
+      <p>American Mortgage Services originates mortgage loans in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. Each state has its own market dynamics, property types, and program nuances. Our loan officers understand those differences and can help you navigate them.</p>
+      <ul class="state-list">
+        <li><a href="/alabama-mortgage/">Alabama Mortgage Loans</a></li>
+        <li><a href="/florida-mortgage/">Florida Mortgage Loans</a></li>
+        <li><a href="/georgia-mortgage/">Georgia Mortgage Loans</a></li>
+        <li><a href="/louisiana-mortgage/">Louisiana Mortgage Loans</a></li>
+        <li><a href="/michigan-mortgage/">Michigan Mortgage Loans</a></li>
+        <li><a href="/tennessee-mortgage/">Tennessee Mortgage Loans</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Not Sure Where to Start?"
+    subtext="Contact us and we'll match you with a loan officer who fits your scenario. We serve borrowers across AL, FL, GA, LA, MI, and TN."
+    ctaText="Contact Us"
+    ctaUrl="/contact/"
+    secondaryCtaText="View Loan Programs"
+    secondaryCtaUrl="/programs/"
+  />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 60ch; }
+
+.breadcrumb-nav {
+  font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4);
+}
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav a:hover { color: var(--color-white); }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+
+.section h2 { font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl)); margin: var(--space-10) 0 var(--space-4); }
+.section h2:first-child { margin-top: 0; }
+.section p { margin-bottom: var(--space-4); }
+
+/* Loan Officers Section */
+.lo-section { background: var(--color-off-white); }
+
+.lo-section-header {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+.lo-section-header h2 {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  color: var(--color-navy);
+  margin-bottom: var(--space-3);
+}
+.lo-section-header p {
+  color: var(--color-gray-mid);
+  font-size: var(--text-lg);
+  max-width: 56ch;
+  margin: 0 auto;
+}
+
+/* Clay featured card */
+.clay-card {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8);
+  margin-bottom: var(--space-10);
+}
+@media (max-width: 600px) {
+  .clay-card { flex-direction: column; align-items: center; text-align: center; }
+  .clay-actions { justify-content: center; }
+}
+
+.clay-photo-wrap {
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 3px solid oklch(87% 0.05 255);
+}
+.clay-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.clay-bio { flex: 1; }
+.clay-name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 var(--space-1);
+  max-width: none;
+}
+.clay-role {
+  font-size: var(--text-sm);
+  color: var(--color-blue);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+  max-width: none;
+}
+.clay-desc {
+  font-size: var(--text-sm);
+  color: var(--color-gray-mid);
+  line-height: 1.6;
+  margin: 0 0 var(--space-3);
+  max-width: none;
+}
+.clay-nmls {
+  font-size: var(--text-xs);
+  color: oklch(55% 0.01 260);
+  margin: 0 0 var(--space-4);
+  max-width: none;
+}
+.clay-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.clay-phone {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+.clay-phone:hover { color: var(--color-red); }
+.clay-btn { font-size: var(--text-sm); }
+
+/* Officer grid */
+.lo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 768px) { .lo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .lo-grid { grid-template-columns: 1fr; } }
+
+/* States section */
+.state-list {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2);
+  list-style: none; margin: var(--space-4) 0 var(--space-8);
+}
+.state-list a { color: var(--color-red); font-weight: 500; }
+</style>

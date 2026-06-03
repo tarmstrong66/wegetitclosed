@@ -1,0 +1,71 @@
+﻿---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Louisiana?", answer: "Louisiana borrowers may qualify for FHA, VA, USDA, conventional, bank statement, renovation, and investor loan programs depending on their scenario. Louisiana's unique property types and flood zone landscape mean program selection sometimes requires extra care." },
+  { question: "How does being in a flood zone affect my mortgage in Louisiana?", answer: "Properties in FEMA-designated flood zones require mandatory flood insurance. In Louisiana, many properties, particularly near the Gulf Coast, major waterways, and low-lying areas, fall into flood zones. Flood insurance premiums can affect your debt-to-income ratio and monthly payment. Your loan officer can help you understand how this affects your specific scenario." },
+  { question: "Can I finance unique property types in Louisiana?", answer: "Louisiana has a number of property types that can present financing challenges, including camps, shotgun houses, Creole cottages, and properties on pilings. Financing availability depends on the lender, loan program, and property condition. FHA and conventional loans have property condition requirements. Talk with a loan officer about the specific property you're considering." },
+  { question: "Are renovation loans available in Louisiana?", answer: "Yes. FHA 203K and Fannie Mae HomeStyle renovation loans can be used to purchase and renovate a home in a single loan. In Louisiana, where storm damage and deferred maintenance are common, these programs can be particularly useful for buyers interested in properties that need work. A licensed contractor and lender-controlled draw process are typically required." },
+  { question: "Are there USDA-eligible areas in Louisiana?", answer: "Yes. Much of rural Louisiana, particularly outside of New Orleans, Baton Rouge, Lafayette, and Shreveport, is USDA-eligible. Eligible borrowers in those areas may be able to purchase with no down payment, subject to income limits and property requirements." },
+  { question: "What credit score do I need for a mortgage in Louisiana?", answer: "Minimum credit score requirements depend on the loan program. FHA loans may be available at 580+ with 3.5% down. Conventional loans typically require 620+. VA loans depend on lender overlays. Talk with a loan officer to understand what programs may be available for your credit profile." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Louisiana Mortgage Loans | FHA, VA, USDA & Specialty Programs | American Mortgage Services"
+  description="Compare mortgage options in Louisiana, including FHA, VA, USDA, conventional, renovation loans, and programs for unique property types. American Mortgage Services helps LA borrowers find loan programs that fit."
+  stateName="Louisiana"
+  heroTitle="Louisiana Mortgage Loans"
+  heroSubtitle="Compare home loan programs across Louisiana, from New Orleans and Baton Rouge to Shreveport, Lafayette, and rural communities across the state."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Louisiana</h2>
+    <p>Louisiana's housing market has its own set of variables that affect mortgage financing. The state's unique architecture, flood zone landscape, and weather history mean that lenders pay close attention to property condition, flood insurance, and risk factors that are less common in other states. American Mortgage Services has experience navigating these nuances for Louisiana borrowers.</p>
+
+    <p>Whether you're buying in the New Orleans metro, refinancing in Baton Rouge, or purchasing a rural property in North Louisiana, the right loan program depends on your credit profile, the property itself, and your financial goals.</p>
+
+    <h2>Key Mortgage Programs for Louisiana Borrowers</h2>
+
+    <h3>FHA Loans in Louisiana</h3>
+    <p>FHA loans are a common fit for Louisiana buyers with moderate credit and smaller down payments. The 3.5% minimum down payment and credit flexibility work well across Louisiana's primary markets, including New Orleans, Baton Rouge, Shreveport, and Lafayette. FHA has property condition requirements, which is worth noting for older or storm-affected properties.</p>
+
+    <h3>Renovation Loans: FHA 203K and HomeStyle</h3>
+    <p>Louisiana has a significant inventory of older homes that may require updating or repair work. For buyers interested in purchasing a property that needs renovation, FHA 203K (standard and limited versions) and Fannie Mae HomeStyle loans allow the purchase price and estimated renovation costs to be combined into a single mortgage. A lender-approved contractor and draw process are required.</p>
+
+    <h3>USDA Loans in Rural Louisiana</h3>
+    <p>Much of rural Louisiana is USDA-eligible, including communities outside the state's major metros. North Louisiana, the Acadiana region, and many small towns across the state may qualify for USDA zero-down financing for eligible borrowers, subject to income limits and property location requirements.</p>
+
+    <h3>Flood Zone Financing</h3>
+    <p>Flood insurance is a real factor in Louisiana. Properties in FEMA Special Flood Hazard Areas require mandatory flood insurance, and premiums can be substantial. This affects monthly payment calculations and, in some cases, debt-to-income ratios for qualification purposes. A loan officer can help you model the full cost of homeownership when flood insurance is involved.</p>
+
+    <h2>Louisiana Housing Market Context</h2>
+    <p>New Orleans remains one of the most unique housing markets in the country, with architectural preservation rules, mixed property types, and a persistent shortage of inventory in desirable neighborhoods. Baton Rouge's market is more conventional, driven by the state capital economy, LSU, and petrochemical industry employment. North Louisiana markets like Shreveport and Monroe offer more affordable entry points. Each market requires different lending expertise.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Louisiana Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Louisiana</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/usda-loans/">USDA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/renovation-loans/">Renovation Loans (FHA 203K & HomeStyle)</a></li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} />
+</StateLandingLayout>

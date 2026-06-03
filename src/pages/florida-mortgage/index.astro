@@ -1,0 +1,83 @@
+﻿---
+import StateLandingLayout from '../../layouts/StateLandingLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  { question: "What mortgage programs are available in Florida?", answer: "Florida borrowers may qualify for FHA, VA, conventional, jumbo, DSCR investor loans, bank statement loans, renovation loans, and reverse mortgages, depending on their scenario. Florida's diverse markets, from high-value coastal areas to more affordable inland communities, create demand across multiple program types." },
+  { question: "Can I finance a condo in Florida?", answer: "Condo financing in Florida can be more complex than financing a single-family home. FHA and VA loans require the condo project to be on an approved list. Conventional loans also have project eligibility requirements. Non-warrantable condos may require portfolio or specialty financing. Talk with a loan officer about the specific condo project you're considering." },
+  { question: "Are DSCR investor loans available in Florida?", answer: "Yes. Florida has a strong rental and investor market, and DSCR (Debt Service Coverage Ratio) loans are available for eligible investment properties. These loans qualify based on the property's rental income rather than the borrower's personal income, which can be helpful for investors with complex tax returns." },
+  { question: "Does flood insurance affect my mortgage in Florida?", answer: "In Florida, many properties are located in FEMA flood zones that require mandatory flood insurance. Flood insurance premiums can affect your debt-to-income ratio and, in some cases, impact loan eligibility. Your loan officer can help you understand how flood zone designation may affect your specific transaction." },
+  { question: "What credit score do I need for a mortgage in Florida?", answer: "Minimum credit score requirements vary by program. FHA may allow scores as low as 580 with 3.5% down. Conventional loans typically require 620 or higher. Jumbo and specialty programs often require 680-720 or higher. Talk with a loan officer about your credit profile and which programs may be a fit." },
+  { question: "Can I get a jumbo loan in Florida?", answer: "Yes. Florida has several high-value markets, including Miami-Dade, Palm Beach, Broward, and coastal communities, where home prices may exceed conventional conforming loan limits. Jumbo loans are available for eligible borrowers, typically requiring stronger credit (720+) and larger down payments (10-20% or more)." },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+
+const cities = [
+  { name: 'Tampa', url: '/florida-mortgage/tampa/' },
+  { name: 'Orlando', url: '/florida-mortgage/' },
+  { name: 'Jacksonville', url: '/florida-mortgage/' },
+  { name: 'Miami', url: '/florida-mortgage/' },
+  { name: 'Pensacola', url: '/florida-mortgage/' },
+];
+---
+<StateLandingLayout
+  title="Florida Mortgage Loans | FHA, VA, Jumbo & Investor Loans | American Mortgage Services"
+  description="Compare mortgage options in Florida including FHA, VA, conventional, jumbo, DSCR investor loans, and condo financing. American Mortgage Services helps FL borrowers find programs that fit their scenario."
+  stateName="Florida"
+  heroTitle="Florida Mortgage Loans"
+  heroSubtitle="Compare home loan programs across Florida â€” from Tampa and Miami to Orlando, Jacksonville, and the Gulf Coast. Purchase, refinance, and investor financing available."
+>
+  <div class="prose">
+    <h2>Mortgage Options in Florida</h2>
+    <p>Florida's housing market is one of the most diverse in the country. Miami-Dade, Broward, and Palm Beach County buyers often deal with high home values, condo financing complexity, and flood insurance considerations. Tampa, Orlando, and Jacksonville buyers navigate competitive suburban markets. The Gulf Coast and Florida Keys have their own pricing and property dynamics.</p>
+
+    <p>American Mortgage Services works with Florida borrowers across this range of scenarios. As a wholesale mortgage broker, we access programs from multiple lenders, which means more options than a single retail bank can provide, particularly for complex transactions.</p>
+
+    <h2>Key Mortgage Programs for Florida Borrowers</h2>
+
+    <h3>Condo Financing in Florida</h3>
+    <p>Condo financing in Florida requires careful attention to project eligibility. FHA and VA loans require the condo community to be on an approved list maintained by the respective agencies. Conventional loans also have project-level requirements. For non-warrantable condos, portfolio or specialty financing may be needed. We'll help you determine whether the condo project you're considering qualifies under the program you're targeting.</p>
+
+    <h3>DSCR and Investor Loans</h3>
+    <p>Florida's rental market, driven by both long-term and short-term rentals, has created strong demand for DSCR (Debt Service Coverage Ratio) loan programs. These investor loans qualify based on projected or actual rental income from the property rather than the borrower's personal income, making them a fit for investors who hold multiple properties or whose personal tax returns don't reflect their true income picture.</p>
+
+    <h3>Jumbo Loans for Higher-Priced Markets</h3>
+    <p>In markets like Miami, Coral Gables, Palm Beach, Naples, and parts of the Tampa Bay area, home prices frequently exceed conforming loan limits. Jumbo loans are available for eligible borrowers and can be structured with various rate and term options. Jumbo lending typically requires stronger credit, larger reserves, and higher down payments than conforming programs.</p>
+
+    <h3>VA Loans Near Florida Military Bases</h3>
+    <p>Florida hosts several major military installations, including MacDill Air Force Base in Tampa, NAS Jacksonville, and Eglin and Tyndall Air Force Bases in the Panhandle. Eligible veterans and active-duty service members may use VA loan benefits with no down payment and no PMI requirement, subject to eligibility and lender guidelines.</p>
+
+    <h2>Florida-Specific Considerations</h2>
+    <p>Flood insurance is a meaningful factor for many Florida borrowers. Properties in designated flood zones require mandatory flood insurance, and premiums can vary widely depending on zone designation and flood risk. Your loan officer can help you understand how insurance costs may affect your debt-to-income ratio and overall qualification picture.</p>
+
+    <p>Hurricane and windstorm insurance are also important in Florida. Lenders require adequate hazard insurance coverage, and in coastal areas, windstorm coverage may need to be separate from the standard homeowner's policy.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Florida Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Florida</h2>
+    <ul>
+      <li><a href="/programs/fha-loans/">FHA Loans</a></li>
+      <li><a href="/programs/va-loans/">VA Loans</a></li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a></li>
+      <li><a href="/programs/jumbo-loans/">Jumbo Loans</a></li>
+      <li><a href="/programs/investor-loans/">DSCR Investor Loans</a></li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a></li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a></li>
+      <li><a href="/programs/cash-out-refinance/">Cash-Out Refinance</a></li>
+      <li><a href="/programs/reverse-mortgages/">Reverse Mortgages</a></li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} cities={cities} />
+</StateLandingLayout>

@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+}
+const { title, description, href, icon } = Astro.props;
+---
+<a href={href} class="program-card">
+  <div class="program-icon">
+    <Icon name={icon as any} size={22} />
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <span class="program-link">
+    Learn More
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</a>
+
+<style>
+.program-card {
+  display: flex; flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  text-decoration: none;
+  border: 1px solid var(--color-gray-subtle);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.program-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+.program-icon {
+  width: 44px;
+  height: 44px;
+  background: oklch(95% 0.03 255);
+  border: 1px solid oklch(87% 0.05 255);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  flex-shrink: 0;
+}
+
+.program-card h3 {
+  font-family: var(--font-display); font-size: var(--text-xl);
+  color: var(--color-navy); margin-bottom: var(--space-2);
+}
+.program-card p {
+  font-size: var(--text-sm); color: var(--color-gray-mid);
+  flex: 1; margin-bottom: var(--space-4); max-width: none; line-height: 1.5;
+}
+.program-link {
+  display: flex; align-items: center; gap: var(--space-1);
+  color: var(--color-red); font-size: var(--text-sm); font-weight: 600;
+}
+</style>

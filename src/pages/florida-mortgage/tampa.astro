@@ -1,0 +1,123 @@
+﻿---
+import CityPageLayout from '../../layouts/CityPageLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import AreasWeServe from '../../components/AreasWeServe.astro';
+
+const faqs = [
+  {
+    question: "What mortgage programs are available to Tampa homebuyers?",
+    answer: "Tampa buyers may qualify for FHA, VA, conventional, jumbo, USDA (in eligible suburban and rural zip codes), DSCR investor loans, bank statement loans, and renovation financing, depending on their credit profile, income type, and property. Programs are subject to credit, income, property, and lender guidelines. Talk with a loan officer about your specific scenario."
+  },
+  {
+    question: "Can I use a VA loan if I'm stationed at MacDill Air Force Base?",
+    answer: "Yes. Eligible active-duty service members, veterans, and surviving spouses may use VA loan benefits to purchase a home in Tampa and the surrounding area with no down payment and no private mortgage insurance requirement, subject to VA eligibility and lender guidelines. MacDill AFB is in South Tampa, and many active-duty borrowers buy in nearby communities like Brandon, Riverview, Valrico, and South Tampa itself."
+  },
+  {
+    question: "How does flood insurance affect getting a mortgage in Tampa?",
+    answer: "Many properties in Tampa and Hillsborough County are in FEMA-designated flood zones. Lenders require flood insurance on homes in Special Flood Hazard Areas (SFHAs), and flood insurance premiums can affect your debt-to-income ratio. Some areas have seen significant increases in FEMA flood map designations. Your loan officer can help you understand how flood zone status may affect your loan qualification and monthly payment."
+  },
+  {
+    question: "What are home prices like in Tampa and do I need a jumbo loan?",
+    answer: "Tampa home prices vary widely by submarket. South Tampa, Hyde Park, and waterfront properties often exceed conforming loan limits, which may require a jumbo loan. More affordable submarkets like Brandon, Riverview, New Tampa, and Carrollwood typically stay within conventional conforming limits. Your loan officer can tell you whether your target property falls above or below the current conforming limit for Hillsborough County."
+  },
+  {
+    question: "Are DSCR investor loans available for Tampa rental properties?",
+    answer: "Yes. Tampa's strong long-term and short-term rental market makes DSCR (Debt Service Coverage Ratio) loans a popular choice for investors. DSCR loans qualify based on the property's rental income rather than your personal tax returns, which can be a significant advantage for investors with multiple properties or complex income situations. Available for single-family, multi-unit, and eligible short-term rental properties."
+  },
+  {
+    question: "What credit score do I need to buy a home in Tampa?",
+    answer: "Minimum credit score requirements vary by program. FHA loans may allow scores as low as 580 with 3.5% down. Conventional loans typically require 620 or higher. VA loans have no official minimum but most lenders look for 580-620. Jumbo programs generally require 700-720 or higher. Talk with a loan officer about your credit profile â€” there may be options even if your score isn't where you want it yet."
+  },
+];
+
+const states = [
+  { name: 'Alabama', url: '/alabama-mortgage/' },
+  { name: 'Florida', url: '/florida-mortgage/' },
+  { name: 'Georgia', url: '/georgia-mortgage/' },
+  { name: 'Louisiana', url: '/louisiana-mortgage/' },
+  { name: 'Michigan', url: '/michigan-mortgage/' },
+  { name: 'Tennessee', url: '/tennessee-mortgage/' },
+];
+
+const cities = [
+  { name: 'Tampa', url: '/florida-mortgage/tampa/' },
+  { name: 'Orlando', url: '/florida-mortgage/' },
+  { name: 'Jacksonville', url: '/florida-mortgage/' },
+  { name: 'Miami', url: '/florida-mortgage/' },
+  { name: 'Pensacola', url: '/florida-mortgage/' },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wegetitclosed.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Florida Mortgages", "item": "https://wegetitclosed.com/florida-mortgage/" },
+    { "@type": "ListItem", "position": 3, "name": "Tampa", "item": "https://wegetitclosed.com/florida-mortgage/tampa/" }
+  ]
+};
+---
+<CityPageLayout
+  title="Tampa Mortgage Loans | FHA, VA, Conventional & Investor Financing | American Mortgage Services"
+  description="Compare mortgage options in Tampa, FL â€” FHA, VA, conventional, jumbo, and DSCR investor loans. Serving MacDill AFB, South Tampa, Brandon, Riverview, and the greater Tampa Bay area."
+  cityName="Tampa"
+  stateName="Florida"
+  stateUrl="/florida-mortgage/"
+  heroTitle="Tampa, FL Mortgage Loans"
+  heroSubtitle="FHA, VA, conventional, jumbo, and investor financing for buyers and homeowners across Tampa Bay â€” from South Tampa and Hyde Park to Brandon, Riverview, New Tampa, and Westchase."
+  schema={schema}
+>
+  <div class="prose">
+    <h2>Mortgage Options for Tampa Homebuyers</h2>
+    <p>Tampa's housing market spans a wide range of price points and property types. South Tampa, Hyde Park, Davis Islands, and Bayshore have some of the most competitive price points in the state. Brandon, Riverview, Valrico, and Carrollwood offer more affordable options for buyers who want Hillsborough County's school districts and commute access without South Tampa prices.</p>
+
+    <p>American Mortgage Services is a wholesale mortgage broker, which means we shop your loan across multiple lenders rather than presenting you with a single bank's menu. That matters in a market like Tampa, where investors, first-time buyers, veterans, and self-employed borrowers all need different things from their financing.</p>
+
+    <h2>VA Loans Near MacDill Air Force Base</h2>
+    <p>MacDill AFB sits at the tip of the Interbay Peninsula in South Tampa, home to USSOCOM and USCENTCOM. Active-duty service members and veterans assigned to or separated from MacDill represent a significant portion of Tampa's mortgage market, and VA loans are often the strongest financing tool available to them.</p>
+
+    <p>Eligible VA borrowers may purchase a home with no down payment and no private mortgage insurance requirement, subject to VA eligibility, lender guidelines, and the property meeting VA minimum property standards. Many active-duty borrowers buy in Brandon, Riverview, and South Tampa for the commute to MacDill, while veterans often look across the broader Tampa Bay area.</p>
+
+    <p>We specialize in VA loan underwriting and understand the unique considerations for active-duty borrowers â€” including BAH-based income, PCS scenarios, and entitlement questions. <a href="/programs/va-loans/">Learn more about VA loan benefits.</a></p>
+
+    <h2>FHA Loans for Tampa First-Time Buyers</h2>
+    <p>FHA loans remain one of the most accessible paths to homeownership in Tampa, particularly for first-time buyers navigating a competitive market. With as little as 3.5% down and more flexible credit guidelines than conventional programs, FHA can be a strong option for buyers in Hillsborough County's mid-range submarkets â€” New Tampa, Westchase, Carrollwood, and eastern suburbs like Seffner and Plant City.</p>
+
+    <p>FHA loans do carry mortgage insurance for the life of the loan in most cases, so your loan officer can help you model when a conventional loan might make more sense depending on your down payment and credit profile. <a href="/programs/fha-loans/">Explore FHA loan requirements.</a></p>
+
+    <h2>Conventional and Jumbo Loans in Tampa's Competitive Market</h2>
+    <p>Conventional loans with 3-20% down are the most common financing choice for Tampa buyers with solid credit. For properties above the current conforming loan limit in Hillsborough County, a jumbo loan may be required. South Tampa waterfront properties, Davis Islands, Hyde Park, and luxury new construction in Westchase and Carrollwood frequently exceed conforming limits.</p>
+
+    <p>Jumbo loans at American Mortgage Services are available up to $3M+, with various rate structures and reserve requirements depending on the loan size and borrower profile. Typical requirements include 700-720+ credit, 10-20% down, and 6-12 months of reserves. <a href="/programs/jumbo-loans/">See jumbo loan options.</a></p>
+
+    <h2>DSCR Investor Loans for Tampa Rentals</h2>
+    <p>Tampa's rental market is driven by population growth, a strong job market, and demand from both long-term and short-term rental tenants. DSCR (Debt Service Coverage Ratio) loans allow investors to qualify based on the property's rental income rather than their personal W-2 or tax return income â€” a significant advantage for investors with multiple properties or self-employment income.</p>
+
+    <p>Eligible properties include single-family rentals, small multi-unit (2-4 unit), and in some cases short-term rental properties with documented rental history. We work with DSCR lenders across the Tampa Bay area, including Hillsborough, Pinellas, and Pasco counties. <a href="/programs/investor-loans/">Explore DSCR investor loan options.</a></p>
+
+    <h2>Flood Zones and Insurance in Tampa Bay</h2>
+    <p>Flood zone designation is one of the most important due-diligence items for Tampa buyers. A significant percentage of properties in Hillsborough County â€” particularly near Old Tampa Bay, Hillsborough Bay, the Hillsborough River, and low-lying areas in South Tampa and Carrollwood â€” fall within FEMA Special Flood Hazard Areas (SFHAs) that require mandatory flood insurance.</p>
+
+    <p>Flood insurance premiums under the FEMA National Flood Insurance Program (NFIP) or private flood insurers can range from a few hundred to several thousand dollars annually depending on the property's flood risk. That cost factors into your debt-to-income ratio and can meaningfully affect what you qualify for. Your loan officer will review flood zone status as part of your loan planning process.</p>
+  </div>
+
+  <FAQSection faqs={faqs} heading="Tampa Mortgage FAQ" />
+
+  <div class="prose">
+    <h2>Loan Programs Available in Tampa</h2>
+    <ul>
+      <li><a href="/programs/va-loans/">VA Loans</a> â€” $0 down for eligible veterans and active-duty near MacDill AFB</li>
+      <li><a href="/programs/fha-loans/">FHA Loans</a> â€” 3.5% down, flexible credit guidelines</li>
+      <li><a href="/programs/conventional-loans/">Conventional Loans</a> â€” 3-20% down for buyers with strong credit</li>
+      <li><a href="/programs/jumbo-loans/">Jumbo Loans</a> â€” financing above conforming limits for South Tampa and waterfront properties</li>
+      <li><a href="/programs/investor-loans/">DSCR Investor Loans</a> â€” qualify on rental income, not personal tax returns</li>
+      <li><a href="/programs/bank-statement-loans/">Bank Statement Loans</a> â€” self-employed borrowers qualify on deposits</li>
+      <li><a href="/programs/refinance-loans/">Refinance Loans</a> â€” lower your rate or change your term</li>
+      <li><a href="/programs/cash-out-refinance/">Cash-Out Refinance</a> â€” access home equity in the Tampa Bay market</li>
+      <li><a href="/programs/renovation-loans/">Renovation Loans</a> â€” buy and finance repairs in one loan</li>
+      <li><a href="/programs/first-time-homebuyer-loans/">First-Time Homebuyer Programs</a> â€” down payment assistance options for Hillsborough County</li>
+    </ul>
+  </div>
+
+  <AreasWeServe slot="areas" states={states} cities={cities} />
+</CityPageLayout>
