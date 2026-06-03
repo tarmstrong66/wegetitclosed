@@ -1,0 +1,244 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import CTASection from '../../components/CTASection.astro';
+
+import imgClay    from '../../assets/images/Clay-Heitler.jpg';
+import imgStaff   from '../../assets/images/AMS-Staff.jpg';
+---
+<BaseLayout
+  title="Our Team | American Mortgage Services — We Get It Closed"
+  description="Meet the leadership and support team behind American Mortgage Services. Based in Tampa, FL and serving borrowers across AL, FL, GA, LA, MI, and TN since 1999."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/about/">About</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">The Team</span>
+      </nav>
+      <h1>The Team Behind We Get It Closed</h1>
+      <p>American Mortgage Services has been helping borrowers close since 1999. Here's the leadership and staff that make it happen.</p>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Clay featured -->
+      <div class="leader-card">
+        <div class="leader-photo-wrap">
+          <Image
+            src={imgClay}
+            alt="Clay Heitler, President and Founder of American Mortgage Services"
+            width={260}
+            height={260}
+            format="webp"
+            quality={85}
+            class="leader-photo"
+          />
+        </div>
+        <div class="leader-bio">
+          <p class="leader-name">Clay Heitler</p>
+          <p class="leader-role">President &amp; Founder</p>
+          <p class="leader-nmls">NMLS# 372592</p>
+          <p>Clayton Heitler founded American Mortgage Services (formerly Affordable Home Mortgage) in Tampa in 1999. With over 25 years in mortgage lending, Clay is the leading producer in the office and has guided the company through multiple rate cycles, market shifts, and regulatory changes.</p>
+          <p>His background in financial services and deep knowledge of wholesale lending channels gives borrowers access to options most retail lenders can't match. Clay is hands-on from application to closing.</p>
+          <div class="leader-contact">
+            <a href="tel:8137595650" class="contact-link">(813) 759-5650</a>
+            <a href="/loan-officers/" class="btn-primary">Apply With Clay</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Staff section -->
+      <div class="staff-section">
+        <h2>Our Support Team</h2>
+        <p class="staff-intro">Behind every closed loan is a team of processors, coordinators, and support staff keeping the file moving. At American Mortgage Services, our operations team works alongside our loan officers to keep your transaction on track from submission to clear to close.</p>
+
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-photo-wrap">
+              <Image
+                src={imgStaff}
+                alt="American Mortgage Services staff team"
+                width={200}
+                height={200}
+                format="webp"
+                quality={85}
+                class="staff-photo"
+              />
+            </div>
+            <div class="staff-info">
+              <p class="staff-name">Kathy Paulsen</p>
+              <p class="staff-title">Operations &amp; Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why the team section -->
+      <div class="team-why">
+        <h2>Why Our Team Is Different</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>Wholesale Access</h3>
+            <p>Our loan officers work with a network of wholesale lenders — not a single bank's product menu. That means more programs, more competitive pricing structures, and more flexibility for your scenario.</p>
+          </div>
+          <div class="why-item">
+            <h3>25+ Years in Business</h3>
+            <p>Founded in Tampa in 1999, American Mortgage Services has survived multiple rate environments and market cycles. That experience informs how we guide borrowers through changing conditions.</p>
+          </div>
+          <div class="why-item">
+            <h3>Real People, Real Guidance</h3>
+            <p>You won't get handed off to a call center. When you work with our team, you work with a loan officer who knows your file and can answer your questions throughout the process.</p>
+          </div>
+          <div class="why-item">
+            <h3>Multi-State Coverage</h3>
+            <p>We originate mortgage loans in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. Our team understands the nuances of each state's market, programs, and property types.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Work With Our Team?"
+    subtext="Choose a loan officer and start your application — or contact us and we'll help match you with the right person for your scenario."
+    ctaText="Meet Our Loan Officers"
+    ctaUrl="/loan-officers/"
+    secondaryCtaText="Contact Us"
+    secondaryCtaUrl="/contact-us/"
+  />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 {
+  color: var(--color-white);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  margin: var(--space-4) 0 var(--space-4);
+}
+.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 60ch; }
+
+.breadcrumb-nav {
+  font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4);
+}
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav a:hover { color: var(--color-white); }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+
+/* Leader card */
+.leader-card {
+  display: flex; gap: var(--space-10); align-items: flex-start;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-10);
+  margin-bottom: var(--space-16);
+}
+@media (max-width: 680px) {
+  .leader-card { flex-direction: column; align-items: center; text-align: center; }
+  .leader-contact { justify-content: center; }
+}
+.leader-photo-wrap {
+  flex-shrink: 0; width: 260px; height: 260px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 3px solid oklch(87% 0.05 255);
+}
+.leader-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.leader-bio { flex: 1; }
+.leader-name {
+  font-family: var(--font-display); font-size: var(--text-3xl);
+  font-weight: 700; color: var(--color-navy);
+  margin: 0 0 var(--space-1); max-width: none;
+}
+.leader-role {
+  font-size: var(--text-base); color: var(--color-blue);
+  font-weight: 600; margin: 0 0 var(--space-1); max-width: none;
+}
+.leader-nmls {
+  font-size: var(--text-xs); color: oklch(55% 0.01 260);
+  margin: 0 0 var(--space-5); max-width: none;
+}
+.leader-bio p {
+  color: var(--color-gray-mid); line-height: 1.7;
+  margin: 0 0 var(--space-4); max-width: none;
+}
+.leader-contact {
+  display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+.contact-link {
+  font-size: var(--text-base); font-weight: 600;
+  color: var(--color-navy); text-decoration: none;
+}
+.contact-link:hover { color: var(--color-red); }
+
+/* Staff section */
+.staff-section { margin-bottom: var(--space-16); }
+.staff-section h2 {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  color: var(--color-navy); margin-bottom: var(--space-3);
+}
+.staff-intro {
+  color: var(--color-gray-mid); font-size: var(--text-lg);
+  max-width: 68ch; margin-bottom: var(--space-8);
+}
+.staff-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-6);
+}
+.staff-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  text-align: center;
+}
+.staff-photo-wrap { width: 100%; aspect-ratio: 1; overflow: hidden; }
+.staff-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.staff-info { padding: var(--space-4); }
+.staff-name {
+  font-family: var(--font-display); font-size: var(--text-base);
+  font-weight: 700; color: var(--color-navy);
+  margin: 0 0 var(--space-1); max-width: none;
+}
+.staff-title {
+  font-size: var(--text-sm); color: var(--color-blue);
+  font-weight: 500; margin: 0; max-width: none;
+}
+
+/* Why grid */
+.team-why { margin-bottom: var(--space-8); }
+.team-why h2 {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  color: var(--color-navy); margin-bottom: var(--space-8);
+}
+.why-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6);
+}
+@media (max-width: 640px) { .why-grid { grid-template-columns: 1fr; } }
+.why-item {
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+.why-item h3 {
+  font-size: var(--text-lg); color: var(--color-navy);
+  font-weight: 700; margin: 0 0 var(--space-3);
+}
+.why-item p {
+  color: var(--color-gray-mid); font-size: var(--text-sm);
+  line-height: 1.7; margin: 0;
+}
+</style>

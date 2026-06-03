@@ -74,7 +74,19 @@ import logoImg from '../assets/images/AMS-Logo-300x100-1 (1).webp';
           </div>
         </li>
 
-        <li><a href="/loan-officers/">Loan Officers</a></li>
+        <li class="has-dropdown">
+          <button class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            About Us
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="dropdown dropdown--about" role="menu">
+            <div class="dropdown-col">
+              <a href="/about/" role="menuitem">About American Mortgage Services</a>
+              <a href="/the-team/" role="menuitem">The Team</a>
+              <a href="/loan-officers/" role="menuitem">Loan Officers</a>
+            </div>
+          </div>
+        </li>
 
       </ul>
     </nav>
@@ -115,6 +127,8 @@ import logoImg from '../assets/images/AMS-Logo-300x100-1 (1).webp';
       <a href="/louisiana-mortgage/">Louisiana</a>
       <a href="/michigan-mortgage/">Michigan</a>
       <a href="/tennessee-mortgage/">Tennessee</a>
+      <a href="/about/">About Us</a>
+      <a href="/the-team/">The Team</a>
       <a href="/loan-officers/">Loan Officers</a>
     </nav>
     <a href="/loan-officers/" class="btn-primary mobile-cta">Apply Now</a>
@@ -213,6 +227,7 @@ document.addEventListener('click', (e) => {
   min-width: 600px; z-index: 200;
 }
 .dropdown--states { min-width: 200px; }
+.dropdown--about { min-width: 260px; }
 .dropdown-trigger[aria-expanded="true"] + .dropdown { display: block; }
 .dropdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 .dropdown-col { display: flex; flex-direction: column; gap: var(--space-1); }
