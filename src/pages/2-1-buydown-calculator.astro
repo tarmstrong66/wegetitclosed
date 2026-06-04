@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import BuydownCalculator from '../components/BuydownCalculator.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const faqs = [
+  {
+    question: "What is a 2-1 buydown?",
+    answer: "A 2-1 buydown is a temporary interest rate reduction on a fixed-rate mortgage. Your rate is reduced by 2% in the first year and 1% in the second year. Starting in year three, your loan returns to its original fixed rate for the remaining term."
+  },
+  {
+    question: "Who pays for the buydown?",
+    answer: "The buydown cost is often paid by the seller, builder, or lender as a closing concession — though a buyer can also pay for it. The total cost equals the sum of the monthly savings over the two-year reduced-rate period."
+  },
+  {
+    question: "Does the buydown change my actual loan rate?",
+    answer: "No. Your note rate stays the same. The buydown simply subsidizes the difference between your actual rate and the temporarily reduced rate during years one and two. Starting in year three, you pay your full note rate as normal."
+  },
+  {
+    question: "What loan programs allow a 2-1 buydown?",
+    answer: "Many conventional, FHA, VA, and USDA loans permit temporary buydowns, but eligibility and guidelines vary by program and lender. Talk with a loan officer to confirm whether a buydown is available for your specific loan."
+  },
+  {
+    question: "Are the payments shown here my exact payments?",
+    answer: "No. This calculator estimates principal and interest only. Your actual monthly payment will also include property taxes, homeowner's insurance, mortgage insurance (if applicable), and HOA dues. These are estimates for comparison purposes only."
+  },
+  {
+    question: "Is a 2-1 buydown better than buying discount points?",
+    answer: "They serve different purposes. A buydown lowers your payment temporarily for short-term affordability. Discount points permanently lower your rate for long-term savings. Which is better depends on how long you plan to stay in the home and your current financial situation. A loan officer can compare both options for your scenario."
+  }
+];
+---
+
+<BaseLayout
+  title="2-1 Buydown Calculator | Estimate Your Temporary Rate Savings | American Mortgage Services"
+  description="Use our free 2-1 buydown calculator to see how a temporary rate reduction could lower your mortgage payments in years one and two. Estimates only — talk with a loan officer for your actual scenario."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span>
+        <a href="/mortgage-calculators/">Calculators</a> <span>/</span>
+        <span aria-current="page">2-1 Buydown Calculator</span>
+      </nav>
+      <h1>2-1 Buydown Calculator</h1>
+      <p>See how a 2-1 buydown could reduce your mortgage payments in the first two years. Enter your loan amount, rate, and term to estimate your savings and the total buydown cost. Estimates only — actual results depend on your loan program, lender, and scenario.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <BuydownCalculator />
+
+      <div class="calc-disclaimer">
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Results reflect principal and interest only and do not include property taxes, homeowner's insurance, mortgage insurance, or HOA dues. Actual payments, rates, and program eligibility are subject to credit review, income verification, property appraisal, and lender approval. This does not constitute a loan offer or commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="how-to-grid">
+
+        <div class="how-to-header">
+          <h2>How to Use This Calculator</h2>
+          <p>Follow these steps to see how a temporary rate reduction may affect your monthly payment and total buydown cost.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Enter Your Loan Details</h3>
+          <p>Input your loan amount, interest rate, and loan term. This gives the calculator the foundation it needs to estimate your payments.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Review Estimated Savings</h3>
+          <p>See how your reduced payments during the two-year buydown period compare to your standard fixed payment once the rate returns to normal.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Understand the 2-1 Structure</h3>
+          <p>Your rate is reduced by <strong>2%</strong> in year one and <strong>1%</strong> in year two. Starting in year three, your loan runs at its original fixed rate for the remaining term.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Check Fees and Eligibility</h3>
+          <p>Buydown costs vary and are often covered by the seller or builder. Not all loan programs allow buydowns, and additional restrictions may apply. Talk with a loan officer to confirm eligibility.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-narrow">
+      <h2>What Is a 2-1 Buydown and When Does It Make Sense?</h2>
+      <p>A 2-1 buydown is a seller or builder concession that temporarily reduces your mortgage interest rate during the first two years of your loan. Instead of paying your full note rate from day one, you benefit from a lower rate up front — and your lender receives the difference from a subsidy fund established at closing.</p>
+
+      <h3>How the Rate Reduction Works</h3>
+      <p>With a 2-1 buydown on a 6.5% rate, you would pay 4.5% in year one and 5.5% in year two. Starting in year three, your rate returns to 6.5% for the life of the loan. Your loan balance and note rate don't change — only the payment you make during the subsidy period.</p>
+
+      <h3>Who Typically Pays for a Buydown?</h3>
+      <p>In many cases, home sellers — including production builders — offer buydowns as a sales incentive instead of lowering the purchase price. A seller-funded buydown can make a home more competitive without reducing the final sale price, which can benefit both parties depending on how the deal is structured.</p>
+
+      <h3>Is a 2-1 Buydown Right for Your Situation?</h3>
+      <p>A buydown can help borrowers manage cash flow in the early years of homeownership, or bridge the gap while expecting income to increase. However, if you plan to sell or refinance within two years, the reduced payments may not fully benefit you. A loan officer can walk you through how a buydown compares to other options — like discount points or a seller price reduction — for your specific scenario.</p>
+
+      <p><a href="/loan-programs/refinance-loans/">Learn about refinance options</a> if you're already in a higher-rate loan and want to explore reducing your rate permanently.</p>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="2-1 Buydown FAQ" />
+
+  <CTASection
+    heading="Want to Know If a 2-1 Buydown Makes Sense for You?"
+    subtext="Our loan officers can walk you through buydown programs, seller concession strategies, and how to compare your options. We serve borrowers in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee."
+    ctaText="Contact Us"
+    ctaUrl="/contact-us/"
+    secondaryCtaText="Meet Our Loan Officers"
+    secondaryCtaUrl="/loan-officers/"
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    margin: var(--space-4) 0 var(--space-4);
+  }
+  .page-hero p {
+    color: oklch(80% 0.02 260);
+    font-size: var(--text-base);
+    max-width: 65ch;
+  }
+  .breadcrumb-nav {
+    font-size: var(--text-sm);
+    color: oklch(65% 0.02 260);
+    margin-bottom: var(--space-4);
+  }
+  .breadcrumb-nav a {
+    color: oklch(70% 0.02 260);
+    text-decoration: none;
+  }
+  .breadcrumb-nav a:hover { text-decoration: underline; }
+  .breadcrumb-nav span { margin: 0 var(--space-2); }
+
+  .calc-disclaimer {
+    max-width: 900px;
+    margin: var(--space-8) auto 0;
+    background: var(--color-off-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid var(--color-gray-subtle);
+  }
+  .calc-disclaimer p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-mid);
+    max-width: none;
+  }
+
+  /* How-to grid */
+  .section--alt { background: var(--color-off-white); }
+
+  .how-to-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .how-to-header {
+    grid-column: 1 / -1;
+  }
+
+  .how-to-header h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .how-to-header p {
+    color: var(--color-gray-mid);
+    max-width: 55ch;
+  }
+
+  .step-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--color-gray-subtle);
+    box-shadow: var(--shadow-card);
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .step-card h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .step-card p {
+    color: var(--color-gray-mid);
+    font-size: var(--text-sm);
+    max-width: none;
+  }
+
+  @media (max-width: 640px) {
+    .how-to-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Content section */
+  .content-narrow {
+    max-width: 700px;
+  }
+
+  .content-narrow h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .content-narrow h3 {
+    font-size: var(--text-xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-2);
+  }
+
+  .content-narrow p {
+    color: var(--color-gray-mid);
+    max-width: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .content-narrow a {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+</style>

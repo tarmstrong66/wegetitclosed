@@ -1,0 +1,255 @@
+---
+// Self-contained 2-1 buydown calculator
+---
+
+<div class="bd-wrapper">
+  <div class="bd-form">
+    <label>
+      Buydown Type
+      <select id="bd-type">
+        <option>2-1 Buydown</option>
+      </select>
+    </label>
+    <label>
+      Loan Term (Years)
+      <input id="bd-term" type="number" value="30" min="1">
+    </label>
+    <label>
+      Total Loan Amount ($)
+      <input id="bd-amount" type="number" value="400000">
+    </label>
+    <label>
+      Interest Rate (%)
+      <input id="bd-rate" type="number" value="6.5" step="0.01">
+    </label>
+    <button id="bd-calc-btn" class="bd-btn">Calculate</button>
+  </div>
+
+  <div class="bd-results" id="bd-results">
+    <table class="bd-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Rate</th>
+          <th>Payment</th>
+          <th>Monthly Savings</th>
+          <th>Annual Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>2</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>3&ndash;<span id="bd-term-display">30</span></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+    <div class="bd-total-box">
+      <h3>Buydown Total Cost: &mdash;</h3>
+      <p>Total estimated cost — can be paid by buyer, seller, lender, or third party.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const termInput = document.getElementById('bd-term') as HTMLInputElement;
+  const termDisplay = document.getElementById('bd-term-display')!;
+  const resultsDiv = document.getElementById('bd-results')!;
+
+  termInput.addEventListener('input', () => {
+    termDisplay.textContent = termInput.value;
+  });
+
+  function fmt(n: number) {
+    return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  function monthlyPayment(principal: number, annualRate: number, years: number) {
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+    return (principal * r) / (1 - Math.pow(1 + r, -n));
+  }
+
+  function calculate() {
+    const term = parseInt(termInput.value, 10);
+    const rate = parseFloat((document.getElementById('bd-rate') as HTMLInputElement).value);
+    const amount = parseFloat((document.getElementById('bd-amount') as HTMLInputElement).value);
+
+    if ([term, rate, amount].some(isNaN) || term <= 0 || rate <= 0 || amount <= 0) {
+      alert('Please fill in all fields with valid numbers.');
+      return;
+    }
+
+    const fullPayment = monthlyPayment(amount, rate, term);
+    const rate1 = Math.max(rate - 2, 0);
+    const rate2 = Math.max(rate - 1, 0);
+    const payment1 = monthlyPayment(amount, rate1, term);
+    const payment2 = monthlyPayment(amount, rate2, term);
+    const savings1 = fullPayment - payment1;
+    const savings2 = fullPayment - payment2;
+    const totalCost = (savings1 + savings2) * 12;
+
+    resultsDiv.innerHTML = `
+      <table class="bd-table">
+        <thead>
+          <tr>
+            <th>Year</th><th>Rate</th><th>Payment</th><th>Monthly Savings</th><th>Annual Savings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>${rate1.toFixed(2)}%</td>
+            <td>${fmt(payment1)}</td>
+            <td class="bd-savings">${fmt(savings1)}</td>
+            <td class="bd-savings">${fmt(savings1 * 12)}</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>${rate2.toFixed(2)}%</td>
+            <td>${fmt(payment2)}</td>
+            <td class="bd-savings">${fmt(savings2)}</td>
+            <td class="bd-savings">${fmt(savings2 * 12)}</td>
+          </tr>
+          <tr>
+            <td>3&ndash;${term}</td>
+            <td>${rate.toFixed(2)}%</td>
+            <td>${fmt(fullPayment)}</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bd-total-box">
+        <h3>Buydown Total Cost: ${fmt(totalCost)}</h3>
+        <p>Total estimated cost — can be paid by buyer, seller, lender, or third party.</p>
+      </div>
+    `;
+  }
+
+  document.getElementById('bd-calc-btn')!.addEventListener('click', calculate);
+</script>
+
+<style>
+  .bd-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: #f7f9fb;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .bd-form {
+    flex: 1 1 260px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bd-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .bd-form input,
+  .bd-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background: #f1f5f8;
+    color: #555;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .bd-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 4px;
+    background: #1b5697;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .bd-btn:hover {
+    background: #17497f;
+  }
+
+  .bd-results {
+    flex: 2 1 320px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+
+  .bd-table th,
+  .bd-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .bd-table th {
+    color: #1e3a8a;
+    font-weight: 600;
+  }
+
+  .bd-savings {
+    color: #1b5697;
+    font-weight: 600;
+  }
+
+  .bd-total-box {
+    background: #fff;
+    padding: 20px;
+    border: 2px solid #1e3a8a;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .bd-total-box h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #1e3a8a;
+  }
+
+  .bd-total-box p {
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .bd-wrapper { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .bd-form { padding: 16px; }
+    .bd-table th,
+    .bd-table td { padding: 8px; font-size: 0.82rem; }
+  }
+</style>
