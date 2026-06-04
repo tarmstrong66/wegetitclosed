@@ -4,21 +4,51 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import CTASection from '../../components/CTASection.astro';
 
-import imgAbout    from '../../assets/images/About-American-Mortgage.jpg';
-import imgTeam     from '../../assets/images/team-page-photo.jpg';
-import imgClay     from '../../assets/images/Clay-Heitler.jpg';
-import imgShannon  from '../../assets/images/Shannon-Robinson-1-200x300.jpg';
-import imgJoAnne   from '../../assets/images/JoAnne-Patton-200x256.jpg';
-import imgLindsey  from '../../assets/images/Lindsey-Randall-200x300.jpg';
-import imgMarivel  from '../../assets/images/Marivel-Noyola-200x300.jpg';
-import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
+import imgAbout   from '../../assets/images/About-American-Mortgage.jpg';
+import imgTeam    from '../../assets/images/team-page-photo.jpg';
+import imgClay    from '../../assets/images/Clay-Heitler.jpg';
+import imgShannon from '../../assets/images/Shannon-Robinson-1-200x300.jpg';
+import imgJoAnne  from '../../assets/images/JoAnne-Patton-200x256.jpg';
+import imgLindsey from '../../assets/images/Lindsey-Randall-200x300.jpg';
+import imgMarivel from '../../assets/images/Marivel-Noyola-200x300.jpg';
+import imgAlex    from '../../assets/images/AlexanderRotz-200x300.jpg';
 
 const staff = [
-  { name: 'Shannon Robinson', title: 'Operations Manager',       nmls: '',         image: imgShannon },
-  { name: 'JoAnne Patton',   title: 'Processor',                nmls: '342684',   image: imgJoAnne  },
-  { name: 'Lindsey Randall', title: 'Processor',                nmls: '',         image: imgLindsey },
-  { name: 'Marivel Noyola',  title: 'Administrator',            nmls: '',         image: imgMarivel },
-  { name: 'Alexander Rotz',  title: 'Loan Partner',             nmls: '1555722',  image: imgAlex    },
+  {
+    name: 'Shannon Robinson',
+    title: 'Operations Manager',
+    nmls: '',
+    image: imgShannon,
+    bio: 'Shannon is a returning employee that moved back to Tampa in the beginning of 2021. She brings 15 years of management experience to the team and loves her job! Shannon holds a degree in Business Administration, Summa Cum Laude, and currently lives in north Tampa with her husband and two children.',
+  },
+  {
+    name: 'JoAnne Patton',
+    title: 'Processor',
+    nmls: '342684',
+    image: imgJoAnne,
+    bio: 'JoAnne has been serving mortgage needs in the Tampa Bay area for the past 30 years. With her knowledge and experience, she is committed to providing excellent service from application to closing. In her free time, she loves spending time with her husband and two boys, RV\'ing and playing tennis.',
+  },
+  {
+    name: 'Lindsey Randall',
+    title: 'Processor',
+    nmls: '',
+    image: imgLindsey,
+    bio: 'Lindsey has been serving as a Loan Processor since March 2021, processing loans right out of college in 2003 before rejoining the AMS team. She has a background in finance and working closely with Real Estate Agents. Lindsey graduated from the University of Mississippi in Finance and Management. Outside of processing, she loves God, helping others, and delicious food.',
+  },
+  {
+    name: 'Marivel Noyola',
+    title: 'Administrator',
+    nmls: '',
+    image: imgMarivel,
+    bio: 'Marivel rejoined the mortgage industry — where she started in 2000 — after spending time raising her family and helping with the family trucking business in Houston, Texas. In 2019 she relocated to Tampa, Florida. Marivel is excited to be a part of the American Mortgage Services family. In her free time she loves going to the beach and Salsa dancing!',
+  },
+  {
+    name: 'Alexander Rotz',
+    title: 'Loan Partner',
+    nmls: '1555722',
+    image: imgAlex,
+    bio: 'Alex is a dedicated mortgage professional with a proven track record of success helping clients achieve their homeownership dreams. With 10 years of experience, he excels at tailoring mortgage solutions to individual needs and building long-term relationships with clients and industry partners. A Tampa native, Alex enjoys boating, fishing, or any activity on the water!',
+  },
 ];
 ---
 <BaseLayout
@@ -43,7 +73,7 @@ const staff = [
 
       <!-- Company photos -->
       <div class="company-photos">
-        <div class="photo-square">
+        <div class="photo-col">
           <Image
             src={imgAbout}
             alt="American Mortgage Services team group photo"
@@ -54,12 +84,12 @@ const staff = [
             class="company-photo"
           />
         </div>
-        <div class="photo-wide">
+        <div class="photo-col">
           <Image
             src={imgTeam}
             alt="American Mortgage Services staff celebrating Boss Day"
             width={900}
-            height={506}
+            height={600}
             format="webp"
             quality={85}
             class="company-photo"
@@ -75,50 +105,54 @@ const staff = [
       </div>
 
       <!-- Clay featured card -->
-      <div class="clay-card">
-        <div class="clay-photo-wrap">
+      <div class="member-card clay-card">
+        <div class="member-photo-wrap">
           <Image
             src={imgClay}
             alt="Clayton Heitler, Owner and Founder of American Mortgage Services"
-            width={260}
-            height={320}
+            width={220}
+            height={280}
             format="webp"
             quality={85}
-            class="clay-photo"
+            class="member-photo"
           />
         </div>
-        <div class="clay-bio">
-          <p class="clay-name">Clayton Heitler</p>
-          <p class="clay-role">Owner &amp; Founder</p>
-          <p class="clay-nmls">NMLS# 372592</p>
+        <div class="member-bio">
+          <p class="member-name clay-name">Clayton Heitler</p>
+          <p class="member-role">Owner &amp; Founder</p>
+          <p class="member-nmls">NMLS# 372592</p>
           <p>Clay Heitler (NMLS #372592) is the President and Founder of American Mortgage Services, Inc. Clay has owned and operated Tampa-based Affordable Home Mortgage (now American Mortgage Services) since 1999.</p>
           <p>Clay was born and raised in Baton Rouge, LA, and relocated to Florida in the early 90's. He graduated from the University of South Florida in 1993 and is still an avid Bulls fan. Clay is an active member of the Tampa Bay community and is the friendliest person you will ever meet!</p>
           <div class="clay-actions">
-            <a href="tel:8137895660" class="clay-phone">813.789.9660</a>
-            <a href="/loan-officers/" class="btn-primary clay-btn">Apply With Clay</a>
+            <a href="tel:8137899660" class="clay-phone">813.789.9660</a>
+            <a href="/apply-now/" class="btn-primary clay-btn">Apply With Clay</a>
           </div>
         </div>
       </div>
 
-      <!-- Support staff grid -->
+      <!-- Support staff -->
       <h2 class="staff-heading">Our Support Team</h2>
       <div class="staff-grid">
         {staff.map(member => (
-          <div class="staff-tile">
-            <div class="tile-photo-wrap">
+          <div class="member-card">
+            <div class="member-photo-wrap">
               <Image
                 src={member.image}
                 alt={`${member.name}, ${member.title} at American Mortgage Services`}
-                width={400}
-                height={440}
+                width={180}
+                height={240}
                 format="webp"
                 quality={85}
-                class="tile-photo"
+                class="member-photo"
               />
             </div>
-            <div class="tile-info">
-              <p class="tile-name">{member.name}</p>
-              <p class="tile-title">{member.title}{member.nmls ? ` / NMLS #${member.nmls}` : ''}</p>
+            <div class="member-bio">
+              <p class="member-name">{member.name}</p>
+              <p class="member-role">
+                {member.title}
+                {member.nmls && <span class="member-nmls-inline"> / NMLS #{member.nmls}</span>}
+              </p>
+              <p class="member-body">{member.bio}</p>
             </div>
           </div>
         ))}
@@ -138,8 +172,10 @@ const staff = [
 </BaseLayout>
 
 <style>
+/* Hero */
 .page-hero {
-  background: var(--color-navy); color: var(--color-white);
+  background: var(--color-navy);
+  color: var(--color-white);
   padding: var(--space-16) 0 var(--space-12);
 }
 .page-hero h1 {
@@ -147,47 +183,49 @@ const staff = [
   font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
   margin: var(--space-4) 0 var(--space-4);
 }
-.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 60ch; }
+.page-hero p {
+  color: oklch(80% 0.02 260);
+  font-size: var(--text-lg);
+  max-width: 60ch;
+}
 
 .breadcrumb-nav {
-  font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  color: oklch(65% 0.02 260);
+  margin-bottom: var(--space-4);
 }
 .breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
 .breadcrumb-nav a:hover { color: var(--color-white); }
 .breadcrumb-nav span { margin: 0 var(--space-2); }
 
-/* Company photos */
+/* Company photos — left narrower (square group), right wider (landscape) */
 .company-photos {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: 5fr 9fr;
   gap: var(--space-4);
-  align-items: stretch;
+  align-items: start;
   margin-bottom: var(--space-12);
 }
 @media (max-width: 640px) {
   .company-photos { grid-template-columns: 1fr; }
 }
 
-.photo-square {
-  aspect-ratio: 1 / 1;
+.photo-col {
   border-radius: var(--radius-lg);
   overflow: hidden;
-}
-.photo-wide {
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  line-height: 0;
 }
 .company-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
+  width: 100%;
+  height: auto;
   display: block;
 }
 
 /* About copy */
 .about-copy {
   max-width: 80ch;
-  margin-bottom: var(--space-12);
+  margin: 0 auto var(--space-12);
+  text-align: center;
 }
 .about-copy h2 {
   font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
@@ -201,137 +239,135 @@ const staff = [
   margin-bottom: var(--space-4);
 }
 
-/* Clay featured card */
-.clay-card {
+/* Shared member card — horizontal photo + bio */
+.member-card {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-6);
   align-items: flex-start;
   background: var(--color-white);
   border: 1px solid var(--color-gray-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: var(--space-8);
-  margin-bottom: var(--space-14);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
 }
-@media (max-width: 640px) {
-  .clay-card { flex-direction: column; align-items: center; text-align: center; }
+@media (max-width: 560px) {
+  .member-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   .clay-actions { justify-content: center; }
 }
 
-.clay-photo-wrap {
+/* Photo wrap — portrait, no fixed height crop */
+.member-photo-wrap {
   flex-shrink: 0;
-  width: 260px;
-  height: 320px;
-  border-radius: var(--radius-lg);
+  width: 180px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 3px solid oklch(87% 0.05 255);
-}
-.clay-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  display: block;
+  border: 2px solid oklch(90% 0.03 255);
+  line-height: 0;
 }
 
-.clay-bio { flex: 1; }
+/* Clay gets a slightly larger photo */
+.clay-card .member-photo-wrap {
+  width: 220px;
+}
+
+.member-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Bio text */
+.member-bio { flex: 1; }
+
+.member-name {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 var(--space-1);
+  max-width: none;
+}
 .clay-name {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: 700;
+  font-size: var(--text-2xl);
   color: var(--color-red);
-  margin: 0 0 var(--space-1);
-  max-width: none;
 }
-.clay-role {
-  font-size: var(--text-base);
+
+.member-role {
+  font-size: var(--text-sm);
   color: var(--color-blue);
-  font-weight: 700;
-  margin: 0 0 var(--space-1);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
   max-width: none;
 }
-.clay-nmls {
+.member-nmls {
   font-size: var(--text-xs);
   color: oklch(55% 0.01 260);
+  font-weight: 400;
   margin: 0 0 var(--space-5);
   max-width: none;
+  display: block;
 }
-.clay-bio p {
+.member-nmls-inline {
+  font-weight: 400;
+  color: oklch(55% 0.01 260);
+  font-size: var(--text-xs);
+}
+
+.member-bio p {
   color: var(--color-gray-mid);
   line-height: 1.7;
   margin: 0 0 var(--space-4);
   max-width: none;
 }
+.member-bio p:last-child { margin-bottom: 0; }
+
+.member-body {
+  color: var(--color-gray-mid);
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  margin: 0;
+  max-width: none;
+}
+
+/* Clay CTA row */
 .clay-actions {
   display: flex;
   align-items: center;
   gap: var(--space-4);
   flex-wrap: wrap;
-  margin-top: var(--space-2);
+  margin-top: var(--space-4);
 }
 .clay-phone {
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-red);
   text-decoration: none;
 }
 .clay-phone:hover { color: var(--color-navy); }
 .clay-btn { font-size: var(--text-sm); }
 
-/* Staff grid */
+/* Support staff section — two-column card grid */
 .staff-heading {
   font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
   color: var(--color-navy);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .staff-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-5);
 }
-@media (max-width: 768px) { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .staff-grid { grid-template-columns: 1fr; } }
-
-.staff-tile {
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
-}
-.staff-tile:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+@media (max-width: 768px) {
+  .staff-grid { grid-template-columns: 1fr; }
 }
 
-.tile-photo-wrap {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-}
-.tile-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  display: block;
-}
-
-.tile-info {
-  padding: var(--space-4) var(--space-5);
-  text-align: center;
-}
-.tile-name {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 700;
-  color: var(--color-navy);
-  margin: 0 0 var(--space-1);
-  max-width: none;
-}
-.tile-title {
-  font-size: var(--text-xs);
-  color: var(--color-blue);
-  font-weight: 600;
-  margin: 0;
-  max-width: none;
-}
+/* Cards inside the grid reset bottom margin (grid gap handles it) */
+.staff-grid .member-card { margin-bottom: 0; }
 </style>
