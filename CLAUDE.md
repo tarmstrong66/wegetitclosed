@@ -106,6 +106,10 @@ Build for:
 \- Redirect plan  
 \- Accessible forms and buttons
 
+\#\# Writing Style Rules
+
+Never use em dashes (—) or en dashes (–) anywhere in the site. Not in page content, component text, meta descriptions, alt text, headings, or code comments. Use a hyphen (-), colon (:), or rewrite the sentence instead. This includes numeric ranges: write 25-30% not 25–30%.
+
 \#\# Image Rules
 
 Use Nano Banana Pro or the approved image generation tool for site images.

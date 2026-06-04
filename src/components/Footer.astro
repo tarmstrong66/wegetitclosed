@@ -17,7 +17,11 @@ const year = new Date().getFullYear();
         <li><a href="/loan-officers/">Loan Officers</a></li>
         <li><a href="/areas-we-serve/">Areas We Serve</a></li>
         <li><a href="/reviews/">Reviews</a></li>
-        <li><a href="/mortgage-calculators/">Calculators</a></li>
+        <li class="footer-sub-label">Calculators</li>
+        <li class="footer-sub"><a href="/mortgage-calculators/">Mortgage Payment</a></li>
+        <li class="footer-sub"><a href="/refinance-calculator/">Refinance Savings</a></li>
+        <li class="footer-sub"><a href="/dscr-calculator/">DSCR Cash Flow</a></li>
+        <li class="footer-sub"><a href="/2-1-buydown-calculator/">2-1 Buydown</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/contact-us/">Contact</a></li>
         <li><a href="/loan-officers/">Apply Now</a></li>
@@ -113,6 +117,15 @@ const year = new Date().getFullYear();
   font-size: var(--text-sm); transition: color 150ms ease-out;
 }
 .footer-col a:hover { color: var(--color-white); }
+.footer-sub-label {
+  font-size: var(--text-xs); font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: oklch(55% 0.01 260);
+  margin-top: var(--space-2); list-style: none;
+}
+.footer-sub a {
+  padding-left: var(--space-3);
+  font-size: var(--text-xs) !important;
+}
 .footer-compliance {
   font-size: var(--text-xs); line-height: 1.5; margin-top: var(--space-6);
   color: oklch(55% 0.01 260); max-width: none;

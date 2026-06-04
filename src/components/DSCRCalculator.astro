@@ -1,12 +1,12 @@
----
-// Self-contained DSCR calculator — no Tailwind CDN
+﻿---
+// Self-contained DSCR calculator - no Tailwind CDN
 ---
 
 <div class="dscr-app">
 
   <header class="dscr-header">
     <h2>DSCR Analyzer</h2>
-    <p>Enter your rental income and total monthly payment to calculate your Debt Service Coverage Ratio. No personal income required for DSCR loans — the property qualifies itself.</p>
+    <p>Enter your rental income and total monthly payment to calculate your Debt Service Coverage Ratio. No personal income required for DSCR loans - the property qualifies itself.</p>
   </header>
 
   <div class="dscr-hint">
@@ -73,12 +73,12 @@
 
     if (dscr < 1.0) {
       panel.dataset.state = 'caution';
-      titleEl.textContent = 'Below 1.0 — Deals Are Still Possible';
-      textEl.textContent = 'A DSCR below 1.0 means the rental income doesn\'t fully cover the payment — but this is not automatically a disqualifier. Some lenders offer DSCR programs that allow ratios below 1.0, typically with rate adjustments and higher down payment requirements (often 25–30%+). Strong credit and reserves help. Talk with a loan officer to see what\'s available for your specific scenario.';
+      titleEl.textContent = 'Below 1.0 - Deals Are Still Possible';
+      textEl.textContent = 'A DSCR below 1.0 means the rental income doesn\'t fully cover the payment - but this is not automatically a disqualifier. Some lenders offer DSCR programs that allow ratios below 1.0, typically with rate adjustments and higher down payment requirements (often 25-30%+). Strong credit and reserves help. Talk with a loan officer to see what\'s available for your specific scenario.';
     } else if (dscr < 1.1) {
       panel.dataset.state = 'marginal';
       titleEl.textContent = 'Break Even / Marginal';
-      textEl.textContent = 'Rental income just covers the debt. Lenders may look for stronger credit scores and cash reserves to approve at this level. Still lendable — discuss your scenario with a loan officer.';
+      textEl.textContent = 'Rental income just covers the debt. Lenders may look for stronger credit scores and cash reserves to approve at this level. Still lendable - discuss your scenario with a loan officer.';
     } else if (dscr <= 1.25) {
       panel.dataset.state = 'good';
       titleEl.textContent = 'Preferred / Good';
