@@ -4,8 +4,8 @@ import CTASection from '../components/CTASection.astro';
 import MortgageCalculator from '../components/MortgageCalculator.astro';
 ---
 <BaseLayout
-  title="Mortgage Calculators | Payment, Affordability & Refinance | American Mortgage Services"
-  description="Use our free mortgage calculators to estimate monthly payments, affordability, and refinance break-even. These are estimates only. Talk with a loan officer for accurate figures."
+  title="Mortgage Calculators | Payment, DTI, Refinance & DSCR | American Mortgage Services"
+  description="Free mortgage calculators from American Mortgage Services. Estimate your monthly payment with taxes and insurance, run a refinance savings analysis, check your DSCR, and more."
 >
   <section class="page-hero">
     <div class="container">
@@ -13,99 +13,40 @@ import MortgageCalculator from '../components/MortgageCalculator.astro';
         <a href="/">Home</a> <span>/</span> <span aria-current="page">Mortgage Calculators</span>
       </nav>
       <h1>Mortgage Calculators</h1>
-      <p>These calculators provide estimates only. Actual loan terms, payments, and eligibility depend on your credit, income, property, and lender guidelines. Talk with a loan officer for accurate figures.</p>
+      <p>Estimate payments, savings, and cash flow ratios. All figures are estimates only — actual loan terms, payments, and eligibility depend on your credit, income, property, and lender guidelines.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="calculators-grid">
 
-        <!-- Monthly Payment Calculator -->
-        <div class="calc-card" id="payment-calc">
-          <h2>Monthly Payment Calculator</h2>
-          <p class="calc-desc">Estimate your principal and interest payment based on loan amount, rate, and term.</p>
-          <form class="calc-form" onsubmit="return false;">
-            <div class="field">
-              <label for="loan-amount">Loan Amount ($)</label>
-              <input type="number" id="loan-amount" value="300000" min="10000" max="5000000" step="1000" />
-            </div>
-            <div class="field">
-              <label for="interest-rate">Interest Rate (%)</label>
-              <input type="number" id="interest-rate" value="7.0" min="1" max="20" step="0.1" />
-            </div>
-            <div class="field">
-              <label for="loan-term">Loan Term (Years)</label>
-              <select id="loan-term">
-                <option value="30" selected>30 Years</option>
-                <option value="20">20 Years</option>
-                <option value="15">15 Years</option>
-                <option value="10">10 Years</option>
-              </select>
-            </div>
-            <button type="button" class="btn-primary" onclick="calcPayment()">Calculate Payment</button>
-          </form>
-          <div class="calc-result" id="payment-result" aria-live="polite"></div>
-        </div>
-
-        <!-- Affordability Calculator -->
-        <div class="calc-card" id="afford-calc">
-          <h2>Affordability Calculator</h2>
-          <p class="calc-desc">Estimate a purchase price range based on your gross monthly income and debts.</p>
-          <form class="calc-form" onsubmit="return false;">
-            <div class="field">
-              <label for="gross-income">Gross Monthly Income ($)</label>
-              <input type="number" id="gross-income" value="6000" min="1000" max="100000" step="100" />
-            </div>
-            <div class="field">
-              <label for="monthly-debts">Monthly Debt Payments ($)</label>
-              <input type="number" id="monthly-debts" value="400" min="0" max="10000" step="50" />
-            </div>
-            <div class="field">
-              <label for="afford-rate">Interest Rate (%)</label>
-              <input type="number" id="afford-rate" value="7.0" min="1" max="20" step="0.1" />
-            </div>
-            <div class="field">
-              <label for="down-payment">Down Payment ($)</label>
-              <input type="number" id="down-payment" value="20000" min="0" max="1000000" step="1000" />
-            </div>
-            <button type="button" class="btn-primary" onclick="calcAfford()">Estimate Affordability</button>
-          </form>
-          <div class="calc-result" id="afford-result" aria-live="polite"></div>
-        </div>
-
-        <!-- Refinance Break-Even Calculator -->
-        <div class="calc-card" id="refi-calc">
-          <h2>Refinance Break-Even Calculator</h2>
-          <p class="calc-desc">Estimate how long it takes to recoup refinance closing costs from your monthly savings.</p>
-          <form class="calc-form" onsubmit="return false;">
-            <div class="field">
-              <label for="current-payment">Current Monthly P&amp;I ($)</label>
-              <input type="number" id="current-payment" value="2200" min="100" max="20000" step="10" />
-            </div>
-            <div class="field">
-              <label for="new-payment">Estimated New Monthly P&amp;I ($)</label>
-              <input type="number" id="new-payment" value="1950" min="100" max="20000" step="10" />
-            </div>
-            <div class="field">
-              <label for="closing-costs">Estimated Closing Costs ($)</label>
-              <input type="number" id="closing-costs" value="5000" min="0" max="50000" step="100" />
-            </div>
-            <button type="button" class="btn-primary" onclick="calcRefi()">Calculate Break-Even</button>
-          </form>
-          <div class="calc-result" id="refi-result" aria-live="polite"></div>
-        </div>
-
-      </div>
-
-      <div class="featured-calc">
-        <h2>Full Mortgage Payment + DTI Calculator</h2>
-        <p>Includes taxes, insurance, PMI, HOA, and debt-to-income ratio in one tool.</p>
+      <div class="calc-hub">
         <MortgageCalculator />
       </div>
 
+      <div class="other-calcs">
+        <h2>More Calculators</h2>
+        <div class="other-calcs-grid">
+          <a href="/refinance-calculator/" class="other-calc-card">
+            <div class="other-calc-icon">&#8635;</div>
+            <h3>Refinance Savings Calculator</h3>
+            <p>Compare your current payment to a new rate. See monthly savings, total interest saved, and your breakeven timeline.</p>
+          </a>
+          <a href="/dscr-calculator/" class="other-calc-card">
+            <div class="other-calc-icon">&#36;</div>
+            <h3>DSCR Cash Flow Calculator</h3>
+            <p>Evaluate whether a rental property's income supports a DSCR loan. Includes guidance for ratios below 1.0.</p>
+          </a>
+          <a href="/2-1-buydown-calculator/" class="other-calc-card">
+            <div class="other-calc-icon">&#8595;</div>
+            <h3>2-1 Buydown Calculator</h3>
+            <p>See how a temporary rate reduction in years one and two affects your payment and total buydown cost.</p>
+          </a>
+        </div>
+      </div>
+
       <div class="calc-disclaimer">
-        <p><strong>Disclaimer:</strong> These calculators are for estimation purposes only. They do not account for taxes, insurance, HOA dues, mortgage insurance, or other costs. Actual loan terms, payments, and eligibility are subject to credit review, income verification, property appraisal, and lender guidelines. These calculators do not constitute a loan application or commitment to lend.</p>
+        <p><strong>Disclaimer:</strong> These calculators are for estimation purposes only and do not account for all costs or lender overlays. Actual loan terms, payments, and eligibility are subject to credit review, income verification, property appraisal, and lender guidelines. These tools do not constitute a loan application or commitment to lend.</p>
       </div>
     </div>
   </section>
@@ -114,51 +55,11 @@ import MortgageCalculator from '../components/MortgageCalculator.astro';
     heading="Ready to Talk Numbers with a Loan Officer?"
     subtext="Get accurate estimates based on your actual scenario, credit, and the property you're considering."
     ctaText="Contact Us"
-    ctaUrl="/contact/"
-    secondaryCtaText="Apply Now"
+    ctaUrl="/contact-us/"
+    secondaryCtaText="Meet Our Loan Officers"
     secondaryCtaUrl="/loan-officers/"
   />
 </BaseLayout>
-
-<script>
-function calcPayment() {
-  const amount = parseFloat((document.getElementById('loan-amount') as HTMLInputElement).value);
-  const rate = parseFloat((document.getElementById('interest-rate') as HTMLInputElement).value) / 100 / 12;
-  const term = parseInt((document.getElementById('loan-term') as HTMLSelectElement).value) * 12;
-  const result = document.getElementById('payment-result')!;
-  if (!amount || !rate || !term) { result.textContent = 'Please fill in all fields.'; return; }
-  const payment = amount * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
-  result.innerHTML = `<div class="result-value">$${payment.toFixed(2)}<span>/month</span></div><p class="result-note">Principal &amp; interest only. Does not include taxes, insurance, or mortgage insurance.</p>`;
-}
-
-function calcAfford() {
-  const income = parseFloat((document.getElementById('gross-income') as HTMLInputElement).value);
-  const debts = parseFloat((document.getElementById('monthly-debts') as HTMLInputElement).value);
-  const rate = parseFloat((document.getElementById('afford-rate') as HTMLInputElement).value) / 100 / 12;
-  const down = parseFloat((document.getElementById('down-payment') as HTMLInputElement).value);
-  const result = document.getElementById('afford-result')!;
-  if (!income || !rate) { result.textContent = 'Please fill in all fields.'; return; }
-  const maxHousing = income * 0.43 - debts;
-  const term = 30 * 12;
-  const maxLoan = maxHousing * (Math.pow(1 + rate, term) - 1) / (rate * Math.pow(1 + rate, term));
-  const maxPrice = maxLoan + down;
-  result.innerHTML = `<div class="result-value">~$${Math.round(maxPrice / 1000) * 1000 >= 0 ? (Math.round(maxPrice / 1000) * 1000).toLocaleString() : '0'}</div><p class="result-note">Estimated based on 43% DTI. Actual qualification depends on your full credit profile, program, and lender guidelines.</p>`;
-}
-
-function calcRefi() {
-  const current = parseFloat((document.getElementById('current-payment') as HTMLInputElement).value);
-  const newPay = parseFloat((document.getElementById('new-payment') as HTMLInputElement).value);
-  const costs = parseFloat((document.getElementById('closing-costs') as HTMLInputElement).value);
-  const result = document.getElementById('refi-result')!;
-  if (!current || !newPay || costs === undefined) { result.textContent = 'Please fill in all fields.'; return; }
-  const savings = current - newPay;
-  if (savings <= 0) { result.innerHTML = '<p class="result-note">Your new payment is higher than your current payment. A rate-and-term refinance may not reduce your payment in this scenario.</p>'; return; }
-  const months = Math.ceil(costs / savings);
-  const years = Math.floor(months / 12);
-  const rem = months % 12;
-  result.innerHTML = `<div class="result-value">${months} months</div><p class="result-note">You'd save $${savings.toFixed(0)}/month. At that rate, you'd recover $${costs.toLocaleString()} in closing costs in ${months} months${years > 0 ? ` (${years} yr${years > 1 ? 's' : ''} ${rem > 0 ? `${rem} mo` : ''})` : ''}.</p>`;
-}
-</script>
 
 <style>
 .page-hero {
@@ -171,41 +72,56 @@ function calcRefi() {
 .breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
 .breadcrumb-nav span { margin: 0 var(--space-2); }
 
-.calculators-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
-  margin-bottom: var(--space-10);
+.calc-hub {
+  margin-bottom: var(--space-16);
 }
-@media (max-width: 1024px) { .calculators-grid { grid-template-columns: 1fr; max-width: 600px; } }
 
-.calc-card {
-  background: var(--color-white); border-radius: var(--radius-lg);
-  padding: var(--space-8); border: 1px solid var(--color-gray-subtle);
-  box-shadow: var(--shadow-card);
-}
-.calc-card h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
-.calc-desc { color: var(--color-gray-mid); font-size: var(--text-sm); margin-bottom: var(--space-6); max-width: none; }
-.calc-form { display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-4); }
-.field { display: flex; flex-direction: column; gap: var(--space-1); }
-label { font-size: var(--text-sm); font-weight: 600; color: var(--color-navy); }
-input, select {
-  font-family: var(--font-body); font-size: var(--text-base);
-  border: 1.5px solid var(--color-gray-subtle); border-radius: var(--radius-md);
-  padding: 10px 12px; background: var(--color-white); width: 100%;
-  transition: border-color 150ms ease-out;
-}
-input:focus, select:focus { outline: none; border-color: var(--color-navy); box-shadow: 0 0 0 3px oklch(22% 0.06 260 / 0.12); }
-.calc-result { min-height: 60px; }
-:global(.result-value) {
-  font-family: var(--font-display); font-size: var(--text-4xl); font-weight: 700;
-  color: var(--color-navy); line-height: 1.1; margin-bottom: var(--space-2);
-}
-:global(.result-value span) { font-size: var(--text-lg); font-weight: 400; color: var(--color-gray-mid); margin-left: var(--space-1); }
-:global(.result-note) { font-size: var(--text-xs); color: var(--color-gray-mid); max-width: none; }
-.featured-calc {
+.other-calcs {
   margin-bottom: var(--space-10);
 }
-.featured-calc h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
-.featured-calc > p { color: var(--color-gray-mid); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+.other-calcs h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+}
+.other-calcs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+@media (max-width: 900px) { .other-calcs-grid { grid-template-columns: 1fr; max-width: 500px; } }
+
+.other-calc-card {
+  display: block;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 150ms, border-color 150ms, transform 150ms;
+}
+.other-calc-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-navy);
+  transform: translateY(-2px);
+}
+.other-calc-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+  color: var(--color-navy);
+}
+.other-calc-card h3 {
+  font-size: var(--text-lg);
+  color: var(--color-navy);
+  margin-bottom: var(--space-2);
+}
+.other-calc-card p {
+  font-size: var(--text-sm);
+  color: var(--color-gray-mid);
+  max-width: none;
+  margin: 0;
+  line-height: 1.6;
+}
 
 .calc-disclaimer {
   background: var(--color-off-white); border-radius: var(--radius-md);
