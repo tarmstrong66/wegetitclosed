@@ -12,6 +12,14 @@ import imgJoAnne   from '../../assets/images/JoAnne-Patton-200x256.jpg';
 import imgLindsey  from '../../assets/images/Lindsey-Randall-200x300.jpg';
 import imgMarivel  from '../../assets/images/Marivel-Noyola-200x300.jpg';
 import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
+
+const staff = [
+  { name: 'Shannon Robinson', title: 'Operations Manager',       nmls: '',         image: imgShannon },
+  { name: 'JoAnne Patton',   title: 'Processor',                nmls: '342684',   image: imgJoAnne  },
+  { name: 'Lindsey Randall', title: 'Processor',                nmls: '',         image: imgLindsey },
+  { name: 'Marivel Noyola',  title: 'Administrator',            nmls: '',         image: imgMarivel },
+  { name: 'Alexander Rotz',  title: 'Loan Partner',             nmls: '1555722',  image: imgAlex    },
+];
 ---
 <BaseLayout
   title="Our Team | American Mortgage Services — We Get It Closed"
@@ -35,23 +43,23 @@ import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
 
       <!-- Company photos -->
       <div class="company-photos">
-        <div class="company-photo-wrap">
+        <div class="photo-square">
           <Image
             src={imgAbout}
             alt="American Mortgage Services team group photo"
-            width={560}
-            height={380}
+            width={600}
+            height={600}
             format="webp"
             quality={85}
             class="company-photo"
           />
         </div>
-        <div class="company-photo-wrap">
+        <div class="photo-wide">
           <Image
             src={imgTeam}
             alt="American Mortgage Services staff celebrating Boss Day"
-            width={560}
-            height={380}
+            width={900}
+            height={506}
             format="webp"
             quality={85}
             class="company-photo"
@@ -59,151 +67,63 @@ import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
         </div>
       </div>
 
-      <!-- About the company -->
+      <!-- About copy -->
       <div class="about-copy">
         <h2>A Few Words About The Company</h2>
         <p>American Mortgage Services is an independent mortgage broker, offering more loan programs with fewer restrictions than banks and credit unions. We rarely charge lender fees on FHA, VA, USDA, and Conventional loans. We specialize in renovation loans such as the FHA 203K and the Fannie Mae Homestyle.</p>
         <p>We close the loans that other lenders cannot, and we close the majority of our loans in less than 30 days. We pride ourselves in closing loans on time and keeping our realtors and buyers updated and well-informed throughout the closing process. We do not operate by banker's hours; we are here to answer our clients' calls and questions 24/7. We don't just get your loan approved, we get it closed!</p>
       </div>
 
-      <!-- Team members -->
-      <div class="team-list">
-
-        <!-- Clay Heitler -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">Clayton Heitler</h2>
-            <p class="member-title">Owner</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgClay}
-                alt="Clayton Heitler, Owner of American Mortgage Services"
-                width={200}
-                height={260}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>Clay Heitler (NMLS #372592) is the President and Founder of American Mortgage Services, Inc.</p>
-            <p>Clay Heitler has owned and operated Tampa-based Affordable Home Mortgage (now American Mortgage Services) since 1999. Clay was born and raised in Baton Rouge, LA, and relocated to Florida in the early 90's. Clay graduated from University of South Florida in 1993 and is still an avid Bulls fan! Clay is an active member of Tampa Bay society and is the friendliest person you will ever meet!</p>
-            <a href="tel:8137895660" class="member-phone">813.789.9660</a>
+      <!-- Clay featured card -->
+      <div class="clay-card">
+        <div class="clay-photo-wrap">
+          <Image
+            src={imgClay}
+            alt="Clayton Heitler, Owner and Founder of American Mortgage Services"
+            width={260}
+            height={320}
+            format="webp"
+            quality={85}
+            class="clay-photo"
+          />
+        </div>
+        <div class="clay-bio">
+          <p class="clay-name">Clayton Heitler</p>
+          <p class="clay-role">Owner &amp; Founder</p>
+          <p class="clay-nmls">NMLS# 372592</p>
+          <p>Clay Heitler (NMLS #372592) is the President and Founder of American Mortgage Services, Inc. Clay has owned and operated Tampa-based Affordable Home Mortgage (now American Mortgage Services) since 1999.</p>
+          <p>Clay was born and raised in Baton Rouge, LA, and relocated to Florida in the early 90's. He graduated from the University of South Florida in 1993 and is still an avid Bulls fan. Clay is an active member of the Tampa Bay community and is the friendliest person you will ever meet!</p>
+          <div class="clay-actions">
+            <a href="tel:8137895660" class="clay-phone">813.789.9660</a>
+            <a href="/loan-officers/" class="btn-primary clay-btn">Apply With Clay</a>
           </div>
         </div>
-
-        <!-- Shannon Robinson -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">Shannon Robinson</h2>
-            <p class="member-title">Operations Manager</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgShannon}
-                alt="Shannon Robinson, Operations Manager at American Mortgage Services"
-                width={200}
-                height={300}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>Shannon is a returning employee that moved back to Tampa in the beginning of 2021. She brings 15 years of management experience to the team and loves her job! Shannon holds a degree in Business Administration, Summa Cum Laude, and currently lives in the north Tampa with her husband and two children.</p>
-          </div>
-        </div>
-
-        <!-- JoAnne Patton -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">JoAnne Patton</h2>
-            <p class="member-title">Processor / NMLS #342684</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgJoAnne}
-                alt="JoAnne Patton, Processor at American Mortgage Services"
-                width={200}
-                height={256}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>JoAnne has been serving mortgage needs in the Tampa Bay area for the past 30 years. With her knowledge and experience, she is committed to providing excellent service from application to closing. In her free time, she loves spending time with her husband and two boys, RV'ing and playing tennis.</p>
-          </div>
-        </div>
-
-        <!-- Lindsey Randall -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">Lindsey Randall</h2>
-            <p class="member-title">Processor</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgLindsey}
-                alt="Lindsey Randall, Processor at American Mortgage Services"
-                width={200}
-                height={300}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>Lindsey Randall has been serving as a Loan Processor since March 2021. Lindsey processed loans right out of college in 2003 and rejoined the AMS team in 2021. She has a background in finance and working closely with Real Estate Agents. She loves helping borrower's get to the closing table. Lindsey graduated from the University of Mississippi in Finance and Management. Outside of processing, you can find Lindsey enjoying time with her family. She loves God, helping others and delicious food.</p>
-          </div>
-        </div>
-
-        <!-- Marivel Noyola -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">Marivel Noyola</h2>
-            <p class="member-title">Administrator</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgMarivel}
-                alt="Marivel Noyola, Administrator at American Mortgage Services"
-                width={200}
-                height={300}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>Marivel is new to Tampa Bay, rejoining the mortgage industry since she started in 2000. Originally from Houston, Texas, Marivel spent time raising her boys and helping with the family trucking business. In 2019 she relocated to Tampa, Florida. Marivel is excited to be a part of the American Mortgage Services Family as the Administrative Assistant. In her free time she loves to go to the beach and go Salsa dancing!</p>
-          </div>
-        </div>
-
-        <!-- Alexander Rotz -->
-        <div class="team-member">
-          <div class="member-left">
-            <h2 class="member-name">Alexander Rotz</h2>
-            <p class="member-title">Loan Partner / NMLS #1555722</p>
-            <div class="member-photo-wrap">
-              <Image
-                src={imgAlex}
-                alt="Alexander Rotz, Loan Partner at American Mortgage Services"
-                width={200}
-                height={300}
-                format="webp"
-                quality={85}
-                class="member-photo"
-              />
-            </div>
-          </div>
-          <div class="member-bio">
-            <p>Alex is a dedicated and experienced mortgage professional with a proven track record of success in assisting clients in achieving their homeownership dreams. With 10 years of experience, Alex is proficient at providing tailoring mortgage solutions to meet individual needs, and he is committed to delivering exceptional service and building long-term relationships with clients and industry partners. Alex is a Tampa native and in his personal time he enjoys boating, fishing, or any activity on the water!</p>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Support staff grid -->
+      <h2 class="staff-heading">Our Support Team</h2>
+      <div class="staff-grid">
+        {staff.map(member => (
+          <div class="staff-tile">
+            <div class="tile-photo-wrap">
+              <Image
+                src={member.image}
+                alt={`${member.name}, ${member.title} at American Mortgage Services`}
+                width={400}
+                height={440}
+                format="webp"
+                quality={85}
+                class="tile-photo"
+              />
+            </div>
+            <div class="tile-info">
+              <p class="tile-name">{member.name}</p>
+              <p class="tile-title">{member.title}{member.nmls ? ` / NMLS #${member.nmls}` : ''}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   </section>
 
@@ -239,24 +159,35 @@ import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
 /* Company photos */
 .company-photos {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-4);
+  align-items: stretch;
   margin-bottom: var(--space-12);
 }
-@media (max-width: 640px) { .company-photos { grid-template-columns: 1fr; } }
-.company-photo-wrap {
+@media (max-width: 640px) {
+  .company-photos { grid-template-columns: 1fr; }
+}
+
+.photo-square {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.photo-wide {
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 .company-photo {
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: cover; object-position: center;
+  display: block;
 }
 
 /* About copy */
 .about-copy {
-  margin-bottom: var(--space-14);
   max-width: 80ch;
+  margin-bottom: var(--space-12);
 }
 .about-copy h2 {
   font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
@@ -270,80 +201,137 @@ import imgAlex     from '../../assets/images/AlexanderRotz-200x300.jpg';
   margin-bottom: var(--space-4);
 }
 
-/* Team list */
-.team-list {
+/* Clay featured card */
+.clay-card {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-14);
-}
-
-.team-member {
-  display: flex;
-  gap: var(--space-10);
+  gap: var(--space-8);
   align-items: flex-start;
-  padding-bottom: var(--space-14);
-  border-bottom: 1px solid var(--color-gray-subtle);
-}
-.team-member:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-8);
+  margin-bottom: var(--space-14);
 }
 @media (max-width: 640px) {
-  .team-member { flex-direction: column; }
+  .clay-card { flex-direction: column; align-items: center; text-align: center; }
+  .clay-actions { justify-content: center; }
 }
 
-.member-left {
+.clay-photo-wrap {
   flex-shrink: 0;
-  width: 200px;
-}
-@media (max-width: 640px) { .member-left { width: 100%; } }
-
-.member-name {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--color-red);
-  margin: 0 0 var(--space-1);
-}
-.member-title {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--color-blue);
-  margin: 0 0 var(--space-4);
-  max-width: none;
-}
-.member-photo-wrap {
-  width: 200px;
-  border-radius: var(--radius-md);
+  width: 260px;
+  height: 320px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 3px solid oklch(87% 0.05 255);
 }
-@media (max-width: 640px) { .member-photo-wrap { width: 160px; } }
-.member-photo {
-  width: 100%; height: auto;
+.clay-photo {
+  width: 100%; height: 100%;
   object-fit: cover; object-position: center top;
   display: block;
 }
 
-.member-bio {
-  flex: 1;
-  padding-top: var(--space-10);
-}
-.member-bio p {
-  color: var(--color-gray-mid);
-  font-size: var(--text-base);
-  line-height: 1.7;
-  margin-bottom: var(--space-4);
+.clay-bio { flex: 1; }
+.clay-name {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-red);
+  margin: 0 0 var(--space-1);
   max-width: none;
 }
-.member-bio p:last-of-type { margin-bottom: 0; }
-
-.member-phone {
-  display: inline-block;
-  color: var(--color-red);
-  font-weight: 600;
+.clay-role {
   font-size: var(--text-base);
-  text-decoration: none;
-  margin-top: var(--space-3);
+  color: var(--color-blue);
+  font-weight: 700;
+  margin: 0 0 var(--space-1);
+  max-width: none;
 }
-.member-phone:hover { color: var(--color-navy); }
+.clay-nmls {
+  font-size: var(--text-xs);
+  color: oklch(55% 0.01 260);
+  margin: 0 0 var(--space-5);
+  max-width: none;
+}
+.clay-bio p {
+  color: var(--color-gray-mid);
+  line-height: 1.7;
+  margin: 0 0 var(--space-4);
+  max-width: none;
+}
+.clay-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+.clay-phone {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-red);
+  text-decoration: none;
+}
+.clay-phone:hover { color: var(--color-navy); }
+.clay-btn { font-size: var(--text-sm); }
+
+/* Staff grid */
+.staff-heading {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  color: var(--color-navy);
+  margin-bottom: var(--space-8);
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+@media (max-width: 768px) { .staff-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .staff-grid { grid-template-columns: 1fr; } }
+
+.staff-tile {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.staff-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.tile-photo-wrap {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+.tile-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+
+.tile-info {
+  padding: var(--space-4) var(--space-5);
+  text-align: center;
+}
+.tile-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0 0 var(--space-1);
+  max-width: none;
+}
+.tile-title {
+  font-size: var(--text-xs);
+  color: var(--color-blue);
+  font-weight: 600;
+  margin: 0;
+  max-width: none;
+}
 </style>
