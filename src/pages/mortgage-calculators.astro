@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTASection from '../components/CTASection.astro';
+import MortgageCalculator from '../components/MortgageCalculator.astro';
 ---
 <BaseLayout
   title="Mortgage Calculators | Payment, Affordability & Refinance | American Mortgage Services"
@@ -95,6 +96,12 @@ import CTASection from '../components/CTASection.astro';
           <div class="calc-result" id="refi-result" aria-live="polite"></div>
         </div>
 
+      </div>
+
+      <div class="featured-calc">
+        <h2>Full Mortgage Payment + DTI Calculator</h2>
+        <p>Includes taxes, insurance, PMI, HOA, and debt-to-income ratio in one tool.</p>
+        <MortgageCalculator />
       </div>
 
       <div class="calc-disclaimer">
@@ -194,6 +201,12 @@ input:focus, select:focus { outline: none; border-color: var(--color-navy); box-
 }
 :global(.result-value span) { font-size: var(--text-lg); font-weight: 400; color: var(--color-gray-mid); margin-left: var(--space-1); }
 :global(.result-note) { font-size: var(--text-xs); color: var(--color-gray-mid); max-width: none; }
+.featured-calc {
+  margin-bottom: var(--space-10);
+}
+.featured-calc h2 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+.featured-calc > p { color: var(--color-gray-mid); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+
 .calc-disclaimer {
   background: var(--color-off-white); border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-6);

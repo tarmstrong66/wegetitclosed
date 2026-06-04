@@ -1,0 +1,449 @@
+---
+// No props — self-contained calculator
+---
+
+<div id="mortgage-calc-wrapper">
+  <div class="mc-container">
+    <h1>Mortgage Calculator</h1>
+
+    <div class="mc-grid">
+
+      <div class="mc-card">
+        <h2>Loan Details</h2>
+        <div class="input-group">
+          <label for="homePrice">Home Price ($)</label>
+          <input type="number" id="homePrice" value="300000" min="0">
+        </div>
+        <div class="input-group">
+          <label for="downPayment">Down Payment ($)</label>
+          <input type="number" id="downPayment" value="60000" min="0">
+        </div>
+        <div class="input-group">
+          <label for="interestRate">Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="6.5" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+          <label for="loanTerm">Loan Term (Years)</label>
+          <select id="loanTerm">
+            <option value="15">15 Years</option>
+            <option value="30" selected>30 Years</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="propertyTax">Annual Property Tax ($)</label>
+          <input type="number" id="propertyTax" value="3600" min="0">
+        </div>
+        <div class="input-group">
+          <label for="homeInsurance">Annual Home Insurance ($)</label>
+          <input type="number" id="homeInsurance" value="1200" min="0">
+        </div>
+        <div class="input-group">
+          <label for="pmi">Monthly PMI ($) <span>(if applicable)</span></label>
+          <input type="number" id="pmi" value="0" min="0">
+        </div>
+        <div class="input-group">
+          <label for="hoa">Monthly HOA ($) <span>(if applicable)</span></label>
+          <input type="number" id="hoa" value="0" min="0">
+        </div>
+        <button id="calculateBtn" class="mc-btn">Calculate</button>
+      </div>
+
+      <div class="mc-subgrid">
+
+        <div class="mc-card">
+          <h2>Monthly Payment</h2>
+          <div class="mc-hero-result">
+            <div class="mc-hero-amount" id="totalMonthlyPayment">$0.00</div>
+            <div class="mc-hero-label">per month</div>
+          </div>
+          <div class="chart-container">
+            <canvas id="paymentBreakdownChart"></canvas>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">Principal & Interest:</span>
+            <span class="output-value" id="piPayment">$0.00</span>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">Property Taxes:</span>
+            <span class="output-value" id="taxPayment">$0.00</span>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">Home Insurance:</span>
+            <span class="output-value" id="insurancePayment">$0.00</span>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">PMI:</span>
+            <span class="output-value" id="pmiPayment">$0.00</span>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">HOA Dues:</span>
+            <span class="output-value" id="hoaPayment">$0.00</span>
+          </div>
+        </div>
+
+        <div class="mc-card">
+          <h2>Loan Summary</h2>
+          <div class="mc-result-row">
+            <span class="output-label">Loan Amount:</span>
+            <span class="output-value" id="loanAmountOutput">$0.00</span>
+          </div>
+          <div class="mc-result-row">
+            <span class="output-label">Purchase Price:</span>
+            <span class="output-value" id="purchasePriceOutput">$0.00</span>
+          </div>
+          <div class="mc-result-row" style="margin-bottom: 20px;">
+            <span class="output-label">Down Payment:</span>
+            <span class="output-value" id="downPaymentOutput">$0.00</span>
+          </div>
+
+          <hr class="mc-divider">
+
+          <div class="mc-result-row">
+            <span class="output-label output-label--lg">Debt-to-Income Ratio:</span>
+            <span class="output-value output-value--dti" id="dtiRatioOutput">-- %</span>
+          </div>
+          <p class="mc-hint">Enter monthly income/debts to calculate DTI.</p>
+          <div class="input-group">
+            <label for="grossMonthlyIncome">Gross Monthly Income ($)</label>
+            <input type="number" id="grossMonthlyIncome" value="5000" min="0">
+          </div>
+          <div class="input-group">
+            <label for="otherMonthlyDebts">Other Monthly Debts ($)</label>
+            <input type="number" id="otherMonthlyDebts" value="500" min="0">
+          </div>
+        </div>
+
+        <div class="mc-card mc-card--full">
+          <h2>Summary</h2>
+          <ul id="summaryList">
+            <li>Enter the loan details to see a summary.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const homePriceInput = document.getElementById('homePrice') as HTMLInputElement;
+  const downPaymentInput = document.getElementById('downPayment') as HTMLInputElement;
+  const interestRateInput = document.getElementById('interestRate') as HTMLInputElement;
+  const loanTermSelect = document.getElementById('loanTerm') as HTMLSelectElement;
+  const propertyTaxInput = document.getElementById('propertyTax') as HTMLInputElement;
+  const homeInsuranceInput = document.getElementById('homeInsurance') as HTMLInputElement;
+  const pmiInput = document.getElementById('pmi') as HTMLInputElement;
+  const hoaInput = document.getElementById('hoa') as HTMLInputElement;
+  const grossMonthlyIncomeInput = document.getElementById('grossMonthlyIncome') as HTMLInputElement;
+  const otherMonthlyDebtsInput = document.getElementById('otherMonthlyDebts') as HTMLInputElement;
+  const calculateButton = document.getElementById('calculateBtn') as HTMLButtonElement;
+
+  const totalMonthlyPaymentOutput = document.getElementById('totalMonthlyPayment')!;
+  const piPaymentOutput = document.getElementById('piPayment')!;
+  const taxPaymentOutput = document.getElementById('taxPayment')!;
+  const insurancePaymentOutput = document.getElementById('insurancePayment')!;
+  const pmiPaymentOutput = document.getElementById('pmiPayment')!;
+  const hoaPaymentOutput = document.getElementById('hoaPayment')!;
+  const loanAmountOutput = document.getElementById('loanAmountOutput')!;
+  const dtiRatioOutput = document.getElementById('dtiRatioOutput')!;
+  const purchasePriceOutput = document.getElementById('purchasePriceOutput')!;
+  const downPaymentOutput = document.getElementById('downPaymentOutput')!;
+  const summaryList = document.getElementById('summaryList')!;
+  const paymentBreakdownCanvas = document.getElementById('paymentBreakdownChart') as HTMLCanvasElement;
+
+  let paymentChart: Chart | null = null;
+
+  function formatCurrency(n: number) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculateMortgage() {
+    const homePrice = parseFloat(homePriceInput.value) || 0;
+    const downPayment = parseFloat(downPaymentInput.value) || 0;
+    const annualInterestRate = parseFloat(interestRateInput.value) || 0;
+    const loanTermYears = parseInt(loanTermSelect.value) || 0;
+    const annualPropertyTax = parseFloat(propertyTaxInput.value) || 0;
+    const annualHomeInsurance = parseFloat(homeInsuranceInput.value) || 0;
+    const monthlyPMI = parseFloat(pmiInput.value) || 0;
+    const monthlyHoa = parseFloat(hoaInput.value) || 0;
+    const grossMonthlyIncome = parseFloat(grossMonthlyIncomeInput.value) || 0;
+    const otherMonthlyDebts = parseFloat(otherMonthlyDebtsInput.value) || 0;
+
+    const principal = homePrice - downPayment;
+
+    if (principal <= 0 || loanTermYears <= 0) {
+      totalMonthlyPaymentOutput.innerText = '$0.00';
+      updateChart(0, 0, 0, 0, 0);
+      return;
+    }
+
+    const monthlyInterestRate = annualInterestRate / 100 / 12;
+    const numberOfPayments = loanTermYears * 12;
+
+    let monthlyPI = 0;
+    if (monthlyInterestRate === 0) {
+      monthlyPI = principal / numberOfPayments;
+    } else {
+      monthlyPI = principal * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
+        (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+    }
+
+    const monthlyTax = annualPropertyTax / 12;
+    const monthlyInsurance = annualHomeInsurance / 12;
+    const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance + monthlyPMI + monthlyHoa;
+
+    let dtiRatio = 0;
+    if (grossMonthlyIncome > 0) {
+      dtiRatio = ((totalMonthly + otherMonthlyDebts) / grossMonthlyIncome) * 100;
+    }
+
+    totalMonthlyPaymentOutput.innerText = '$' + formatCurrency(totalMonthly);
+    piPaymentOutput.innerText = '$' + formatCurrency(monthlyPI);
+    taxPaymentOutput.innerText = '$' + formatCurrency(monthlyTax);
+    insurancePaymentOutput.innerText = '$' + formatCurrency(monthlyInsurance);
+    pmiPaymentOutput.innerText = '$' + formatCurrency(monthlyPMI);
+    hoaPaymentOutput.innerText = '$' + formatCurrency(monthlyHoa);
+    loanAmountOutput.innerText = '$' + formatCurrency(principal);
+    dtiRatioOutput.innerText = `${dtiRatio.toFixed(2)} %`;
+    purchasePriceOutput.innerText = '$' + formatCurrency(homePrice);
+    downPaymentOutput.innerText = '$' + formatCurrency(downPayment);
+
+    summaryList.innerHTML = '';
+    [
+      `Total Monthly Payment: $${formatCurrency(totalMonthly)}`,
+      `Loan Amount: $${formatCurrency(principal)}`,
+      `Interest Rate: ${annualInterestRate}% for ${loanTermYears} years`,
+      `DTI Ratio: ${dtiRatio.toFixed(2)}%`,
+    ].forEach(text => {
+      const li = document.createElement('li');
+      li.innerText = text;
+      summaryList.appendChild(li);
+    });
+
+    updateChart(monthlyPI, monthlyTax, monthlyInsurance, monthlyPMI, monthlyHoa);
+  }
+
+  function updateChart(pi: number, tax: number, insurance: number, pmi: number, hoa: number) {
+    if (paymentChart) paymentChart.destroy();
+    paymentChart = new Chart(paymentBreakdownCanvas.getContext('2d')!, {
+      type: 'pie',
+      data: {
+        labels: ['P&I', 'Tax', 'Insurance', 'PMI', 'HOA'],
+        datasets: [{
+          data: [pi, tax, insurance, pmi, hoa],
+          backgroundColor: ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#6366f1'],
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } },
+      },
+    });
+  }
+
+  calculateButton.addEventListener('click', calculateMortgage);
+  [
+    homePriceInput, downPaymentInput, interestRateInput, loanTermSelect,
+    propertyTaxInput, homeInsuranceInput, pmiInput, hoaInput,
+    grossMonthlyIncomeInput, otherMonthlyDebtsInput,
+  ].forEach(el => el?.addEventListener('input', calculateMortgage));
+
+  calculateMortgage();
+</script>
+
+<style>
+  #mortgage-calc-wrapper {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #mortgage-calc-wrapper * {
+    box-sizing: border-box;
+  }
+
+  .mc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 992px) {
+    .mc-grid {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  .mc-subgrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .mc-subgrid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  #mortgage-calc-wrapper h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+    margin-top: 0;
+    color: #111;
+  }
+
+  #mortgage-calc-wrapper h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 0;
+    color: #222;
+  }
+
+  .mc-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+  }
+
+  .mc-card--full {
+    grid-column: 1 / -1;
+  }
+
+  .input-group {
+    margin-bottom: 16px;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+  }
+
+  .input-group span {
+    font-size: 12px;
+    color: #777;
+    font-weight: normal;
+  }
+
+  .mc-btn {
+    width: 100%;
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .mc-btn:hover {
+    background-color: #2563eb;
+  }
+
+  .mc-hero-result {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .mc-hero-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+  .mc-hero-label {
+    color: #666;
+  }
+
+  .mc-result-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 4px;
+  }
+
+  .mc-result-row:last-child {
+    border-bottom: none;
+  }
+
+  .output-label {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .output-label--lg {
+    font-size: 16px;
+  }
+
+  .output-value {
+    font-weight: 700;
+    color: #333;
+  }
+
+  .output-value--dti {
+    font-size: 16px;
+    color: #2563eb;
+  }
+
+  .mc-divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 15px 0;
+  }
+
+  .mc-hint {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .chart-container {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+  }
+
+  #mortgage-calc-wrapper ul {
+    padding-left: 20px;
+    margin-top: 0;
+    color: #4b5563;
+  }
+
+  #mortgage-calc-wrapper li {
+    margin-bottom: 8px;
+  }
+</style>
