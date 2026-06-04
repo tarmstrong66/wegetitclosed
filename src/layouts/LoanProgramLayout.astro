@@ -51,6 +51,24 @@ const breadcrumbs = [
             </a>
           </div>
 
+          {(loanType === 'Refinance Loans' || loanType === 'Cash-Out Refinance') && (
+            <div class="sidebar-card sidebar-card-calc">
+              <div class="calc-icon">&#8635;</div>
+              <h3>Refinance Savings Calculator</h3>
+              <p>Estimate your new payment, monthly savings, and break-even timeline before you talk to a loan officer.</p>
+              <a href="/refinance-calculator/" class="btn-primary">Try the Calculator</a>
+            </div>
+          )}
+
+          {loanType === 'Investor Loans' && (
+            <div class="sidebar-card sidebar-card-calc">
+              <div class="calc-icon">&#36;</div>
+              <h3>DSCR Cash Flow Calculator</h3>
+              <p>Enter the property's rental income and estimated payment to check the debt service coverage ratio.</p>
+              <a href="/dscr-calculator/" class="btn-primary">Try the Calculator</a>
+            </div>
+          )}
+
           <div class="sidebar-card sidebar-card-programs">
             <h3>Other Loan Programs</h3>
             <ul>
@@ -142,6 +160,29 @@ const breadcrumbs = [
 }
 .sidebar-phone:hover { color: var(--color-red); }
 
+.calc-callout {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-6);
+  background: oklch(96% 0.01 260); border: 1px solid var(--color-navy-light);
+  border-left: 4px solid var(--color-red);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-8) 0;
+  flex-wrap: wrap;
+}
+.calc-callout-text { font-size: var(--text-sm); color: var(--color-navy); flex: 1; min-width: 200px; }
+.calc-callout-text strong { display: block; margin-bottom: var(--space-1); font-size: var(--text-base); }
+.calc-callout-btn {
+  display: inline-block; white-space: nowrap;
+  background: var(--color-red); color: var(--color-white);
+  font-family: var(--font-body); font-weight: 600; font-size: var(--text-sm);
+  padding: 10px 20px; border-radius: var(--radius-pill);
+  text-decoration: none; transition: background 150ms;
+}
+.calc-callout-btn:hover { background: var(--color-red-hover); color: var(--color-white); }
+
+.sidebar-card-calc .calc-icon {
+  font-size: 2rem; color: var(--color-red); margin-bottom: var(--space-3);
+}
 .sidebar-card-programs ul { list-style: none; }
 .sidebar-card-programs li { border-bottom: 1px solid var(--color-gray-subtle); }
 .sidebar-card-programs li:last-child { border-bottom: none; }
