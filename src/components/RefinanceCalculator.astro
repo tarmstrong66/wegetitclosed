@@ -1,0 +1,208 @@
+---
+// No props — self-contained refinance savings calculator
+---
+
+<div class="bl-calc-container">
+  <div class="bl-calculator">
+    <h2>Refinance Savings Calculator</h2>
+
+    <label for="currentLoanBalance">Current Loan Balance ($)</label>
+    <input type="number" id="currentLoanBalance" placeholder="e.g. 350000">
+
+    <div class="bl-two-col">
+      <div>
+        <label for="currentRate">Current Rate (%)</label>
+        <input type="number" step="0.01" id="currentRate" placeholder="6.5">
+      </div>
+      <div>
+        <label for="currentTerm">Remaining Years</label>
+        <input type="number" id="currentTerm" placeholder="25">
+      </div>
+    </div>
+
+    <div class="bl-two-col">
+      <div>
+        <label for="newRate">New Rate (%)</label>
+        <input type="number" step="0.01" id="newRate" placeholder="5.75">
+      </div>
+      <div>
+        <label for="newTerm">New Term (Years)</label>
+        <input type="number" id="newTerm" placeholder="30">
+      </div>
+    </div>
+
+    <label for="closingCosts">Estimated Closing Costs ($)</label>
+    <input type="number" id="closingCosts" placeholder="e.g. 5000">
+
+    <button id="refi-calc-btn" class="bl-btn">Calculate My Savings</button>
+
+    <div class="bl-result" id="refi-result"></div>
+  </div>
+</div>
+
+<script>
+  function formatNumber(num: number) {
+    return num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculateRefinance() {
+    const balance = parseFloat((document.getElementById('currentLoanBalance') as HTMLInputElement).value);
+    const currentRate = parseFloat((document.getElementById('currentRate') as HTMLInputElement).value) / 100;
+    const currentTerm = parseFloat((document.getElementById('currentTerm') as HTMLInputElement).value);
+    const newRate = parseFloat((document.getElementById('newRate') as HTMLInputElement).value) / 100;
+    const newTerm = parseFloat((document.getElementById('newTerm') as HTMLInputElement).value);
+    const closingCosts = parseFloat((document.getElementById('closingCosts') as HTMLInputElement).value);
+
+    if ([balance, currentRate, currentTerm, newRate, newTerm, closingCosts].some(isNaN)) {
+      alert('Please fill in all fields with valid numbers.');
+      return;
+    }
+
+    const curMonthlyRate = currentRate / 12;
+    const newMonthlyRate = newRate / 12;
+    const curMonths = currentTerm * 12;
+    const newMonths = newTerm * 12;
+
+    const currentPayment = (balance * curMonthlyRate) / (1 - Math.pow(1 + curMonthlyRate, -curMonths));
+    const newPayment = (balance * newMonthlyRate) / (1 - Math.pow(1 + newMonthlyRate, -newMonths));
+
+    const monthlySavings = currentPayment - newPayment;
+    const totalInterestCurrent = (currentPayment * curMonths) - balance;
+    const totalInterestNew = (newPayment * newMonths) - balance;
+    const totalInterestSavings = totalInterestCurrent - totalInterestNew;
+    const breakevenMonths = closingCosts / monthlySavings;
+
+    const resultDiv = document.getElementById('refi-result')!;
+    resultDiv.classList.add('is-visible');
+    resultDiv.innerHTML = `
+      <h3>Savings Summary</h3>
+      <p><span>Current Payment:</span> <strong>$${formatNumber(currentPayment)}</strong></p>
+      <p><span>New Payment:</span> <strong>$${formatNumber(newPayment)}</strong></p>
+      <p><span>Monthly Savings:</span> <strong class="bl-highlight">$${formatNumber(monthlySavings)}</strong></p>
+      <hr class="bl-divider">
+      <p><span>Interest Saved:</span> <strong>$${formatNumber(totalInterestSavings)}</strong></p>
+      <p><span>Breakeven Point:</span> <strong>${breakevenMonths.toFixed(1)} months</strong></p>
+    `;
+  }
+
+  document.getElementById('refi-calc-btn')!.addEventListener('click', calculateRefinance);
+</script>
+
+<style>
+  .bl-calc-container {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .bl-calculator {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+  }
+
+  .bl-calculator h2 {
+    text-align: center;
+    color: #0f172a;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    margin-top: 0;
+    font-weight: 700;
+  }
+
+  .bl-calculator label {
+    font-weight: 700;
+    margin-top: 15px;
+    display: block;
+    color: #0f172a;
+    font-size: 0.95rem;
+  }
+
+  .bl-calculator input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .bl-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .bl-btn {
+    padding: 15px;
+    background-color: #1b5697;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+    margin-top: 8px;
+  }
+
+  .bl-btn:hover {
+    background-color: #17497f;
+  }
+
+  .bl-result {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+
+  .bl-result.is-visible {
+    display: block;
+  }
+
+  .bl-result h3 {
+    color: #0f172a;
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #23a3ea;
+    padding-bottom: 8px;
+  }
+
+  .bl-result p {
+    margin: 10px 0;
+    color: #475569;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bl-result strong {
+    color: #0f172a;
+  }
+
+  .bl-highlight {
+    color: #1b5697!important;
+  }
+
+  .bl-divider {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 15px 0;
+  }
+
+  @media (max-width: 480px) {
+    .bl-calculator { padding: 20px; }
+    .bl-calculator h2 { font-size: 1.5rem; }
+    .bl-two-col { grid-template-columns: 1fr; }
+  }
+</style>

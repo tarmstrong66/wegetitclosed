@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import RefinanceCalculator from '../components/RefinanceCalculator.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const faqs = [
+  {
+    question: "What does the breakeven point mean?",
+    answer: "The breakeven point is the number of months it takes for your monthly savings to cover your closing costs. If you plan to stay in the home longer than the breakeven period, refinancing may make financial sense depending on your scenario."
+  },
+  {
+    question: "Does this calculator include taxes and insurance?",
+    answer: "No. This calculator estimates principal and interest payments only. Your actual monthly payment may also include property taxes, homeowner's insurance, PMI, and HOA dues. Talk with a loan officer for a complete payment estimate."
+  },
+  {
+    question: "What are typical refinance closing costs?",
+    answer: "Refinance closing costs typically range from 2% to 5% of the loan balance, depending on the lender, loan type, and state. Costs may include origination fees, appraisal, title insurance, and prepaid items. Subject to your specific scenario."
+  },
+  {
+    question: "Should I extend my loan term when I refinance?",
+    answer: "Extending your term lowers your monthly payment but may increase the total interest you pay over time. Keeping the same term or choosing a shorter one can reduce total interest cost. A loan officer can walk you through both options based on your goals."
+  },
+  {
+    question: "Is this calculator a loan approval or commitment to lend?",
+    answer: "No. This is an estimation tool only. Actual loan terms, rates, and eligibility are subject to credit review, income verification, property appraisal, and lender guidelines."
+  }
+];
+---
+
+<BaseLayout
+  title="Refinance Savings Calculator | Estimate Your Monthly Savings | American Mortgage Services"
+  description="Use our refinance calculator to estimate your new monthly payment, monthly savings, total interest saved, and breakeven point. Estimates only — talk with a loan officer for accurate figures."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span>
+        <a href="/mortgage-calculators/">Calculators</a> <span>/</span>
+        <span aria-current="page">Refinance Calculator</span>
+      </nav>
+      <h1>Refinance Savings Calculator</h1>
+      <p>Estimate how much you could save by refinancing your mortgage. Enter your current loan details and a new rate to see your potential monthly savings and breakeven timeline. These are estimates only — talk with a loan officer about your actual scenario.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RefinanceCalculator />
+
+      <div class="calc-disclaimer">
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. It does not account for taxes, insurance, HOA dues, or mortgage insurance. Actual savings, rates, and eligibility are subject to credit review, income verification, property appraisal, program guidelines, and lender approval. This does not constitute a loan application or commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container content-narrow">
+      <h2>When Does Refinancing Make Sense?</h2>
+      <p>Refinancing replaces your current mortgage with a new loan, typically to lower your interest rate, reduce your monthly payment, shorten your loan term, or access equity. Whether it makes sense depends on your rate, remaining loan balance, how long you plan to stay in the home, and current market conditions.</p>
+
+      <h3>Rate-and-Term Refinance</h3>
+      <p>A rate-and-term refinance changes your interest rate, your loan term, or both — without taking cash out. Borrowers often use this to lower their monthly payment or pay off the loan faster.</p>
+
+      <h3>Cash-Out Refinance</h3>
+      <p>A cash-out refinance allows you to borrow more than your current balance and receive the difference in cash. Borrowers use this for home improvements, debt consolidation, and other needs. This calculator does not apply to cash-out refinances. <a href="/loan-programs/cash-out-refinance/">Learn more about cash-out refinancing.</a></p>
+
+      <h3>What the Breakeven Point Tells You</h3>
+      <p>If your closing costs are $6,000 and you save $200/month, your breakeven is 30 months. Staying in the home beyond that point means you come out ahead. If you plan to move before then, the upfront costs may outweigh the savings depending on your situation.</p>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="Refinance Calculator FAQ" />
+
+  <CTASection
+    heading="Ready to Talk Refinance with a Loan Officer?"
+    subtext="Get accurate numbers based on your actual loan, credit, and the current rate environment. We serve borrowers in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee."
+    ctaText="Contact Us"
+    ctaUrl="/contact-us/"
+    secondaryCtaText="Meet Our Loan Officers"
+    secondaryCtaUrl="/loan-officers/"
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    margin: var(--space-4) 0 var(--space-4);
+  }
+  .page-hero p {
+    color: oklch(80% 0.02 260);
+    font-size: var(--text-base);
+    max-width: 65ch;
+  }
+  .breadcrumb-nav {
+    font-size: var(--text-sm);
+    color: oklch(65% 0.02 260);
+    margin-bottom: var(--space-4);
+  }
+  .breadcrumb-nav a {
+    color: oklch(70% 0.02 260);
+    text-decoration: none;
+  }
+  .breadcrumb-nav a:hover { text-decoration: underline; }
+  .breadcrumb-nav span { margin: 0 var(--space-2); }
+
+  .calc-disclaimer {
+    max-width: 700px;
+    margin: var(--space-8) auto 0;
+    background: var(--color-off-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid var(--color-gray-subtle);
+  }
+  .calc-disclaimer p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-mid);
+    max-width: none;
+  }
+
+  .section--alt {
+    background: var(--color-off-white);
+  }
+
+  .content-narrow {
+    max-width: 700px;
+  }
+
+  .content-narrow h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .content-narrow h3 {
+    font-size: var(--text-xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-2);
+  }
+
+  .content-narrow p {
+    color: var(--color-gray-mid);
+    max-width: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .content-narrow a {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+</style>
