@@ -87,6 +87,22 @@ import logoImg from '../assets/images/AMS-Logo-300x100-1 (1).webp';
           </div>
         </li>
 
+        <li class="has-dropdown">
+          <button class="dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Calculators
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="dropdown dropdown--calcs" role="menu">
+            <div class="dropdown-col">
+              <span class="dropdown-label">Mortgage Tools</span>
+              <a href="/mortgage-calculators/" role="menuitem">Mortgage Payment Calculator</a>
+              <a href="/refinance-calculator/" role="menuitem">Refinance Savings Calculator</a>
+              <a href="/dscr-calculator/" role="menuitem">DSCR Cash Flow Calculator</a>
+              <a href="/2-1-buydown-calculator/" role="menuitem">2-1 Buydown Calculator</a>
+            </div>
+          </div>
+        </li>
+
       </ul>
     </nav>
 
@@ -128,6 +144,11 @@ import logoImg from '../assets/images/AMS-Logo-300x100-1 (1).webp';
       <a href="/tennessee-mortgage/">Tennessee</a>
       <a href="/the-team/">The Team</a>
       <a href="/loan-officers/">Loan Officers</a>
+      <a href="/mortgage-calculators/" class="mobile-section-label">Calculators</a>
+      <a href="/mortgage-calculators/" class="mobile-sub">Mortgage Payment Calculator</a>
+      <a href="/refinance-calculator/" class="mobile-sub">Refinance Savings Calculator</a>
+      <a href="/dscr-calculator/" class="mobile-sub">DSCR Cash Flow Calculator</a>
+      <a href="/2-1-buydown-calculator/" class="mobile-sub">2-1 Buydown Calculator</a>
     </nav>
     <a href="/loan-officers/" class="btn-primary mobile-cta">Apply Now</a>
     <a href="tel:8888389330" class="mobile-phone">
@@ -226,6 +247,7 @@ document.addEventListener('click', (e) => {
 }
 .dropdown--states { min-width: 200px; }
 .dropdown--about { min-width: 260px; }
+.dropdown--calcs { min-width: 280px; }
 .dropdown-trigger[aria-expanded="true"] + .dropdown { display: block; }
 .dropdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 .dropdown-col { display: flex; flex-direction: column; gap: var(--space-1); }
@@ -316,6 +338,21 @@ document.addEventListener('click', (e) => {
   margin-top: var(--space-4); font-size: var(--text-base); font-weight: 600;
 }
 .mobile-phone:hover { color: var(--color-white) !important; }
+.mobile-section-label {
+  font-size: var(--text-xs) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold) !important;
+  padding-top: var(--space-5) !important;
+  border-bottom: none !important;
+}
+.mobile-sub {
+  font-size: var(--text-base) !important;
+  padding-left: var(--space-4) !important;
+  color: oklch(85% 0.02 260) !important;
+}
+.mobile-sub:hover { color: var(--color-white) !important; }
 
 @media (max-width: 1024px) {
   .main-nav { display: none; }
