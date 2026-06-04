@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import DSCRCalculator from '../components/DSCRCalculator.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const faqs = [
+  {
+    question: "What is DSCR and how is it calculated?",
+    answer: "DSCR stands for Debt Service Coverage Ratio. It's calculated by dividing the property's gross monthly rental income by the total monthly debt payment (principal, interest, taxes, insurance, and HOA). A DSCR of 1.25 means the property generates 25% more income than the payment requires."
+  },
+  {
+    question: "What DSCR do lenders typically want?",
+    answer: "Many DSCR lenders prefer a ratio of 1.0 or higher, with 1.25 or above generally unlocking the best pricing and program options. That said, some lenders offer programs for ratios below 1.0 — these typically come with rate adjustments and higher down payment requirements. Talk with a loan officer about what's available for your scenario."
+  },
+  {
+    question: "Can I get a DSCR loan with a ratio below 1.0?",
+    answer: "Yes, in many cases. A sub-1.0 DSCR is not an automatic disqualifier. Some lenders offer programs that allow ratios as low as 0.75 or even no-ratio options, though these typically require a higher down payment (often 25–30% or more), a stronger credit profile, and larger cash reserves. Rate pricing will also reflect the additional risk. A loan officer can walk you through what overlays apply to your deal."
+  },
+  {
+    question: "Does DSCR lending require personal income documentation?",
+    answer: "No. DSCR loans qualify the borrower based on the property's cash flow, not personal income. There are no W-2s, tax returns, or pay stubs required. This makes DSCR loans popular with self-employed investors, those with complex tax returns, and investors scaling a rental portfolio."
+  },
+  {
+    question: "What counts as the monthly payment in the DSCR calculation?",
+    answer: "Most lenders use PITIA — principal, interest, taxes, insurance, and any HOA dues. Some lenders use only PITI. Be sure to include all recurring monthly costs associated with the property when entering figures into the calculator."
+  },
+  {
+    question: "Can I use projected rent or do I need actual rent?",
+    answer: "Many DSCR lenders allow you to use a market rent estimate from an appraisal (typically the 1007 rent schedule) rather than requiring an active lease. This is useful for purchasing vacant properties or newly built rentals. Ask your loan officer which documentation approach applies to your loan."
+  },
+  {
+    question: "What property types qualify for DSCR loans?",
+    answer: "DSCR loans are commonly available for single-family investment properties, 2–4 unit properties, condos, townhomes, and in some cases short-term rentals (Airbnb/VRBO). Multi-family properties above 4 units typically fall under commercial lending programs. Eligibility varies by lender and program."
+  }
+];
+---
+
+<BaseLayout
+  title="DSCR Calculator | Debt Service Coverage Ratio for Rental Properties | American Mortgage Services"
+  description="Use our free DSCR calculator to evaluate your rental property's cash flow ratio. Understand what your DSCR means for loan eligibility — including options below 1.0. No personal income required for DSCR loans."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span>
+        <a href="/mortgage-calculators/">Calculators</a> <span>/</span>
+        <span aria-current="page">DSCR Calculator</span>
+      </nav>
+      <h1>DSCR Calculator: Debt Service Coverage Ratio</h1>
+      <p>Evaluate whether a rental property's income supports a DSCR loan. Enter gross monthly rent and your total monthly payment to see your ratio — and what it may mean for your financing options. Estimates only.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <DSCRCalculator />
+
+      <div class="calc-disclaimer">
+        <p><strong>Disclaimer:</strong> This calculator provides estimates for informational purposes only. Results are based on inputs you provide and do not account for all lender overlays, program-specific guidelines, or qualification requirements. Actual loan eligibility, rates, and terms are subject to credit review, property appraisal, reserve requirements, and lender approval. This does not constitute a loan application or commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container content-narrow">
+      <h2>What Is a DSCR Loan?</h2>
+      <p>A DSCR loan (Debt Service Coverage Ratio loan) is a type of investment property mortgage that qualifies based on the property's rental income — not the borrower's personal income. There are no W-2s, tax returns, or employment verifications required. The property itself does the qualifying.</p>
+
+      <p>This makes DSCR loans a popular choice for:</p>
+      <ul>
+        <li>Self-employed investors with complex tax returns and large write-offs</li>
+        <li>Investors scaling a rental portfolio beyond traditional DTI limits</li>
+        <li>Borrowers who want to separate investment financing from personal income</li>
+        <li>Out-of-state investors purchasing in our licensed states</li>
+      </ul>
+
+      <h2>How Lenders Interpret Your DSCR</h2>
+      <p>DSCR is calculated by dividing gross monthly rental income by the total monthly housing payment (PITIA). Here's how most lenders interpret common ranges:</p>
+
+      <div class="dscr-tiers">
+        <div class="dscr-tier dscr-tier--caution">
+          <div class="tier-label">Below 1.0</div>
+          <div class="tier-content">
+            <strong>Still possible — with overlays.</strong> A sub-1.0 DSCR means the property runs at a cash flow deficit, but this isn't an automatic denial. Many lenders offer programs for ratios as low as 0.75, or even no-ratio options. Expect higher down payment requirements (typically 25–30%+), rate adjustments, and stricter credit and reserve requirements. Talk with a loan officer — the deal may still work.
+          </div>
+        </div>
+        <div class="dscr-tier dscr-tier--marginal">
+          <div class="tier-label">1.0 – 1.10</div>
+          <div class="tier-content">
+            <strong>Break even / marginal.</strong> Income just covers the debt. Lenders may require stronger credit scores and reserves, but many programs are available at this level.
+          </div>
+        </div>
+        <div class="dscr-tier dscr-tier--good">
+          <div class="tier-label">1.10 – 1.25</div>
+          <div class="tier-content">
+            <strong>Preferred range.</strong> Cash flow comfortably covers the debt service. This meets most standard DSCR program requirements and opens up competitive pricing options.
+          </div>
+        </div>
+        <div class="dscr-tier dscr-tier--strong">
+          <div class="tier-label">Above 1.25</div>
+          <div class="tier-content">
+            <strong>Exceptional.</strong> Strong cash flow relative to debt. Often qualifies for the best available rates and terms on DSCR products.
+          </div>
+        </div>
+      </div>
+
+      <h2>What Goes Into the Payment Side of DSCR?</h2>
+      <p>Most lenders calculate DSCR using PITIA — principal, interest, property taxes, homeowner's insurance, and any HOA dues. Use the full monthly cost of carrying the property, not just the P&I payment, for the most accurate ratio.</p>
+      <p>For properties that aren't currently leased, many lenders will use a market rent estimate from an appraisal (typically the 1007 rent schedule) rather than requiring an active lease.</p>
+
+      <h2>DSCR vs. Conventional Investment Property Loans</h2>
+      <p>Conventional investment property loans still require personal income documentation, DTI analysis, and often stricter reserve requirements as you add more financed properties. DSCR loans remove the personal income requirement entirely, allowing investors to scale based on property performance rather than personal cash flow.</p>
+      <p>DSCR loans may carry higher rates than conventional investment loans in some scenarios, but for the right borrower — especially self-employed investors or those with high property counts — the flexibility often outweighs the rate difference.</p>
+
+      <p>See our full breakdown on the <a href="/programs/investor-loans/">Investor Loans page</a> for more on how DSCR and other investment property programs compare.</p>
+    </div>
+  </section>
+
+  <FAQSection faqs={faqs} heading="DSCR Calculator FAQ" />
+
+  <CTASection
+    heading="Ready to Run a Real Deal?"
+    subtext="Whether your DSCR is above 1.25 or below 1.0, our loan officers can review your scenario and show you what programs are available. We work with investors in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee."
+    ctaText="Contact Us"
+    ctaUrl="/contact-us/"
+    secondaryCtaText="View Investor Loan Options"
+    secondaryCtaUrl="/programs/investor-loans/"
+  />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    margin: var(--space-4) 0 var(--space-4);
+  }
+  .page-hero p {
+    color: oklch(80% 0.02 260);
+    font-size: var(--text-base);
+    max-width: 65ch;
+  }
+  .breadcrumb-nav {
+    font-size: var(--text-sm);
+    color: oklch(65% 0.02 260);
+    margin-bottom: var(--space-4);
+  }
+  .breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+  .breadcrumb-nav a:hover { text-decoration: underline; }
+  .breadcrumb-nav span { margin: 0 var(--space-2); }
+
+  .calc-disclaimer {
+    max-width: 560px;
+    margin: var(--space-8) auto 0;
+    background: var(--color-off-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid var(--color-gray-subtle);
+  }
+  .calc-disclaimer p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-mid);
+    max-width: none;
+  }
+
+  .section--alt { background: var(--color-off-white); }
+
+  .content-narrow {
+    max-width: 720px;
+  }
+
+  .content-narrow h2 {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+  }
+
+  .content-narrow h2:first-child { margin-top: 0; }
+
+  .content-narrow p, .content-narrow li {
+    color: var(--color-gray-mid);
+    max-width: none;
+    margin-bottom: var(--space-4);
+    line-height: 1.7;
+  }
+
+  .content-narrow ul {
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .content-narrow li { margin-bottom: var(--space-2); }
+
+  .content-narrow a {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  /* DSCR tier table */
+  .dscr-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: var(--space-6) 0 var(--space-8);
+  }
+
+  .dscr-tier {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-gray-subtle);
+  }
+
+  .tier-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #fff;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .tier-content {
+    padding: 14px 16px;
+    font-size: var(--text-sm);
+    color: var(--color-gray-body);
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  .tier-content strong { color: #1e293b; }
+
+  .dscr-tier--caution .tier-label  { background: #ea580c; }
+  .dscr-tier--marginal .tier-label { background: #ca8a04; }
+  .dscr-tier--good .tier-label     { background: #16a34a; }
+  .dscr-tier--strong .tier-label   { background: #15803d; }
+
+  @media (max-width: 480px) {
+    .dscr-tier { grid-template-columns: 1fr; }
+    .tier-label { padding: 10px; }
+  }
+</style>

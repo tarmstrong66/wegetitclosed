@@ -1,0 +1,299 @@
+---
+// Self-contained DSCR calculator — no Tailwind CDN
+---
+
+<div class="dscr-app">
+
+  <header class="dscr-header">
+    <h2>DSCR Analyzer</h2>
+    <p>Enter your rental income and total monthly payment to calculate your Debt Service Coverage Ratio. No personal income required for DSCR loans — the property qualifies itself.</p>
+  </header>
+
+  <div class="dscr-hint">
+    Enter your actual or expected gross monthly rental income and total monthly payment (principal, interest, taxes, insurance, and HOA if applicable).
+  </div>
+
+  <div class="dscr-inputs">
+    <div class="dscr-field">
+      <label for="dscr-noi">Monthly Rental Income (Gross)</label>
+      <div class="dscr-input-wrap">
+        <span class="dscr-prefix">$</span>
+        <input type="number" id="dscr-noi" value="5000" min="0">
+      </div>
+    </div>
+    <div class="dscr-field">
+      <label for="dscr-payment">Total Monthly Payment (PITI + HOA)</label>
+      <div class="dscr-input-wrap">
+        <span class="dscr-prefix">$</span>
+        <input type="number" id="dscr-payment" value="4000" min="0">
+      </div>
+    </div>
+  </div>
+
+  <div class="dscr-result-row">
+    <span class="dscr-result-label">DSCR Ratio:</span>
+    <span class="dscr-result-value" id="dscr-value">...</span>
+  </div>
+
+  <div class="dscr-panel" id="dscr-panel">
+    <p class="dscr-panel-title" id="dscr-panel-title"></p>
+    <p class="dscr-panel-text" id="dscr-panel-text"></p>
+  </div>
+
+  <div class="dscr-cta">
+    <h3>Next Steps for Your Investment</h3>
+    <a href="/mortgage-calculators/" class="dscr-cta-secondary">Use Our Mortgage Payment Calculator</a>
+    <a href="/contact-us/" class="dscr-cta-primary">Talk to a Loan Officer About Your Deal</a>
+  </div>
+
+</div>
+
+<script>
+  const noiInput = document.getElementById('dscr-noi') as HTMLInputElement;
+  const paymentInput = document.getElementById('dscr-payment') as HTMLInputElement;
+  const valueEl = document.getElementById('dscr-value')!;
+  const panel = document.getElementById('dscr-panel')!;
+  const titleEl = document.getElementById('dscr-panel-title')!;
+  const textEl = document.getElementById('dscr-panel-text')!;
+
+  function update() {
+    const noi = parseFloat(noiInput.value) || 0;
+    const pay = parseFloat(paymentInput.value) || 0;
+
+    if (pay <= 0) {
+      valueEl.textContent = 'N/A';
+      panel.dataset.state = 'empty';
+      titleEl.textContent = 'Enter Payment Information';
+      textEl.textContent = 'Please enter your total monthly payment to see your DSCR results.';
+      return;
+    }
+
+    const dscr = noi / pay;
+    valueEl.textContent = dscr.toFixed(2);
+
+    if (dscr < 1.0) {
+      panel.dataset.state = 'caution';
+      titleEl.textContent = 'Below 1.0 — Deals Are Still Possible';
+      textEl.textContent = 'A DSCR below 1.0 means the rental income doesn\'t fully cover the payment — but this is not automatically a disqualifier. Some lenders offer DSCR programs that allow ratios below 1.0, typically with rate adjustments and higher down payment requirements (often 25–30%+). Strong credit and reserves help. Talk with a loan officer to see what\'s available for your specific scenario.';
+    } else if (dscr < 1.1) {
+      panel.dataset.state = 'marginal';
+      titleEl.textContent = 'Break Even / Marginal';
+      textEl.textContent = 'Rental income just covers the debt. Lenders may look for stronger credit scores and cash reserves to approve at this level. Still lendable — discuss your scenario with a loan officer.';
+    } else if (dscr <= 1.25) {
+      panel.dataset.state = 'good';
+      titleEl.textContent = 'Preferred / Good';
+      textEl.textContent = 'Your cash flow covers the debt service. This generally meets standard DSCR lending criteria and opens up a wider range of programs and pricing.';
+    } else {
+      panel.dataset.state = 'strong';
+      titleEl.textContent = 'Exceptional Cash Flow';
+      textEl.textContent = 'Rental income significantly exceeds the debt service. This is a strong DSCR profile that may qualify for better rates and terms. A loan officer can help you put together the best structure for this deal.';
+    }
+  }
+
+  [noiInput, paymentInput].forEach(el => el.addEventListener('input', update));
+  update();
+</script>
+
+<style>
+  .dscr-app {
+    max-width: 560px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e8edf2;
+    padding: 36px;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .dscr-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .dscr-header h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 8px;
+  }
+
+  .dscr-header p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .dscr-hint {
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .dscr-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .dscr-field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+  }
+
+  .dscr-input-wrap {
+    position: relative;
+  }
+
+  .dscr-prefix {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 1rem;
+  }
+
+  .dscr-input-wrap input {
+    width: 100%;
+    padding: 11px 12px 11px 28px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #111827;
+    background: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -moz-appearance: textfield;
+  }
+
+  .dscr-input-wrap input::-webkit-inner-spin-button,
+  .dscr-input-wrap input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .dscr-input-wrap input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+
+  .dscr-result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eff6ff;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .dscr-result-label {
+    font-weight: 700;
+    color: #374151;
+    font-size: 1rem;
+  }
+
+  .dscr-result-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1d4ed8;
+    line-height: 1;
+  }
+
+  /* Analysis panel states */
+  .dscr-panel {
+    border-radius: 8px;
+    padding: 20px;
+    color: #fff;
+    margin-bottom: 28px;
+    transition: background-color 0.25s;
+  }
+
+  .dscr-panel[data-state="empty"]   { background: #94a3b8; }
+  .dscr-panel[data-state="caution"] { background: #ea580c; }
+  .dscr-panel[data-state="marginal"]{ background: #ca8a04; }
+  .dscr-panel[data-state="good"]    { background: #16a34a; }
+  .dscr-panel[data-state="strong"]  { background: #15803d; }
+
+  .dscr-panel-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0 0 6px;
+  }
+
+  .dscr-panel-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.95;
+  }
+
+  /* CTA */
+  .dscr-cta {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .dscr-cta h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 16px;
+  }
+
+  .dscr-cta-secondary,
+  .dscr-cta-primary {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+
+  .dscr-cta-secondary {
+    background: #e2e8f0;
+    color: #1e293b;
+    margin-bottom: 10px;
+    border: 1px solid #cbd5e1;
+  }
+
+  .dscr-cta-secondary:hover {
+    background: #cbd5e1;
+  }
+
+  .dscr-cta-primary {
+    background: #1d4ed8;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+  }
+
+  .dscr-cta-primary:hover {
+    background: #1e40af;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.35);
+  }
+
+  @media (max-width: 480px) {
+    .dscr-app { padding: 24px 20px; }
+    .dscr-header h2 { font-size: 1.4rem; }
+    .dscr-result-value { font-size: 2rem; }
+  }
+</style>
