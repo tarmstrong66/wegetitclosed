@@ -21,6 +21,12 @@ export default defineConfig({
     '/category/dscr-loans': '/blog/category/dscr-loans',
     '/category/standard-home-loans': '/blog/category/standard-home-loans',
 
+    // WP program slug mismatches → new /programs/ paths
+    '/programs/fha': '/programs/fha-loans',
+    '/programs/usda': '/programs/usda-loans',
+    '/programs/va': '/programs/va-loans',
+    '/reverse-mortgages': '/programs/reverse-mortgages',
+
     // WP thank-you pages → parent
     '/programs/conventional-loans/conventional-loans-thank-you': '/programs/conventional-loans',
     '/programs/fha/fha-thank-you': '/programs/fha',
