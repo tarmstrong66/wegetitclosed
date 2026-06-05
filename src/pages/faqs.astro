@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const faqs = [
+  {
+    category: "Getting Started",
+    questions: [
+      {
+        question: "How do I start the mortgage process with American Mortgage Services?",
+        answer: "The easiest way to get started is to contact one of our loan officers directly or submit an inquiry through our contact form. A loan officer will review your scenario, discuss your goals, and walk you through your options. There is no obligation to apply."
+      },
+      {
+        question: "What states does American Mortgage Services lend in?",
+        answer: "We serve borrowers in Alabama, Florida, Georgia, Louisiana, Michigan, and Tennessee. If you are in one of these states, contact us to discuss your mortgage scenario."
+      },
+      {
+        question: "What is the difference between pre-qualification and pre-approval?",
+        answer: "Pre-qualification is a preliminary review of your finances based on self-reported information. Pre-approval is a more thorough process where a lender reviews your credit, income, and assets and issues a written letter indicating the loan amount you may qualify for, subject to final underwriting. Sellers generally take pre-approval more seriously in a competitive market."
+      },
+      {
+        question: "How long does the mortgage process take?",
+        answer: "Timelines vary depending on loan type, program, property, and lender workload. Talk with your loan officer early in the process so you can plan accordingly based on your specific situation."
+      }
+    ]
+  },
+  {
+    category: "Qualifying for a Loan",
+    questions: [
+      {
+        question: "What credit score do I need to qualify for a mortgage?",
+        answer: "Minimum credit score requirements vary by loan program. FHA loans may allow scores as low as 580 with a 3.5% down payment, while conventional loans typically require higher scores. A lower credit score may still qualify depending on your overall financial profile. Talk with a loan officer about your specific situation."
+      },
+      {
+        question: "How does my debt-to-income ratio affect my mortgage approval?",
+        answer: "Debt-to-income (DTI) ratio compares your monthly debt obligations to your gross monthly income. Most loan programs have maximum DTI thresholds, though these vary by program and compensating factors. A loan officer can review your DTI and help you understand how it may affect your loan options."
+      },
+      {
+        question: "Can I qualify for a mortgage if I am self-employed?",
+        answer: "Yes, self-employed borrowers may qualify for several loan programs, including conventional loans, FHA loans, and bank statement loans. Self-employed buyers typically need to provide additional documentation such as two years of tax returns. Bank statement loan programs may be an option if your tax returns do not fully reflect your income. Talk with a loan officer about your options."
+      },
+      {
+        question: "Can I get a mortgage after a bankruptcy or foreclosure?",
+        answer: "Depending on the loan program and how much time has passed since the event, you may be eligible for a mortgage. FHA, VA, and USDA loans each have waiting period requirements after bankruptcy or foreclosure. Talk with a loan officer about your timeline and which programs may be available to you."
+      },
+      {
+        question: "Does my employment history affect my mortgage eligibility?",
+        answer: "Yes. Most loan programs require a two-year employment history. Gaps in employment, recent job changes, or variable income may require additional explanation or documentation. Talk with a loan officer if your employment situation is not straightforward."
+      }
+    ]
+  },
+  {
+    category: "Down Payment and Costs",
+    questions: [
+      {
+        question: "How much do I need for a down payment?",
+        answer: "Down payment requirements vary by loan program. VA and USDA loans may allow zero down payment for eligible borrowers. FHA loans require as little as 3.5% down. Conventional loans may allow as little as 3% down for first-time buyers. Talk with a loan officer about which programs fit your down payment situation."
+      },
+      {
+        question: "What are closing costs and how much should I expect to pay?",
+        answer: "Closing costs include fees for the appraisal, title search, title insurance, origination, recording, and other services. Costs vary by loan amount, property, location, and lender. Your loan officer is required to provide a Loan Estimate early in the process that itemizes estimated closing costs."
+      },
+      {
+        question: "Can closing costs be rolled into the loan?",
+        answer: "In some cases, yes. Some loan programs allow seller concessions or lender credits that can offset closing costs. In refinance transactions, closing costs are sometimes financed into the new loan amount. Talk with your loan officer about the options available in your situation."
+      },
+      {
+        question: "Are there down payment assistance programs available?",
+        answer: "Yes. Several down payment assistance programs may be available depending on your state, income, and loan type. Programs like Hometown Heroes in Florida or other state-sponsored assistance may help reduce or eliminate out-of-pocket down payment costs. Ask your loan officer about programs available in your state."
+      }
+    ]
+  },
+  {
+    category: "Loan Programs",
+    questions: [
+      {
+        question: "What is an FHA loan and who is it for?",
+        answer: "An FHA loan is a mortgage backed by the Federal Housing Administration. It may be a good fit for first-time buyers or those with lower credit scores or smaller down payments. FHA loans require mortgage insurance premiums (MIP) for the life of the loan in most cases. Learn more on our FHA Loans page."
+      },
+      {
+        question: "What is a VA loan?",
+        answer: "A VA loan is a mortgage guaranteed by the U.S. Department of Veterans Affairs. Eligible veterans, active-duty service members, and surviving spouses may qualify for a VA loan with no down payment and no private mortgage insurance. A VA funding fee typically applies but may be waived for certain veterans. Learn more on our VA Loans page."
+      },
+      {
+        question: "What is a USDA loan?",
+        answer: "A USDA loan is backed by the U.S. Department of Agriculture and is available for eligible properties in designated rural and suburban areas. USDA loans may offer zero down payment for qualified buyers who meet income limits. Learn more on our USDA Loans page."
+      },
+      {
+        question: "What is a conventional loan?",
+        answer: "A conventional loan is not backed by a government agency. It typically requires a higher credit score and down payment than FHA loans but may offer more flexibility in property type and loan structure. Conventional loans conforming to Fannie Mae and Freddie Mac guidelines are the most common type."
+      },
+      {
+        question: "What is a jumbo loan?",
+        answer: "A jumbo loan is a mortgage that exceeds the conforming loan limit set by the Federal Housing Finance Agency (FHFA). Jumbo loans are not eligible for purchase by Fannie Mae or Freddie Mac and typically require stronger credit, larger down payments, and additional reserves."
+      },
+      {
+        question: "What is a DSCR loan?",
+        answer: "A DSCR (Debt Service Coverage Ratio) loan is a type of investor loan that qualifies based on the rental income of the property rather than the borrower's personal income. It is designed for real estate investors purchasing or refinancing rental properties. Learn more on our Investor Loans page."
+      },
+      {
+        question: "What is a bank statement loan?",
+        answer: "A bank statement loan is designed for self-employed borrowers whose tax returns may not fully reflect their actual income. Instead of tax returns, lenders use 12-24 months of bank statements to calculate qualifying income. Learn more on our Bank Statement Loans page."
+      }
+    ]
+  },
+  {
+    category: "Rates and Costs",
+    questions: [
+      {
+        question: "How are mortgage interest rates determined?",
+        answer: "Mortgage rates are influenced by broader market conditions including Treasury yields, Federal Reserve policy, and investor demand for mortgage-backed securities. Your individual rate is also affected by your credit score, loan type, loan term, property type, down payment, and other factors. Rates change daily and sometimes multiple times per day."
+      },
+      {
+        question: "What is the difference between interest rate and APR?",
+        answer: "The interest rate is the cost of borrowing the principal loan amount. APR (Annual Percentage Rate) includes the interest rate plus other loan costs such as origination fees, mortgage insurance, and certain other fees, expressed as a yearly rate. APR gives a more complete picture of the total cost of the loan."
+      },
+      {
+        question: "What is private mortgage insurance (PMI)?",
+        answer: "PMI is insurance that protects the lender if you default on your loan. It is typically required on conventional loans when your down payment is less than 20% of the home's purchase price. PMI can often be removed once you reach 20% equity in the home. FHA loans have their own mortgage insurance called MIP."
+      },
+      {
+        question: "Can I lock my interest rate?",
+        answer: "Yes. Most lenders offer rate locks that protect your rate for a set period while your loan is processed. Rate lock periods and terms vary. Talk with your loan officer about the rate lock options available for your loan."
+      }
+    ]
+  },
+  {
+    category: "Refinancing",
+    questions: [
+      {
+        question: "When does it make sense to refinance?",
+        answer: "Refinancing may make sense if current rates are meaningfully lower than your existing rate, if you want to change your loan term, or if you want to access equity through a cash-out refinance. Whether refinancing makes financial sense depends on your specific scenario, how long you plan to stay in the home, and your break-even timeline on closing costs. Talk with a loan officer to run the numbers."
+      },
+      {
+        question: "What is a cash-out refinance?",
+        answer: "A cash-out refinance replaces your existing mortgage with a new, larger loan. The difference between the new loan amount and your existing balance is paid to you in cash at closing. Borrowers use cash-out refinances to fund home improvements, consolidate debt, or cover large expenses. Your loan-to-value ratio and credit profile affect your eligibility and the amount you may be able to access."
+      },
+      {
+        question: "How often can I refinance my mortgage?",
+        answer: "There is no legal limit on how often you can refinance. However, each refinance involves closing costs and a new loan term, so timing matters. Some loan programs have seasoning requirements, meaning you must wait a set period after your current loan closed before refinancing. Talk with a loan officer about your specific situation."
+      }
+    ]
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.flatMap(cat =>
+    cat.questions.map(q => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.answer
+      }
+    }))
+  )
+};
+---
+<BaseLayout
+  title="Mortgage FAQ | Common Questions Answered | American Mortgage Services"
+  description="Get answers to common mortgage questions about loan programs, credit, down payments, rates, refinancing, and the application process. American Mortgage Services serves AL, FL, GA, LA, MI, and TN."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span aria-current="page">Mortgage FAQs</span>
+      </nav>
+      <h1>Mortgage FAQs</h1>
+      <p>Answers to common questions about home loans, qualifying, rates, and the mortgage process.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container faq-layout">
+      <nav class="faq-nav" aria-label="FAQ categories">
+        <p class="faq-nav-label">Jump to a topic</p>
+        <ul>
+          {faqs.map(cat => (
+            <li>
+              <a href={`#${cat.category.toLowerCase().replace(/\s+/g, '-')}`}>{cat.category}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="faq-content">
+        {faqs.map(cat => (
+          <div class="faq-category" id={cat.category.toLowerCase().replace(/\s+/g, '-')}>
+            <h2>{cat.category}</h2>
+            <div class="faq-list">
+              {cat.questions.map(q => (
+                <details class="faq-item">
+                  <summary class="faq-question">{q.question}</summary>
+                  <p class="faq-answer">{q.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div class="faq-disclaimer">
+          <p>All mortgage programs are subject to credit approval, income verification, property approval, and applicable lender and program guidelines. Program availability and terms may change without notice. This page is for informational purposes only and does not constitute a commitment to lend or a guarantee of any specific rate or program. Contact a loan officer to discuss your specific scenario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Still Have Questions?"
+    subtext="Talk with a loan officer about your mortgage scenario. We serve borrowers in AL, FL, GA, LA, MI, and TN."
+    ctaText="Contact Us"
+    ctaUrl="/contact-us/"
+    secondaryCtaText="Apply Now"
+    secondaryCtaUrl="/loan-officers/"
+  />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-navy); color: var(--color-white);
+  padding: var(--space-16) 0 var(--space-12);
+}
+.page-hero h1 { color: var(--color-white); font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin: var(--space-4) 0 var(--space-4); }
+.page-hero p { color: oklch(80% 0.02 260); font-size: var(--text-lg); max-width: 55ch; }
+.breadcrumb-nav { font-size: var(--text-sm); color: oklch(65% 0.02 260); margin-bottom: var(--space-4); }
+.breadcrumb-nav a { color: oklch(70% 0.02 260); text-decoration: none; }
+.breadcrumb-nav span { margin: 0 var(--space-2); }
+
+.faq-layout {
+  display: grid; grid-template-columns: 220px 1fr; gap: var(--space-12); align-items: start;
+}
+@media (max-width: 860px) { .faq-layout { grid-template-columns: 1fr; } }
+
+.faq-nav {
+  position: sticky; top: var(--space-8);
+  background: var(--color-off-white); border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+.faq-nav-label { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-gray-mid); margin-bottom: var(--space-3); }
+.faq-nav ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.faq-nav a { font-size: var(--text-sm); color: var(--color-navy); font-weight: 500; text-decoration: none; }
+.faq-nav a:hover { color: var(--color-red); }
+@media (max-width: 860px) { .faq-nav { position: static; } .faq-nav ul { flex-direction: row; flex-wrap: wrap; } }
+
+.faq-category { margin-bottom: var(--space-12); }
+.faq-category h2 { font-size: var(--text-2xl); color: var(--color-navy); margin-bottom: var(--space-5); padding-bottom: var(--space-3); border-bottom: 2px solid var(--color-gray-subtle); }
+
+.faq-list { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.faq-item {
+  background: var(--color-white); border: 1.5px solid var(--color-gray-subtle);
+  border-radius: var(--radius-md); overflow: hidden;
+}
+.faq-item[open] { border-color: var(--color-navy); }
+
+.faq-question {
+  font-size: var(--text-base); font-weight: 600; color: var(--color-navy);
+  padding: var(--space-4) var(--space-5); cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after {
+  content: '+'; font-size: var(--text-xl); font-weight: 300; color: var(--color-navy);
+  flex-shrink: 0; transition: transform 200ms ease;
+}
+.faq-item[open] .faq-question::after { content: '-'; }
+.faq-question:hover { color: var(--color-red); }
+
+.faq-answer {
+  font-size: var(--text-sm); color: var(--color-gray-body); line-height: 1.7;
+  padding: 0 var(--space-5) var(--space-4); max-width: none;
+}
+
+.faq-disclaimer {
+  margin-top: var(--space-8); padding: var(--space-5);
+  background: var(--color-off-white); border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-gray-subtle);
+}
+.faq-disclaimer p { font-size: var(--text-xs); color: var(--color-gray-mid); max-width: none; line-height: 1.7; }
+</style>
