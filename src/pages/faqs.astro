@@ -163,7 +163,7 @@ const faqSchema = {
   description="Get answers to common mortgage questions about loan programs, credit, down payments, rates, refinancing, and the application process. American Mortgage Services serves AL, FL, GA, LA, MI, and TN."
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
   <section class="page-hero">
@@ -195,7 +195,7 @@ const faqSchema = {
             <h2>{cat.category}</h2>
             <div class="faq-list">
               {cat.questions.map(q => (
-                <details class="faq-item">
+                <details class="faq-item" open>
                   <summary class="faq-question">{q.question}</summary>
                   <p class="faq-answer">{q.answer}</p>
                 </details>
