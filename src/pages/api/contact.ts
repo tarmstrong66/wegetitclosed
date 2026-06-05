@@ -1,5 +1,9 @@
-export async function onRequestPost(context) {
-  const { request, env } = context;
+export const prerender = false;
+
+import type { APIRoute } from 'astro';
+
+export const POST: APIRoute = async ({ request, locals }) => {
+  const env = (locals as any).runtime?.env ?? (import.meta as any).env;
 
   try {
     const body = await request.json();
@@ -18,15 +22,17 @@ export async function onRequestPost(context) {
       `State:      ${state || 'Not provided'}`,
       `Loan Type:  ${loanType || 'Not provided'}`,
       '',
-      `Message:`,
+      'Message:',
       message || 'No message provided',
     ].join('\n');
+
+    const apiKey = env.RESEND_API_KEY;
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: 'onboarding@resend.dev',
@@ -44,12 +50,12 @@ export async function onRequestPost(context) {
 
     return json({ success: true }, 200);
   } catch (err) {
-    console.error('Contact function error:', err);
+    console.error('Contact API error:', err);
     return json({ success: false }, 500);
   }
-}
+};
 
-function json(data, status) {
+function json(data: object, status: number) {
   return new Response(JSON.stringify(data), {
     status,
     headers: { 'Content-Type': 'application/json' },
