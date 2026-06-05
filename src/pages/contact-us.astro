@@ -21,7 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>Send Us a Message</h2>
         <p class="form-note">Submitting this form does not constitute a loan application or commitment to lend. A loan officer will typically follow up within one business day.</p>
 
-        <form class="contact-form" action="#" method="POST" novalidate>
+        <form class="contact-form" action="/api/contact" method="POST" novalidate>
           <div class="field-row">
             <div class="field">
               <label for="first-name">First Name <span aria-hidden="true">*</span></label>
@@ -83,6 +83,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <button type="submit" class="btn-primary submit-btn">Send Message</button>
+          <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
         </form>
       </div>
 
@@ -173,4 +174,56 @@ textarea { resize: vertical; min-height: 100px; }
 .info-card-cta h3 { color: var(--color-white); }
 .info-card-cta p { color: oklch(75% 0.02 260); margin-bottom: var(--space-4); }
 .info-card-cta .btn-primary { width: 100%; justify-content: center; }
+
+.form-status { font-size: var(--text-sm); margin-top: var(--space-3); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); display: none; }
+.form-status--success { display: block; background: oklch(95% 0.05 145); color: oklch(30% 0.1 145); }
+.form-status--error { display: block; background: oklch(95% 0.05 25); color: oklch(35% 0.15 25); }
 </style>
+
+<script>
+const form = document.querySelector('.contact-form') as HTMLFormElement;
+const btn = form.querySelector('.submit-btn') as HTMLButtonElement;
+const status = document.getElementById('form-status')!;
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.textContent = '';
+  status.className = 'form-status';
+
+  const data = Object.fromEntries(new FormData(form));
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: data['first-name'],
+        lastName: data['last-name'],
+        email: data['email'],
+        phone: data['phone'],
+        state: data['state'],
+        loanType: data['loan-type'],
+        message: data['message'],
+      }),
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      form.reset();
+      status.textContent = 'Your message was sent. A loan officer will follow up within one business day.';
+      status.classList.add('form-status--success');
+    } else {
+      throw new Error('Send failed');
+    }
+  } catch {
+    status.textContent = 'Something went wrong. Please call us at (888) 838-9330 or try again.';
+    status.classList.add('form-status--error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+  }
+});
+</script>
