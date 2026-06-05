@@ -12,10 +12,10 @@ export default defineConfig({
     '/about-us-2': '/about',
 
     // Blog post migration (root → /blog/)
-    '/dscr-loans-vs-conventional-mortgages-which-one-fits-your': '/blog/dscr-loans-vs-conventional-mortgages-which-one-fits-your',
-    '/how-to-qualify-for-a-dscr-loan-tips-for-real-estate-investors': '/blog/how-to-qualify-for-a-dscr-loan-tips-for-real-estate-investors',
+    '/dscr-loans-vs-conventional-mortgages-which-one-fits-your': '/blog/dscr-vs-conventional-mortgage',
+    '/how-to-qualify-for-a-dscr-loan-tips-for-real-estate-investors': '/blog/how-to-qualify-for-dscr-loan',
     '/what-is-a-dscr-loan-2': '/blog/what-is-a-dscr-loan',
-    '/how-to-use-dscr-loans-to-grow-your-rental-portfolio-in-florida': '/blog/how-to-use-dscr-loans-to-grow-your-rental-portfolio-in-florida',
+    '/how-to-use-dscr-loans-to-grow-your-rental-portfolio-in-florida': '/blog/dscr-rental-portfolio-florida',
 
     // Blog category migration
     '/category/dscr-loans': '/blog/category/dscr-loans',
