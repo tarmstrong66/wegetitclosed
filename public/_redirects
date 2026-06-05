@@ -1,20 +1,44 @@
-/purchase                    /loan-programs/                                    301
-/refinance                   /loan-programs/refinance-loans/                    301
-/programs                    /loan-programs/                                    301
+# Old WordPress short paths
+/purchase                    /programs/                                         301
+/refinance                   /programs/refinance-loans/                         301
 /about-us                    /about/                                            301
 /apply                       /apply-now/                                        301
-/fha                         /loan-programs/fha-loans/                          301
-/va                          /loan-programs/va-loans/                           301
-/usda                        /loan-programs/usda-loans/                         301
-/conventional                /loan-programs/conventional-loans/                 301
-/jumbo                       /loan-programs/jumbo-loans/                        301
-/reverse                     /loan-programs/reverse-mortgages/                  301
-/renovation                  /loan-programs/renovation-loans/                   301
+/fha                         /programs/fha-loans/                               301
+/va                          /programs/va-loans/                                301
+/usda                        /programs/usda-loans/                              301
+/conventional                /programs/conventional-loans/                      301
+/jumbo                       /programs/jumbo-loans/                             301
+/reverse                     /programs/reverse-mortgages/                       301
+/renovation                  /programs/renovation-loans/                        301
 /calculators                 /mortgage-calculators/                             301
 /calculator                  /mortgage-calculators/                             301
-/alabama                     /alabama-mortgage-loans/                           301
-/florida                     /florida-mortgage-loans/                           301
-/georgia                     /georgia-mortgage-loans/                           301
-/louisiana                   /louisiana-mortgage-loans/                         301
-/michigan                    /michigan-mortgage-loans/                          301
-/tennessee                   /tennessee-mortgage-loans/                         301
+
+# Old WordPress state short paths
+/alabama                     /alabama-mortgage/                                 301
+/florida                     /florida-mortgage/                                 301
+/georgia                     /georgia-mortgage/                                 301
+/louisiana                   /louisiana-mortgage/                               301
+/michigan                    /michigan-mortgage/                                301
+/tennessee                   /tennessee-mortgage/                               301
+
+# WordPress program short slugs to Astro long slugs
+/programs/fha/               /programs/fha-loans/                               301
+/programs/fha                /programs/fha-loans/                               301
+/programs/va/                /programs/va-loans/                                301
+/programs/va                 /programs/va-loans/                                301
+/programs/usda/              /programs/usda-loans/                              301
+/programs/usda               /programs/usda-loans/                              301
+
+# WordPress root-level program pages to Astro
+/reverse-mortgages/          /programs/reverse-mortgages/                       301
+/reverse-mortgages           /programs/reverse-mortgages/                       301
+/dscr-loans/                 /programs/investor-loans/                          301
+/dscr-loans                  /programs/investor-loans/                          301
+/refinance-programs/         /programs/refinance-loans/                         301
+/refinance-programs          /programs/refinance-loans/                         301
+/renovation-programs/        /programs/renovation-loans/                        301
+/renovation-programs         /programs/renovation-loans/                        301
+/purchase-programs/          /programs/                                         301
+/purchase-programs           /programs/                                         301
+/specialty-programs/         /programs/                                         301
+/specialty-programs          /programs/                                         301
