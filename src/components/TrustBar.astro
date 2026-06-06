@@ -4,15 +4,15 @@
   <div class="container">
     <div class="proof-grid">
       <div class="proof-item">
-        <span class="proof-value">40+ Lenders</span>
+        <span class="proof-value" data-count="40" data-suffix="+ Lenders">40+ Lenders</span>
         <label class="proof-label">Top Wholesale Rates</label>
       </div>
       <div class="proof-item">
-        <span class="proof-value">40+ Years</span>
+        <span class="proof-value" data-count="40" data-suffix="+ Years">40+ Years</span>
         <label class="proof-label">Combined Experience</label>
       </div>
       <div class="proof-item">
-        <span class="proof-value">4.8 Stars</span>
+        <span class="proof-value" data-count="4.8" data-suffix=" Stars" data-decimals="1">4.8 Stars</span>
         <label class="proof-label">135 Google Reviews</label>
       </div>
     </div>
@@ -62,3 +62,27 @@
   letter-spacing: 0.08em;
 }
 </style>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>('.proof-value[data-count]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      const el = entry.target as HTMLElement;
+      const target = parseFloat(el.dataset.count!);
+      const suffix = el.dataset.suffix ?? '';
+      const decimals = parseInt(el.dataset.decimals ?? '0');
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const elapsed = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - elapsed, 3);
+        el.textContent = (eased * target).toFixed(decimals) + suffix;
+        if (elapsed < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.3 });
+  items.forEach(el => observer.observe(el));
+</script>

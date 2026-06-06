@@ -14,6 +14,10 @@ const { headline, subheadline, ctaText, ctaUrl, secondaryCtaText, secondaryCtaUr
   <div class="container hero-content">
     <h1>{headline}</h1>
     <p class="hero-sub">{subheadline}</p>
+    <div class="hero-proof">
+      <span class="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="hero-proof-text">4.8 &nbsp;&middot;&nbsp; 135 Google Reviews</span>
+    </div>
     <div class="hero-ctas">
       <a href={ctaUrl} class="btn-primary">{ctaText}</a>
       {secondaryCtaText && secondaryCtaUrl && (
@@ -60,6 +64,12 @@ const { headline, subheadline, ctaText, ctaUrl, secondaryCtaText, secondaryCtaUr
   display: flex; gap: var(--space-4); flex-wrap: wrap;
   margin-bottom: var(--space-6);
 }
+.hero-proof {
+  display: flex; align-items: center; gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+.hero-stars { color: var(--color-gold); font-size: var(--text-base); letter-spacing: 0.05em; }
+.hero-proof-text { font-size: var(--text-sm); color: oklch(80% 0.02 260); }
 .hero-note {
   font-size: var(--text-xs); color: oklch(55% 0.01 260);
   max-width: none;
