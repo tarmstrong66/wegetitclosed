@@ -88,6 +88,14 @@ Use clear, direct mortgage language.
 
 Avoid thin, duplicated, city-swap, or state-swap content.
 
+\#\# Loan Program Page FAQ Rules
+
+Every loan program page must include a FAQ section with exactly 5 questions and answers.
+
+Choose the top 5 highest-intent questions: the ones borrowers most commonly search for and that directly drive qualification or action decisions.
+
+All FAQ answers must be fully visible without any click or interaction required. Do not use accordion or collapsible FAQ components on program pages. Pass alwaysOpen={true} to the FAQSection component via the faqAlwaysOpen prop in LoanProgramLayout.
+
 \#\# Technical Rules
 
 Build for:

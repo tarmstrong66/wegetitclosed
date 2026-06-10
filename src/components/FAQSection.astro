@@ -6,14 +6,24 @@ interface FAQ {
 interface Props {
   faqs: FAQ[];
   heading?: string;
+  alwaysOpen?: boolean;
 }
-const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
+const { faqs, heading = 'Frequently Asked Questions', alwaysOpen = false } = Astro.props;
 ---
 <section class="faq-section">
   <div class="container-narrow">
     <h2>{heading}</h2>
     <div class="faq-list">
-      {faqs.map((faq, i) => (
+      {alwaysOpen ? faqs.map((faq) => (
+        <div class="faq-item faq-item-open">
+          <div class="faq-question-static">
+            <span>{faq.question}</span>
+          </div>
+          <div class="faq-answer">
+            <p set:html={faq.answer} />
+          </div>
+        </div>
+      )) : faqs.map((faq, i) => (
         <details class="faq-item" open={i === 0}>
           <summary class="faq-question">
             <span>{faq.question}</span>
@@ -116,4 +126,21 @@ const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
 }
 
 .faq-answer a:hover { color: var(--color-red); }
+
+.faq-item-open {
+  border-color: var(--color-navy-light);
+}
+
+.faq-question-static {
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-gray-subtle);
+}
+
+.faq-question-static span {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.4;
+}
 </style>

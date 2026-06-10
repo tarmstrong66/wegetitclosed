@@ -13,9 +13,10 @@ interface Props {
   heroSubtitle: string;
   loanType: string;
   faqs?: { question: string; answer: string }[];
+  faqAlwaysOpen?: boolean;
 }
 
-const { title, description, canonicalUrl, schema, heroTitle, heroSubtitle, loanType, faqs = [] } = Astro.props;
+const { title, description, canonicalUrl, schema, heroTitle, heroSubtitle, loanType, faqs = [], faqAlwaysOpen = false } = Astro.props;
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -94,7 +95,7 @@ const breadcrumbs = [
     </div>
   </div>
 
-  {faqs.length > 0 && <FAQSection faqs={faqs} />}
+  {faqs.length > 0 && <FAQSection faqs={faqs} alwaysOpen={faqAlwaysOpen} />}
 
   <CTASection
     heading="Compare Your Mortgage Options"
