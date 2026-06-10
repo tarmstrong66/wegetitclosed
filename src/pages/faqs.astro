@@ -93,14 +93,6 @@ const faqs = [
         question: "What is a jumbo loan?",
         answer: "A jumbo loan is a mortgage that exceeds the conforming loan limit set by the Federal Housing Finance Agency (FHFA). Jumbo loans are not eligible for purchase by Fannie Mae or Freddie Mac and typically require stronger credit, larger down payments, and additional reserves."
       },
-      {
-        question: "What is a DSCR loan?",
-        answer: "A DSCR (Debt Service Coverage Ratio) loan is a type of investor loan that qualifies based on the rental income of the property rather than the borrower's personal income. It is designed for real estate investors purchasing or refinancing rental properties. Learn more on our Investor Loans page."
-      },
-      {
-        question: "What is a bank statement loan?",
-        answer: "A bank statement loan is designed for self-employed borrowers whose tax returns may not fully reflect their actual income. Instead of tax returns, lenders use 12-24 months of bank statements to calculate qualifying income. Learn more on our Bank Statement Loans page."
-      }
     ]
   },
   {
@@ -195,10 +187,10 @@ const faqSchema = {
             <h2>{cat.category}</h2>
             <div class="faq-list">
               {cat.questions.map(q => (
-                <details class="faq-item" open>
-                  <summary class="faq-question">{q.question}</summary>
+                <div class="faq-item">
+                  <p class="faq-question">{q.question}</p>
                   <p class="faq-answer">{q.answer}</p>
-                </details>
+                </div>
               ))}
             </div>
           </div>
@@ -261,12 +253,8 @@ const faqSchema = {
 
 .faq-question {
   font-size: var(--text-base); font-weight: 700; color: var(--color-navy);
-  cursor: pointer; list-style: none;
-  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
-  user-select: none;
+  margin: 0 0 var(--space-4) 0; line-height: 1.4;
 }
-.faq-question::-webkit-details-marker { display: none; }
-details[open] > .faq-question { margin-bottom: var(--space-3); }
 
 .faq-answer {
   font-size: var(--text-base); color: var(--color-gray-body); line-height: 1.7;

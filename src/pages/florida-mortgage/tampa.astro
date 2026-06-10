@@ -24,10 +24,6 @@ const faqs = [
     question: "Are DSCR investor loans available for Tampa rental properties?",
     answer: "Yes. Tampa's strong long-term and short-term rental market makes DSCR (Debt Service Coverage Ratio) loans a popular choice for investors. DSCR loans qualify based on the property's rental income rather than your personal tax returns, which can be a significant advantage for investors with multiple properties or complex income situations. Available for single-family, multi-unit, and eligible short-term rental properties."
   },
-  {
-    question: "What credit score do I need to buy a home in Tampa?",
-    answer: "Minimum credit score requirements vary by program. FHA loans may allow scores as low as 580 with 3.5% down. Conventional loans typically require 620 or higher. VA loans have no official minimum but most lenders look for 580-620. Jumbo programs generally require 700-720 or higher. Talk with a loan officer about your credit profile - there may be options even if your score isn't where you want it yet."
-  },
 ];
 
 const states = [
@@ -101,7 +97,7 @@ const schema = {
     <p>Flood insurance premiums under the FEMA National Flood Insurance Program (NFIP) or private flood insurers can range from a few hundred to several thousand dollars annually depending on the property's flood risk. That cost factors into your debt-to-income ratio and can meaningfully affect what you qualify for. Your loan officer will review flood zone status as part of your loan planning process.</p>
   </div>
 
-  <FAQSection faqs={faqs} heading="Tampa Mortgage FAQ" />
+  <FAQSection faqs={faqs} heading="Tampa Mortgage FAQ" alwaysOpen={true} />
 
   <div class="prose">
     <h2>Loan Programs Available in Tampa</h2>

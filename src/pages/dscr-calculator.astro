@@ -25,14 +25,6 @@ const faqs = [
     question: "What counts as the monthly payment in the DSCR calculation?",
     answer: "Most lenders use PITIA - principal, interest, taxes, insurance, and any HOA dues. Some lenders use only PITI. Be sure to include all recurring monthly costs associated with the property when entering figures into the calculator."
   },
-  {
-    question: "Can I use projected rent or do I need actual rent?",
-    answer: "Many DSCR lenders allow you to use a market rent estimate from an appraisal (typically the 1007 rent schedule) rather than requiring an active lease. This is useful for purchasing vacant properties or newly built rentals. Ask your loan officer which documentation approach applies to your loan."
-  },
-  {
-    question: "What property types qualify for DSCR loans?",
-    answer: "DSCR loans are commonly available for single-family investment properties, 2-4 unit properties, condos, townhomes, and in some cases short-term rentals (Airbnb/VRBO). Multi-family properties above 4 units typically fall under commercial lending programs. Eligibility varies by lender and program."
-  }
 ];
 ---
 
@@ -117,7 +109,7 @@ const faqs = [
     </div>
   </section>
 
-  <FAQSection faqs={faqs} heading="DSCR Calculator FAQ" />
+  <FAQSection faqs={faqs} heading="DSCR Calculator FAQ" alwaysOpen={true} />
 
   <CTASection
     heading="Ready to Run a Real Deal?"

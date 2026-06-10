@@ -9,7 +9,6 @@ const faqs = [
   { question: "Are DSCR investor loans available in Florida?", answer: "Yes. Florida has a strong rental and investor market, and DSCR (Debt Service Coverage Ratio) loans are available for eligible investment properties. These loans qualify based on the property's rental income rather than the borrower's personal income, which can be helpful for investors with complex tax returns." },
   { question: "Does flood insurance affect my mortgage in Florida?", answer: "In Florida, many properties are located in FEMA flood zones that require mandatory flood insurance. Flood insurance premiums can affect your debt-to-income ratio and, in some cases, impact loan eligibility. Your loan officer can help you understand how flood zone designation may affect your specific transaction." },
   { question: "What credit score do I need for a mortgage in Florida?", answer: "Minimum credit score requirements vary by program. FHA may allow scores as low as 580 with 3.5% down. Conventional loans typically require 620 or higher. Jumbo and specialty programs often require 680-720 or higher. Talk with a loan officer about your credit profile and which programs may be a fit." },
-  { question: "Can I get a jumbo loan in Florida?", answer: "Yes. Florida has several high-value markets, including Miami-Dade, Palm Beach, Broward, and coastal communities, where home prices may exceed conventional conforming loan limits. Jumbo loans are available for eligible borrowers, typically requiring stronger credit (720+) and larger down payments (10-20% or more)." },
 ];
 
 const states = [
@@ -62,7 +61,7 @@ const cities = [
     <p>Hurricane and windstorm insurance are also important in Florida. Lenders require adequate hazard insurance coverage, and in coastal areas, windstorm coverage may need to be separate from the standard homeowner's policy.</p>
   </div>
 
-  <FAQSection faqs={faqs} heading="Florida Mortgage FAQ" />
+  <FAQSection faqs={faqs} heading="Florida Mortgage FAQ" alwaysOpen={true} />
 
   <div class="prose">
     <h2>Loan Programs Available in Florida</h2>

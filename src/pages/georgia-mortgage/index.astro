@@ -9,7 +9,6 @@ const faqs = [
   { question: "What is the Georgia Dream program?", answer: "The Georgia Dream Homeownership Program, administered by the Georgia Department of Community Affairs (DCA), offers down payment assistance and below-market mortgage rates to eligible first-time homebuyers who meet income and purchase price limits. Ask a loan officer about current availability, as program funding and requirements can change." },
   { question: "How competitive is the Atlanta real estate market for mortgage borrowers?", answer: "Metro Atlanta is a competitive market, particularly in suburbs like Alpharetta, Smyrna, Roswell, and Marietta. Pre-approval before you shop is important. A fully underwritten pre-approval is stronger than a standard pre-qualification. Talk with your loan officer about how to position your offer competitively." },
   { question: "Can I use a conventional loan to buy a home in the Atlanta area?", answer: "Yes. Many Atlanta-area buyers use conventional loans with 3% to 20% down, depending on their credit and income profile. Conforming loan limits apply, and for higher-priced homes in areas like Buckhead or Alpharetta, jumbo financing may be needed." },
-  { question: "What credit score do I need to buy a home in Georgia?", answer: "Minimum credit requirements vary by program. FHA may allow scores as low as 580 with 3.5% down. Conventional typically requires 620 or higher. Jumbo programs often require 720 or higher. A loan officer can review your credit profile and help you understand your options." },
 ];
 
 const states = [
@@ -52,7 +51,7 @@ const states = [
     <p>Georgia's no state income tax and relatively business-friendly environment continue to attract new residents, which supports housing demand. The Savannah market has grown substantially with logistics and port activity. Augusta benefits from the medical corridor and Fort Eisenhower (formerly Fort Gordon). Each market has different dynamics, and your loan officer can help you understand how your local market may affect your transaction.</p>
   </div>
 
-  <FAQSection faqs={faqs} heading="Georgia Mortgage FAQ" />
+  <FAQSection faqs={faqs} heading="Georgia Mortgage FAQ" alwaysOpen={true} />
 
   <div class="prose">
     <h2>Loan Programs Available in Georgia</h2>
