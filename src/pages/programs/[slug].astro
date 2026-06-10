@@ -13,10 +13,13 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const faqSchema = entry.data.faqs ? {
+const data = entry.data as typeof entry.data & { faqs?: { question: string; answer: string }[] };
+const faqs = data.faqs ?? [];
+
+const faqSchema = faqs.length > 0 ? {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": (entry.data.faqs as any[]).map((faq: { question: string; answer: string }) => ({
+  "mainEntity": faqs.map((faq: { question: string; answer: string }) => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": {
@@ -33,6 +36,7 @@ const faqSchema = entry.data.faqs ? {
   heroSubtitle={entry.data.description}
   loanType={entry.data.title}
   schema={faqSchema}
+  faqs={faqs}
 >
   <Content />
 </LoanProgramLayout>

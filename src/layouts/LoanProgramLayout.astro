@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import BreadcrumbList from '../components/BreadcrumbList.astro';
 import CTASection from '../components/CTASection.astro';
+import FAQSection from '../components/FAQSection.astro';
 
 interface Props {
   title: string;
@@ -11,9 +12,10 @@ interface Props {
   heroTitle: string;
   heroSubtitle: string;
   loanType: string;
+  faqs?: { question: string; answer: string }[];
 }
 
-const { title, description, canonicalUrl, schema, heroTitle, heroSubtitle, loanType } = Astro.props;
+const { title, description, canonicalUrl, schema, heroTitle, heroSubtitle, loanType, faqs = [] } = Astro.props;
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -91,6 +93,8 @@ const breadcrumbs = [
       </div>
     </div>
   </div>
+
+  {faqs.length > 0 && <FAQSection faqs={faqs} />}
 
   <CTASection
     heading="Compare Your Mortgage Options"

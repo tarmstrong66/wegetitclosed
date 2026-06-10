@@ -9,41 +9,111 @@ interface Props {
 }
 const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
 ---
-<section class="faq-section section">
+<section class="faq-section">
   <div class="container-narrow">
     <h2>{heading}</h2>
     <div class="faq-list">
-      {faqs.map((faq) => (
-        <div class="faq-item">
-          <p class="faq-question">{faq.question}</p>
+      {faqs.map((faq, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </summary>
           <div class="faq-answer">
             <p set:html={faq.answer} />
           </div>
-        </div>
+        </details>
       ))}
     </div>
   </div>
 </section>
 
 <style>
+.faq-section {
+  padding: var(--space-16) 0;
+  background: oklch(97% 0.008 260);
+  border-top: 1px solid var(--color-gray-subtle);
+}
+
 .faq-section h2 {
   font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
-  margin-bottom: var(--space-8);
+  color: var(--color-navy);
+  margin-bottom: var(--space-10);
+  text-align: center;
 }
-.faq-list { display: flex; flex-direction: column; }
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 .faq-item {
-  border-bottom: 1px solid var(--color-gray-subtle);
-  padding: var(--space-8) 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 150ms ease-out;
 }
-.faq-item:first-child { border-top: 1px solid var(--color-gray-subtle); }
+
+.faq-item:hover {
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
+}
+
+.faq-item[open] {
+  border-color: var(--color-navy-light);
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
+}
 
 .faq-question {
-  font-family: var(--font-body); font-size: var(--text-base); font-weight: 600;
-  color: var(--color-navy); margin: 0 0 var(--space-5) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker { display: none; }
+
+.faq-question span {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.4;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  color: var(--color-red);
+  transition: transform 250ms ease-out;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 var(--space-6) var(--space-5);
+  border-top: 1px solid var(--color-gray-subtle);
 }
 
 .faq-answer p {
-  color: var(--color-gray-body); font-size: var(--text-base);
-  line-height: 1.7; max-width: none; margin: 0;
+  color: var(--color-gray-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin: var(--space-4) 0 0;
 }
+
+.faq-answer a {
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
+.faq-answer a:hover { color: var(--color-red); }
 </style>

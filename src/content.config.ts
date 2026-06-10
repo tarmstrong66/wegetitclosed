@@ -11,6 +11,10 @@ const loanPrograms = defineCollection({
     description: z.string(),
     loanType: z.string(),
     order: z.number().optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional(),
   }),
 });
 
