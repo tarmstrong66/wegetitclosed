@@ -15,25 +15,19 @@ const { faqs, heading = 'Frequently Asked Questions', alwaysOpen = false } = Ast
     <h2>{heading}</h2>
     <div class="faq-list">
       {alwaysOpen ? faqs.map((faq) => (
-        <div class="faq-item faq-item-open">
-          <div class="faq-question-static">
-            <span>{faq.question}</span>
-          </div>
-          <div class="faq-answer">
-            <p set:html={faq.answer} />
-          </div>
+        <div class="faq-item">
+          <p class="faq-question">{faq.question}</p>
+          <p class="faq-answer" set:html={faq.answer} />
         </div>
       )) : faqs.map((faq, i) => (
         <details class="faq-item" open={i === 0}>
-          <summary class="faq-question">
+          <summary class="faq-summary">
             <span>{faq.question}</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </summary>
-          <div class="faq-answer">
-            <p set:html={faq.answer} />
-          </div>
+          <p class="faq-answer" set:html={faq.answer} />
         </details>
       ))}
     </div>
@@ -43,7 +37,7 @@ const { faqs, heading = 'Frequently Asked Questions', alwaysOpen = false } = Ast
 <style>
 .faq-section {
   padding: var(--space-16) 0;
-  background: oklch(97% 0.008 260);
+  background: var(--color-off-white);
   border-top: 1px solid var(--color-gray-subtle);
 }
 
@@ -57,63 +51,65 @@ const { faqs, heading = 'Frequently Asked Questions', alwaysOpen = false } = Ast
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
 }
 
 .faq-item {
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: box-shadow 150ms ease-out;
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--color-gray-subtle);
 }
 
-.faq-item:hover {
-  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
+.faq-item:first-child {
+  border-top: 1px solid var(--color-gray-subtle);
 }
 
-.faq-item[open] {
-  border-color: var(--color-navy-light);
-  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
-}
-
+/* Always-open static style */
 .faq-question {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.4;
+  margin: 0 0 var(--space-3) 0;
+}
+
+/* Accordion summary style */
+.faq-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-6) var(--space-8);
   cursor: pointer;
   list-style: none;
   user-select: none;
+  margin-bottom: 0;
 }
 
-.faq-question::-webkit-details-marker { display: none; }
+.faq-summary::-webkit-details-marker { display: none; }
 
-.faq-question span {
+.faq-summary span {
   font-family: var(--font-body);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-navy);
   line-height: 1.4;
 }
 
 .faq-icon {
   flex-shrink: 0;
-  color: var(--color-red);
+  color: var(--color-navy);
+  opacity: 0.5;
   transition: transform 250ms ease-out;
 }
 
-.faq-item[open] .faq-icon {
+details[open] .faq-icon {
   transform: rotate(180deg);
 }
 
-.faq-answer {
-  padding: var(--space-5) var(--space-8) var(--space-6);
-  border-top: 1px solid var(--color-gray-subtle);
+details[open] .faq-summary {
+  margin-bottom: var(--space-3);
 }
 
-.faq-answer p {
+.faq-answer {
   color: var(--color-gray-body);
   font-size: var(--text-base);
   line-height: 1.7;
@@ -126,21 +122,4 @@ const { faqs, heading = 'Frequently Asked Questions', alwaysOpen = false } = Ast
 }
 
 .faq-answer a:hover { color: var(--color-red); }
-
-.faq-item-open {
-  border-color: var(--color-navy-light);
-}
-
-.faq-question-static {
-  padding: var(--space-6) var(--space-8);
-  border-bottom: 1px solid var(--color-gray-subtle);
-}
-
-.faq-question-static span {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--color-navy);
-  line-height: 1.4;
-}
 </style>

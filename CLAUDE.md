@@ -88,6 +88,18 @@ Use clear, direct mortgage language.
 
 Avoid thin, duplicated, city-swap, or state-swap content.
 
+\#\# FAQ Style Rules
+
+All FAQ sections on every page must use the flat divider style:
+
+\- Bold question text (no box or card per item)  
+\- Answer text directly below the question  
+\- A thin horizontal rule separating each item  
+\- No accordion chevrons, no collapsible behavior, no card borders  
+\- All answers fully visible without any click or interaction
+
+This is the only approved FAQ style. Do not use card-box, bordered, or accordion FAQ layouts anywhere on the site.
+
 \#\# Loan Program Page FAQ Rules
 
 Every loan program page must include a FAQ section with exactly 5 questions and answers.
